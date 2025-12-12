@@ -1,0 +1,25 @@
+:root {
+    --font-xs: clamp(0.64rem, 0.04vi + 0.63rem, 0.67rem);
+    --font-sm: clamp(0.8rem, 0.14vi + 0.77rem, 0.89rem);
+    --font-md: clamp(1rem, 0.29vi + 0.94rem, 1.19rem);
+    --font-lg: clamp(1.25rem, 0.51vi + 1.15rem, 1.58rem);
+    --font-xl: clamp(1.56rem, 0.84vi + 1.39rem, 2.11rem);
+    --font-2xl: clamp(1.95rem, 1.31vi + 1.69rem, 2.81rem);
+    --font-3xl: clamp(2.44rem, 2vi + 2.04rem, 3.75rem);
+    --font-4xl: clamp(3.05rem, 2.98vi + 2.46rem, 5rem);
+    --font-5xl: clamp(3.81rem, 4.36vi + 2.94rem, 6.66rem);
+    --font-6xl: clamp(4.77rem, 6.29vi + 3.51rem, 8.88rem);
+    --font-7xl: clamp(5.96rem, 8.99vi + 4.16rem, 11.84rem);
+    --font-8xl: clamp(7.45rem, 12.74vi + 4.9rem, 15.78rem);
+    --font-9xl: clamp(9.31rem, 17.93vi + 5.73rem, 21.03rem);
+
+    --space-3xs: clamp(0.25rem, 0.2309rem + 0.0956vw, 0.3125rem);
+    --space-2xs: clamp(0.5rem, 0.4618rem + 0.1912vw, 0.625rem);
+    --space-xs: clamp(0.75rem, 0.6926rem + 0.2868vw, 0.9375rem);
+    --space-s: clamp(1rem, 0.9235rem + 0.3824vw, 1.25rem);
+    --space-m: clamp(1.5rem, 1.3853rem + 0.5736vw, 1.875rem);
+    --space-l: clamp(2rem, 1.847rem + 0.7648vw, 2.5rem);
+    --space-xl: clamp(3rem, 2.7706rem + 1.1472vw, 3.75rem);
+    --space-2xl: clamp(4rem, 3.6941rem + 1.5296vw, 5rem);
+    --space-3xl: clamp(6rem, 5.5411rem + 2.2945vw, 7.5rem);
+}
