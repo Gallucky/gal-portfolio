@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+
 :root {
     --font-xs: clamp(0.64rem, 0.04vi + 0.63rem, 0.67rem);
     --font-sm: clamp(0.8rem, 0.14vi + 0.77rem, 0.89rem);
@@ -22,4 +24,108 @@
     --space-xl: clamp(3rem, 2.7706rem + 1.1472vw, 3.75rem);
     --space-2xl: clamp(4rem, 3.6941rem + 1.5296vw, 5rem);
     --space-3xl: clamp(6rem, 5.5411rem + 2.2945vw, 7.5rem);
+}
+
+@theme inline {
+    --font-inter: "Inter", system-ui, sans-serif;
+    --font-poppins: "Poppins", system-ui, sans-serif;
+    --font-roboto: "Roboto", system-ui, sans-serif;
+    --font-montserrat: "Montserrat", system-ui, sans-serif;
+    --font-raleway: "Raleway", system-ui, sans-serif;
+    --font-rubik: "Rubik", system-ui, sans-serif;
+    --font-assistant: "Assistant", system-ui, sans-serif;
+
+    /* Backgrounds */
+    --bg-dark: oklch(0.1 0.05 237); /* slightly lighter than original dark */
+    --bg: oklch(0.15 0.05 237); /* main background, soft neutral */
+    --bg-light: oklch(0.2 0.05 237); /* subtle light background areas */
+
+    /* Text */
+    --text: oklch(0.96 0.1 237); /* bright, high contrast for dark bg */
+    --text-muted: oklch(0.76 0.1 237); /* slightly lighter for secondary text */
+
+    /* Borders */
+    --border: oklch(0.4 0.1 237); /* neutral and soft */
+    --border-muted: oklch(0.3 0.1 237);
+
+    /* Outlines */
+    --outline-color: white;
+
+    /* Highlights & UI elements */
+    --highlight: oklch(0.5 0.1 237); /* subtle interactive highlight */
+
+    /* Semantic colors (slightly more chroma for clarity) */
+    --primary: oklch(0.76 0.1 237); /* soft but visible blue-gray */
+    --secondary: oklch(0.76 0.1 57); /* warm muted tone for contrast */
+    --danger: oklch(0.7 0.1 30); /* readable red */
+    --warning: oklch(0.7 0.1 100); /* soft yellow-green */
+    --success: oklch(0.7 0.1 160); /* soft green */
+    --info: oklch(0.7 0.1 260); /* muted purple-blue */
+
+    --color-primary: var(--primary);
+    --color-secondary: var(--secondary);
+    --color-danger: var(--danger);
+    --color-warning: var(--warning);
+    --color-success: var(--success);
+    --color-info: var(--info);
+
+    --color-color: var(--text);
+    --color-color-muted: var(--text-muted);
+
+    --color-bg: var(--bg);
+    --color-bg-dark: var(--bg-dark);
+    --color-bg-light: var(--bg-light);
+
+    --color-border: var(--border);
+    --color-border-muted: var(--border-muted);
+
+    --color-highlight: var(--highlight);
+}
+
+.light {
+    /* Backgrounds */
+    --bg-dark: oklch(0.92 0.05 237);
+    --bg: oklch(0.96 0.05 237);
+    --bg-light: oklch(1 0.05 237);
+
+    /* Text */
+    --text: oklch(0.15 0.1 237);
+    --text-muted: oklch(0.4 0.1 237);
+
+    /* Borders */
+    --border: oklch(0.6 0.1 237);
+    --border-muted: oklch(0.7 0.1 237);
+
+    /* Outlines */
+    --outline-color: black;
+
+    /* Highlights & UI elements */
+    --highlight: oklch(1 0.1 237);
+
+    /* Semantic colors (slightly more chroma for clarity) */
+    --primary: oklch(0.4 0.1 237);
+    --secondary: oklch(0.4 0.1 57);
+    --danger: oklch(0.5 0.1 30);
+    --warning: oklch(0.5 0.1 100);
+    --success: oklch(0.5 0.1 160);
+    --info: oklch(0.5 0.1 260);
+
+    --color-primary: var(--primary);
+    --color-secondary: var(--secondary);
+    --color-danger: var(--danger);
+    --color-warning: var(--warning);
+    --color-success: var(--success);
+    --color-info: var(--info);
+
+    --color-color: var(--text);
+    --color-color-muted: var(--text-muted);
+
+    --color-bg: var(--bg);
+    --color-bg-dark: var(--bg-dark);
+    --color-bg-light: var(--bg-light);
+
+    --color-border: var(--border);
+    --color-border-muted: var(--border-muted);
+
+    --color-highlight: var(--highlight);
 }
