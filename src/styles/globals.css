@@ -35,32 +35,33 @@
     --font-rubik: "Rubik", system-ui, sans-serif;
     --font-assistant: "Assistant", system-ui, sans-serif;
 
-    /* Backgrounds */
-    --bg-dark: oklch(0.1 0.05 237); /* slightly lighter than original dark */
-    --bg: oklch(0.15 0.05 237); /* main background, soft neutral */
-    --bg-light: oklch(0.2 0.05 237); /* subtle light background areas */
+    /* Dark Mode - Deep Blue Theme */
+    /* Backgrounds - darkest to lighter blues */
+    --bg-dark: oklch(0.12 0.08 250); /* deep navy blue */
+    --bg: oklch(0.18 0.07 245); /* dark blue-gray */
+    --bg-light: oklch(0.25 0.06 240); /* medium dark blue */
 
-    /* Text */
-    --text: oklch(0.96 0.1 237); /* bright, high contrast for dark bg */
-    --text-muted: oklch(0.76 0.1 237); /* slightly lighter for secondary text */
+    /* Text - bright blues with good contrast */
+    --text: oklch(0.95 0.05 240); /* almost white with blue tint */
+    --text-muted: oklch(0.7 0.08 235); /* muted light blue */
 
-    /* Borders */
-    --border: oklch(0.4 0.1 237); /* neutral and soft */
-    --border-muted: oklch(0.3 0.1 237);
+    /* Borders - medium blue tones */
+    --border: oklch(0.35 0.1 240); /* medium blue border */
+    --border-muted: oklch(0.28 0.08 242); /* darker blue border */
 
     /* Outlines */
-    --outline-color: white;
+    --outline-color: oklch(0.85 0.12 235); /* light blue outline */
 
     /* Highlights & UI elements */
-    --highlight: oklch(0.5 0.1 237); /* subtle interactive highlight */
+    --highlight: oklch(0.45 0.15 240); /* vibrant blue highlight */
 
-    /* Semantic colors (slightly more chroma for clarity) */
-    --primary: oklch(0.76 0.1 237); /* soft but visible blue-gray */
-    --secondary: oklch(0.76 0.1 57); /* warm muted tone for contrast */
-    --danger: oklch(0.7 0.1 30); /* readable red */
-    --warning: oklch(0.7 0.1 100); /* soft yellow-green */
-    --success: oklch(0.7 0.1 160); /* soft green */
-    --info: oklch(0.7 0.1 260); /* muted purple-blue */
+    /* Semantic colors - blue-based palette */
+    --primary: oklch(0.6 0.18 240); /* bright blue */
+    --secondary: oklch(0.55 0.15 210); /* cyan-blue */
+    --danger: oklch(0.6 0.2 25); /* red-orange (contrast) */
+    --warning: oklch(0.75 0.15 85); /* amber (contrast) */
+    --success: oklch(0.65 0.18 155); /* teal-green */
+    --info: oklch(0.65 0.2 265); /* purple-blue */
 
     --color-primary: var(--primary);
     --color-secondary: var(--secondary);
@@ -83,32 +84,33 @@
 }
 
 .light {
-    /* Backgrounds */
-    --bg-dark: oklch(0.92 0.05 237);
-    --bg: oklch(0.96 0.05 237);
-    --bg-light: oklch(1 0.05 237);
+    /* Light Mode - Sky to Light Blue Theme */
+    /* Backgrounds - lightest to medium blues */
+    --bg-dark: oklch(0.88 0.04 240); /* light blue-gray */
+    --bg: oklch(0.95 0.03 235); /* very light blue (almost white) */
+    --bg-light: oklch(0.98 0.02 230); /* barely tinted white-blue */
 
-    /* Text */
-    --text: oklch(0.15 0.1 237);
-    --text-muted: oklch(0.4 0.1 237);
+    /* Text - dark blues with good contrast */
+    --text: oklch(0.2 0.1 245); /* deep blue-black */
+    --text-muted: oklch(0.45 0.08 240); /* medium blue-gray */
 
-    /* Borders */
-    --border: oklch(0.6 0.1 237);
-    --border-muted: oklch(0.7 0.1 237);
+    /* Borders - soft blue tones */
+    --border: oklch(0.7 0.08 235); /* soft blue border */
+    --border-muted: oklch(0.8 0.05 238); /* lighter blue border */
 
     /* Outlines */
-    --outline-color: black;
+    --outline-color: oklch(0.3 0.15 245); /* dark blue outline */
 
     /* Highlights & UI elements */
-    --highlight: oklch(1 0.1 237);
+    --highlight: oklch(0.85 0.1 235); /* soft light blue highlight */
 
-    /* Semantic colors (slightly more chroma for clarity) */
-    --primary: oklch(0.4 0.1 237);
-    --secondary: oklch(0.4 0.1 57);
-    --danger: oklch(0.5 0.1 30);
-    --warning: oklch(0.5 0.1 100);
-    --success: oklch(0.5 0.1 160);
-    --info: oklch(0.5 0.1 260);
+    /* Semantic colors - light mode blue palette */
+    --primary: oklch(0.5 0.18 240); /* medium blue */
+    --secondary: oklch(0.55 0.15 210); /* cyan-blue */
+    --danger: oklch(0.55 0.2 25); /* red (contrast) */
+    --warning: oklch(0.65 0.15 75); /* orange-amber (contrast) */
+    --success: oklch(0.55 0.18 150);
+    --info: oklch(0.55 0.2 265);
 
     --color-primary: var(--primary);
     --color-secondary: var(--secondary);

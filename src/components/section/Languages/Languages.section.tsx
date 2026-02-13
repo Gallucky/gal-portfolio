@@ -106,7 +106,7 @@ const LanguagesSection = () => {
             languages: [
                 {
                     id: "html",
-                    name: "HTML - שפת סימון היפרטקסט",
+                    name: "HTML - שפת סימון היפר-טקסט",
                     description:
                         "שפה זו בנויה מתגים, אפשר לחשוב עליהם כמו על בלוקים, אלמנטים ו/או חלקים שאיתם משתמשים כדי ליצור מבנה של אתר אינטרנט.",
                     difficulty: 1,
@@ -200,8 +200,11 @@ const LanguagesSection = () => {
 
     return (
         <>
-            <Section>
-                <ul className="flex items-center justify-center gap-8 max-w-[90%] flex-wrap mt-20">
+            <Section className="flex flex-col h-[33dvh] mt-20! sm:-mt-5!">
+                <h2 className="text-xl text-secondary text-center text-outline font-bold font-Inter">
+                    {data.title}
+                </h2>
+                <ul className="flex items-center justify-center gap-8 max-w-[90%] flex-wrap mt-8">
                     {data.languages.map((language) => (
                         <ProgrammingLanguage
                             key={language.name}
