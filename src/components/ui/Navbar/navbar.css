@@ -1,0 +1,49 @@
+@layer components {
+    .underline-grow {
+        position: relative;
+        display: inline-block;
+    }
+
+    .underline-grow::after {
+        content: "";
+        position: absolute;
+        inset-inline-start: 0;
+        bottom: -2px;
+        width: 100%;
+        height: 2px;
+        background-color: currentColor;
+        transform: scaleX(0);
+        transform-origin: inline-start;
+        transition: transform 0.3s ease;
+    }
+
+    /* Hover — animated in */
+    .underline-grow:hover::after,
+    .underline-grow:focus-visible::after {
+        transform: scaleX(1);
+    }
+
+    /* Active — static, no transition */
+    .underline-grow.active::after {
+        transform: scaleX(1);
+        /* transition: none; */
+    }
+
+    /* Hover — animated in */
+    .underline-grow.active:hover::after,
+    .underline-grow.active:focus-visible::after {
+        animation: pulse-underline 0.5s ease-in-out;
+    }
+
+    @keyframes pulse-underline {
+        0% {
+            transform: scaleX(1);
+        }
+        50% {
+            transform: scaleX(0);
+        }
+        100% {
+            transform: scaleX(1);
+        }
+    }
+}

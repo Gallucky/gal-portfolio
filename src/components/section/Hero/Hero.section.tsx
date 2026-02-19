@@ -28,18 +28,16 @@ const HeroSection = () => {
     const data = lang[language];
 
     return (
-        <>
-            <Section className="flex-col mt-[10dvh]">
-                <div className="w-[90dvw] lg:w-1/2 text-center">
-                    <h1 className="text-3xl text-primary text-outline font-bold font-title">
-                        {data.title}
-                    </h1>
-                    <p className="text-lg text-color font-body whitespace-pre-line">
-                        {data.description}
-                    </p>
-                </div>
-            </Section>
-        </>
+        <Section className="flex-col mt-[10dvh] w-svw!">
+            <div className="w-full max-w-[100ch] mx-auto text-center px-4">
+                <h1 className="text-3xl text-primary text-outline font-bold font-title">
+                    {data.title}
+                </h1>
+                <p className="text-lg text-color font-body whitespace-pre-line">
+                    {data.description}
+                </p>
+            </div>
+        </Section>
     );
 };
 

@@ -35,7 +35,7 @@ const ProgrammingLanguage = (props: ProgrammingLanguageProps) => {
                 aria-expanded={shown}
                 aria-label={`View details for ${name}`}>
                 {/* Icon - with fixed aspect ratio */}
-                <div className="size-6 sm:size-8 md:size-10 lg:size-12 flex items-center justify-center">
+                <div className="min-w-11 min-h-11 size-6 sm:size-8 md:size-10 lg:size-12 flex items-center justify-center">
                     <ProgrammingLanguageIcon id={id} name={name} />
                 </div>
             </button>
@@ -49,9 +49,12 @@ const ProgrammingLanguage = (props: ProgrammingLanguageProps) => {
             )}
 
             {/* Content - positioned below the icon, centered */}
+            {/* Todo: Remove landscape: classes comment when figured out if it is needed or not */}
+            {/* landscape:max-sm:bottom-auto landscape:max-sm:top-1/2 landscape:max-sm:-translate-y-1/2 */}
             <div
                 className={`
                     fixed start-1/2 -translate-x-1/2 bottom-0 sm:bottom-[5%]
+                    
                     w-[90vw] max-w-md
                     bg-linear-to-br from-gray-900 to-gray-800
                     border border-gray-700

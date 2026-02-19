@@ -8,11 +8,13 @@ import ProjectsSection from "@components/section/Projects/Projects.section";
 const HomePage = () => {
     return (
         <>
-            <HeroSection />
-            <LanguagesSection />
-            <AboutSection />
-            <ProjectsSection />
-            <ContactSection />
+            <div className="w-[90%] sm:w-[75%] flex flex-col items-center justify-center justify-self-center">
+                <HeroSection />
+                <LanguagesSection />
+                <AboutSection />
+                <ProjectsSection />
+                <ContactSection />
+            </div>
         </>
     );
 };
