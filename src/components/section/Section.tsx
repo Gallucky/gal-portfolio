@@ -6,8 +6,7 @@ type SectionProps = {
 const Section = (props: SectionProps) => {
     const { className, children } = props;
     return (
-        <section
-            className={`w-dvw h-[25dvh] mt-[5dvh] flex justify-center items-center ${className}`}>
+        <section className={`w-full py-8 flex justify-center items-center ${className}`}>
             {children}
         </section>
     );

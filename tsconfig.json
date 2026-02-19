@@ -30,14 +30,17 @@
         "paths": {
             "@/*": ["./src/*"],
             "@app*": ["./src/app/*"],
-            "@styles*": ["./src/styles/*"],
+            "@assets*": ["./src/assets/*"],
             "@components*": ["./src/components/*"],
             "@data*": ["./src/data/*"],
+            "@errors*": ["./src/errors/*"],
             "@features*": ["./src/features/*"],
+            "@hooks*": ["./src/utils/hooks/*"],
             "@pages*": ["./src/pages/*"],
-            "@assets*": ["./src/assets/*"],
-            "@utils*": ["./src/utils/*"],
-            "@errors*": ["./src/errors/*"]
+            "@plugins*": ["./src/plugins/*"],
+            "@router*": ["./src/utils/router/*"],
+            "@styles*": ["./src/styles/*"],
+            "@utils*": ["./src/utils/*"]
         }
     },
     "include": ["./src"],

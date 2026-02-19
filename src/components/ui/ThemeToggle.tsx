@@ -14,6 +14,7 @@ const ThemeToggle = (props: ThemeToggleProps) => {
         <button
             type="button"
             onClick={() => setThemeValue((prev: string) => (prev === "light" ? "dark" : "light"))}
+            aria-label={themeValue === "dark" ? "Switch to light mode" : "Switch to dark mode"}
             className={`ease text-xl transition-all! duration-1000 ${className}`}>
             <MotionSwitch
                 value={themeValue}

@@ -9,17 +9,17 @@ const HeroSection = () => {
         en: {
             title: "Portfolio",
             description:
-                "Welcome to my portfolio website. Here, you can explore a variety of works and\n" +
-                "services I offer in web development and programming. The site showcases selected\n" +
-                "projects that demonstrate my skills, alongside professional content and updates\n" +
+                "Welcome to my portfolio website. Here, you can explore a variety of works and " +
+                "services I offer in web development and programming. The site showcases selected " +
+                "projects that demonstrate my skills, alongside professional content and updates " +
                 "on the technologies I specialize in.",
         },
         he: {
             title: "תיק עבודות",
             description:
-                "ברוכים הבאים לאתר הפורטפוליו שלי.\n" +
-                "כאן תוכלו להתרשם ממגוון העבודות והשירותים שאני מציע בתחום פיתוח אתרים ותכנות.\n" +
-                "האתר מציג פרויקטים נבחרים שממחישים את היכולות שלי,\n" +
+                "ברוכים הבאים לאתר הפורטפוליו שלי. " +
+                "כאן תוכלו להתרשם ממגוון העבודות והשירותים שאני מציע בתחום פיתוח אתרים ותכנות. " +
+                "האתר מציג פרויקטים נבחרים שממחישים את היכולות שלי, " +
                 "לצד תכנים מקצועיים ועדכונים על הטכנולוגיות בהן אני מתמחה.",
         },
     };
@@ -31,10 +31,12 @@ const HeroSection = () => {
         <>
             <Section className="flex-col mt-[10dvh]">
                 <div className="w-[90dvw] lg:w-1/2 text-center">
-                    <h1 className="text-3xl text-primary text-outline font-bold font-Inter">
+                    <h1 className="text-3xl text-primary text-outline font-bold font-title">
                         {data.title}
                     </h1>
-                    <p className="text-lg text-color font-inter">{data.description}</p>
+                    <p className="text-lg text-color font-body whitespace-pre-line">
+                        {data.description}
+                    </p>
                 </div>
             </Section>
         </>

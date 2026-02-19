@@ -34,13 +34,13 @@ type LanguageProviderProps = {
 export const LanguageProvider = (props: LanguageProviderProps) => {
     const { children, initial = "en" } = props;
     // Getting the language value from local storage.
-    let localStorageLanguage = localStorage.getItem("language");
+    let localStorageLanguage = localStorage.getItem("lang");
     localStorageLanguage =
         localStorageLanguage === "en" || localStorageLanguage === "he"
             ? localStorageLanguage
             : null;
     const [language, setLanguage] = useState<SupportedLanguages>(
-        (localStorageLanguage as SupportedLanguages) ?? initial
+        (localStorageLanguage as SupportedLanguages) ?? initial,
     );
 
     // Sync <html> class + persistence
@@ -48,6 +48,8 @@ export const LanguageProvider = (props: LanguageProviderProps) => {
         const root = document.documentElement;
         root.classList.remove("en", "he");
         root.classList.add(language);
+        root.lang = language;
+        root.dir = language === "he" ? "rtl" : "ltr";
         localStorage.setItem("lang", language);
     }, [language]);
 
