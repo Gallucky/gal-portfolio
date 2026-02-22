@@ -77,7 +77,7 @@ const Navbar = () => {
                     initial={{ x: isRTL ? "100%" : "-200%" }}
                     animate={{ x: isOpen ? (isRTL ? "0%" : "100%") : isRTL ? "100%" : "0%" }}
                     transition={{ duration: 0.3 }}
-                    className={`absolute top-0 ${isRTL ? "start-0" : "end-0"} w-1/2 h-screen bg-bg-dark`}>
+                    className={`md:hidden absolute top-0 ${isRTL ? "start-0" : "end-0"} w-1/2 h-screen bg-bg-dark`}>
                     <XIcon
                         onClick={() => setIsOpen(false)}
                         className={`absolute top-4 ${isRTL ? "end-2" : "end-2"} size-6 text-gray-400 hover:text-white transition-colors`}
