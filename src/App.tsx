@@ -11,7 +11,6 @@ const App = () => {
             </header>
             {/* main contains the class min-h-dvh so it will be at least the full height of the current viewport. */}
             <main className="bg-bg min-h-dvh">
-                <ThemeToggle />
                 <Outlet />
             </main>
             <Footer />

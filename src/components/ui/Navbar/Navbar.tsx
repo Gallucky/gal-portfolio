@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { XIcon } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
+import ThemeToggle from "../ThemeToggle";
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -32,8 +33,15 @@ const Navbar = () => {
             {/* Logo / Name */}
             <div className="w-[90%] sm:w-[75%] justify-self-center flex justify-between items-center py-4 sm:px-10">
                 <a href="/" className="text-lg font-bold text-primary">
-                    Gal
+                    <img
+                        src="/public/android-chrome-512x512.png"
+                        alt="Logo"
+                        className="size-8 object-center object-contain"
+                    />
                 </a>
+                <ul aria-label="Additional controls">
+                    <ThemeToggle />
+                </ul>
                 {/* Desktop nav links */}
                 <ul className="hidden md:flex gap-8" role="list">
                     {links.map((link) => {
@@ -56,7 +64,7 @@ const Navbar = () => {
                     })}
                 </ul>
 
-                {/* Mobile menu button */}
+                {/* Mobile toggle menu button */}
                 <button
                     onClick={() => toggleHamburgerMenu()}
                     className="md:hidden p-2 rounded focus:outline-none focus:ring-2 focus:ring-primary"
@@ -74,13 +82,13 @@ const Navbar = () => {
 
                 {/* Mobile nav links slider */}
                 <motion.div
-                    initial={{ x: isRTL ? "100%" : "-200%" }}
-                    animate={{ x: isOpen ? (isRTL ? "0%" : "100%") : isRTL ? "100%" : "0%" }}
-                    transition={{ duration: 0.3 }}
-                    className={`md:hidden absolute top-0 ${isRTL ? "start-0" : "end-0"} w-1/2 h-screen bg-bg-dark`}>
+                    initial={{ x: isRTL ? "100%" : "-100%" }}
+                    animate={{ x: isOpen ? "0%" : isRTL ? "100%" : "-100%" }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className={`md:hidden absolute top-0 ${isRTL ? "inset-s-0" : "inset-e-0"} w-1/2 h-screen bg-bg-dark`}>
                     <XIcon
-                        onClick={() => setIsOpen(false)}
-                        className={`absolute top-4 ${isRTL ? "end-2" : "end-2"} size-6 text-gray-400 hover:text-white transition-colors`}
+                        onClick={() => toggleHamburgerMenu()}
+                        className={`absolute top-4 ${isRTL ? "inset-s-2" : "inset-e-2"} size-6 text-gray-400 hover:text-white transition-colors`}
                         aria-label="Close menu"
                     />
 
@@ -97,11 +105,7 @@ const Navbar = () => {
                                             location.pathname === link.path ? "page" : undefined
                                         }
                                         className={`
-                                        ${
-                                            isActive
-                                                ? "text-primary font-bold active"
-                                                : "text-text-light"
-                                        }
+                                        ${isActive ? "text-primary font-bold active" : "text-color"}
                                         hover:text-primary underline-grow transition-colors text-lg`}>
                                         {link.name}
                                     </Link>
