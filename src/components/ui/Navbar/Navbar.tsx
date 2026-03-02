@@ -29,19 +29,23 @@ const Navbar = () => {
         <nav
             role="navigation"
             aria-label="Main navigation"
-            className="fixed top-0 z-50 bg-bg-dark border-b border-border w-full">
+            className="fixed top-0 z-50 bg-bg-dark border-b border-border w-full transition-all duration-300 ease-in-out">
             {/* Logo / Name */}
             <div className="w-[90%] sm:w-[75%] justify-self-center flex justify-between items-center py-4 sm:px-10">
-                <a href="/" className="text-lg font-bold text-primary">
-                    <img
-                        src="/public/android-chrome-512x512.png"
-                        alt="Logo"
-                        className="size-8 object-center object-contain"
-                    />
-                </a>
-                <ul aria-label="Additional controls">
-                    <ThemeToggle />
-                </ul>
+                <div className="flex items-center gap-10">
+                    <a href="/" className="text-lg font-bold text-primary">
+                        <img
+                            src="/public/android-chrome-512x512.png"
+                            alt="Logo"
+                            className="size-8 object-center object-contain"
+                        />
+                    </a>
+                    <ul
+                        aria-label="Additional controls"
+                        className="h-full flex items-center justify-center gap-4">
+                        <ThemeToggle className="hover:bg-color-muted/20 rounded-lg p-1 hover:cursor-pointer" />
+                    </ul>
+                </div>
                 {/* Desktop nav links */}
                 <ul className="hidden md:flex gap-8" role="list">
                     {links.map((link) => {
@@ -52,9 +56,7 @@ const Navbar = () => {
                                     to={link.path}
                                     aria-current={isActive ? "page" : undefined}
                                     className={`${
-                                        isActive
-                                            ? "text-primary font-bold active"
-                                            : "text-text-light"
+                                        isActive ? "text-primary font-bold active" : "text-color"
                                     }
                                 hover:text-primary underline-grow transition-colors`}>
                                     {link.name}
@@ -85,10 +87,10 @@ const Navbar = () => {
                     initial={{ x: isRTL ? "100%" : "-100%" }}
                     animate={{ x: isOpen ? "0%" : isRTL ? "100%" : "-100%" }}
                     transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className={`md:hidden absolute top-0 ${isRTL ? "inset-s-0" : "inset-e-0"} w-1/2 h-screen bg-bg-dark`}>
+                    className={`md:hidden absolute top-0 ${isRTL ? "end-0" : "start-0"} w-1/2 h-screen bg-bg-dark`}>
                     <XIcon
                         onClick={() => toggleHamburgerMenu()}
-                        className={`absolute top-4 ${isRTL ? "inset-s-2" : "inset-e-2"} size-6 text-gray-400 hover:text-white transition-colors`}
+                        className={`absolute top-4 ${isRTL ? "start-2" : "end-2"} size-6 text-gray-400 hover:text-white transition-colors`}
                         aria-label="Close menu"
                     />
 

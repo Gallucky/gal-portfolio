@@ -35,6 +35,19 @@ body,
     min-height: 100dvh;
 }
 
+* {
+    @apply font-body;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    @apply font-titles!;
+}
+
 :focus-visible {
     outline: 3px solid var(--primary);
     outline-offset: 2px;

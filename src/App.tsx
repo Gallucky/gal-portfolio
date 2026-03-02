@@ -10,7 +10,7 @@ const App = () => {
                 <Navbar />
             </header>
             {/* main contains the class min-h-dvh so it will be at least the full height of the current viewport. */}
-            <main className="bg-bg min-h-dvh">
+            <main className="bg-bg transition-all duration-300 ease-in-out min-h-dvh">
                 <Outlet />
             </main>
             <Footer />
