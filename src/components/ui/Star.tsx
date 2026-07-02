@@ -5,9 +5,18 @@ type StarProps = {
     className?: string;
 };
 
+/**
+ * Render a start component with different modes:
+ * full - shows a full star.
+ * half - shows half of a star (the left side is filled, the right side is empty).
+ * empty - shows an empty star (outline only).
+ *
+ * @returns The Star component.
+ */
 const Star = (props: StarProps) => {
     const { id, color, fillState, className } = props;
 
+    // Show a full star when the fill state is set to "full".
     if (fillState === "full") {
         return (
             <svg
@@ -22,6 +31,7 @@ const Star = (props: StarProps) => {
         );
     }
 
+    // Show a half-full star when the fill state is set to "half".
     if (fillState === "half") {
         return (
             <svg

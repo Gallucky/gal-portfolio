@@ -9,6 +9,14 @@ type StarRatingProps = {
     className?: string;
 };
 
+/**
+ * Uses the {@link Star} component to render a star rating based on the `value` prop.
+ * It supports full, half, and empty stars based on the value provided.
+ * It aligns/groups 5 stars together to show a rating out of 5.
+ *
+ * @see {@link Star} for more information on the individual star component.
+ * @returns The StarRating component.
+ */
 const StarRating = (props: StarRatingProps) => {
     const { value, max = 5, color, label, className } = props;
     const uid = useId();

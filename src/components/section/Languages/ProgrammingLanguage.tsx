@@ -10,6 +10,23 @@ export type ProgrammingLanguageProps = {
     experience: number;
 };
 
+/**
+ * Renders a programming language item with an icon and details.
+ * The component displays the programming language's icon, name, description, difficulty rating,
+ * and overall enjoyment rating based on the developer's options and experience.
+ *
+ * Uses the ProgrammingLanguageIcon component to render the programming language's icon.
+ * Grouped in the LanguagesSection component.
+ *
+ * Interaction model: the details popup opens on hover on desktop (mouse enter/leave) and on
+ * tap on mobile (click toggles it, since there's no hover) — both handlers are wired to the
+ * same `shown` state, so either input method works regardless of device.
+ *
+ * @see {@link ProgrammingLanguageIcon} for more information on the icon component.
+ * @see {@link LanguagesSection} for more information on the parent component.
+ * @param props the data to display passed to the component.
+ * @returns The ProgrammingLanguage component.
+ */
 const ProgrammingLanguage = (props: ProgrammingLanguageProps) => {
     const { id, name, description, difficulty, experience } = props;
     const [shown, setShown] = useState(false);
@@ -49,8 +66,10 @@ const ProgrammingLanguage = (props: ProgrammingLanguageProps) => {
             )}
 
             {/* Content - positioned below the icon, centered */}
-            {/* Todo: Remove landscape: classes comment when figured out if it is needed or not */}
-            {/* landscape:max-sm:bottom-auto landscape:max-sm:top-1/2 landscape:max-sm:-translate-y-1/2 */}
+            {/* FIXME: landscape-orientation positioning below is disabled pending a decision on
+                whether the popup needs different anchoring on landscape mobile. Re-enable or
+                remove after testing on a real device:
+                landscape:max-sm:bottom-auto landscape:max-sm:top-1/2 landscape:max-sm:-translate-y-1/2 */}
             <div
                 className={`
                     fixed start-1/2 -translate-x-1/2 bottom-0 sm:bottom-[5%]

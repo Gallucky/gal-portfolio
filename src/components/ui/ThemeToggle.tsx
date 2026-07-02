@@ -6,6 +6,16 @@ type ThemeToggleProps = {
     className?: string;
 };
 
+/**
+ * A standalone button like component for changing the theme of the application.
+ * It uses the `useTheme` hook to get the current theme value and a function to set the theme value.
+ *
+ * It uses the `MotionSwitch` component to animate the transition between the sun and moon icons.
+ * The button has an accessible label that changes based on the current theme value.
+ *
+ * @see {@link useTheme} and {@link MotionSwitch} for more information.
+ * @returns The `ThemeToggle` component.
+ */
 const ThemeToggle = (props: ThemeToggleProps) => {
     const { themeValue, setThemeValue } = useTheme();
     const { className } = props;
@@ -24,7 +34,10 @@ const ThemeToggle = (props: ThemeToggleProps) => {
                     exit: { opacity: 0, rotateY: 0 },
                     transition: { duration: 0.3 },
                 }}>
-                {/* If the next theme value is light, show the sun, else show the moon */}
+                {/* `val` is the CURRENT theme value passed in via `value={themeValue}` above.
+                    The icon shown is the destination, not the current state — it acts as the
+                    call to action: dark mode shows the sun (click to go light), light mode
+                    shows the moon (click to go dark). */}
                 {(val) => (val === "dark" ? <Sun color="yellow" /> : <Moon color="black" />)}
             </MotionSwitch>
         </button>

@@ -3,6 +3,16 @@ import Section from "../Section";
 import { languagesSectionLang as lang } from "@data/languages";
 import ProgrammingLanguage from "./ProgrammingLanguage";
 
+/**
+ * Renders a section of the developer's interactive experience of the
+ * provided programming languages and the rating of each language.
+ *
+ * Uses the {@link Section} component to render the section and
+ * the {@link ProgrammingLanguage} component to render each programming language.
+ *
+ * @see {@link Section} and {@link ProgrammingLanguage} for more information.
+ * @returns The LanguagesSection component.
+ */
 const LanguagesSection = () => {
     const { language } = useLanguage();
 

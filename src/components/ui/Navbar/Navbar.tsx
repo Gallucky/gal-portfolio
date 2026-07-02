@@ -5,15 +5,31 @@ import { useState, useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
 import ThemeToggle from "../ThemeToggle";
 
+/**
+ * This is the Navbar component that is used to navigate between pages in the application.
+ * It is a responsive component that adapts to different screen sizes and provides
+ * a hamburger menu for mobile devices. The Navbar also includes a theme toggle button.
+ * @returns The Navbar component.
+ */
 const Navbar = () => {
+    // The state which is required for the hamburger menu to open and close on mobile devices.
     const [isOpen, setIsOpen] = useState(false);
     const location = useLocation();
+
+    // `setLanguage` is destructured but never called here — the destructuring itself is what
+    // subscribes this component to language-context updates, so it re-renders when the
+    // language changes (same value-drives-render dependency ThemeToggle has on themeValue).
+    // FIXME: no language toggle UI exists yet (Build Plan v2, Phase 3). Once built, either wire
+    // setLanguage into it here, or drop the destructuring if another component ends up owning it.
     const { language, setLanguage } = useLanguage();
     const isRTL = language === "he";
 
     // Close drawer on route change
     useEffect(() => setIsOpen(false), [location.pathname]);
 
+    // FIXME: "/projects", "/about", "/contact" don't exist in router.tsx yet — clicking these
+    // currently hits the catch-all route to ErrorPage, which renders nothing (blank screen).
+    // See Build Plan v2, Phase 3 for the routing decision that resolves this.
     const links = [
         { name: "Home", path: "/" },
         { name: "Projects", path: "/projects" },
@@ -35,7 +51,7 @@ const Navbar = () => {
                 <div className="flex items-center gap-10">
                     <a href="/" className="text-lg font-bold text-primary">
                         <img
-                            src="/public/android-chrome-512x512.png"
+                            src="/android-chrome-512x512.png"
                             alt="Logo"
                             className="size-8 object-center object-contain"
                         />

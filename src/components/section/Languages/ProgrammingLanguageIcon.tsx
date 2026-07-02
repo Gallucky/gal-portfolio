@@ -17,6 +17,7 @@ type ProgrammingLanguageIconProps = {
     name: string;
 };
 
+// Fixed mapping of programming language IDs to their corresponding icon paths.
 const iconMap: Record<string, string> = {
     html: htmlIcon,
     css: cssIcon,
@@ -31,6 +32,13 @@ const iconMap: Record<string, string> = {
     assembly: asmIcon,
 };
 
+/**
+ * Parses the programming language ID and returns the corresponding icon.
+ * If the ID is not found in the iconMap, it returns an empty string.
+ *
+ * @param props - containing the programming language ID and name.
+ * @returns The icon for the programming language.
+ */
 const ProgrammingLanguageIcon = (props: ProgrammingLanguageIconProps) => {
     const { id, name } = props;
 

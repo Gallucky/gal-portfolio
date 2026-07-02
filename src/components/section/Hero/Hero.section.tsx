@@ -1,6 +1,19 @@
 import { useLanguage } from "@/app/providers/Language/useLanguage";
 import Section from "../Section";
 
+/**
+ * Renders the Hero section of the portfolio website, which includes a title and description.
+ * The content is displayed based on the current language selected by the user.
+ *
+ * The component uses the {@link useLanguage} hook to determine the
+ * current language and fetches the corresponding title and
+ * description from a predefined language object.
+ *
+ * Uses the {@link Section} component to render the section.
+ *
+ * @see {@link useLanguage} and {@link Section}  for more information.
+ * @returns The HeroSection component.
+ */
 const HeroSection = () => {
     const { language } = useLanguage();
 
