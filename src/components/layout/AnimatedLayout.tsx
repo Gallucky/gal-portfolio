@@ -7,6 +7,10 @@ const pageVariants = {
     exit: { opacity: 0, y: -15 },
 };
 
+/**
+ * A layout component that provides animated transitions between routes.
+ * @returns The AnimatedLayout component.
+ */
 const AnimatedLayout = () => {
     const location = useLocation();
 

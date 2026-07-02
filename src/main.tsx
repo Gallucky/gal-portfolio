@@ -5,10 +5,16 @@ import { RouterProvider } from "react-router-dom";
 import router from "./router/router.tsx";
 import AppProviders from "./app/providers/AppProviders.tsx";
 
+/**
+ * The main entry point of the application.
+ * In other words this is the starting point for the entire application.
+ * It renders the root div element.
+ * This is where the React application starts and the router is initialized.
+ */
 createRoot(document.getElementById("root")!).render(
     <StrictMode>
         <AppProviders>
             <RouterProvider router={router} />
         </AppProviders>
-    </StrictMode>
+    </StrictMode>,
 );
