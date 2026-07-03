@@ -4,6 +4,7 @@ import { XIcon } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
 import ThemeToggle from "../ThemeToggle";
+import { navbarLang } from "@lang/ui/Navbar/navbar";
 
 /**
  * This is the Navbar component that is used to navigate between pages in the application.
@@ -23,6 +24,7 @@ const Navbar = () => {
     // setLanguage into it here, or drop the destructuring if another component ends up owning it.
     const { language, setLanguage } = useLanguage();
     const isRTL = language === "he";
+    const text = navbarLang[language];
 
     // Close drawer on route change
     useEffect(() => setIsOpen(false), [location.pathname]);
@@ -31,10 +33,10 @@ const Navbar = () => {
     // currently hits the catch-all route to ErrorPage, which renders nothing (blank screen).
     // See Build Plan v2, Phase 3 for the routing decision that resolves this.
     const links = [
-        { name: "Home", path: "/" },
-        { name: "Projects", path: "/projects" },
-        { name: "About", path: "/about" },
-        { name: "Contact", path: "/contact" },
+        { name: text.links.home, path: "/" },
+        { name: text.links.projects, path: "/projects" },
+        { name: text.links.about, path: "/about" },
+        { name: text.links.contact, path: "/contact" },
     ];
 
     const toggleHamburgerMenu = () => {
@@ -86,7 +88,7 @@ const Navbar = () => {
                 <button
                     onClick={() => toggleHamburgerMenu()}
                     className="md:hidden p-2 rounded focus:outline-none focus:ring-2 focus:ring-primary"
-                    aria-label="Toggle menu"
+                    aria-label={text.toggleMenu}
                     aria-expanded={isOpen}>
                     <svg className="size-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path
@@ -107,7 +109,7 @@ const Navbar = () => {
                     <XIcon
                         onClick={() => toggleHamburgerMenu()}
                         className={`absolute top-4 ${isRTL ? "start-2" : "end-2"} size-6 text-gray-400 hover:text-white transition-colors`}
-                        aria-label="Close menu"
+                        aria-label={text.closeMenu}
                     />
 
                     <ul

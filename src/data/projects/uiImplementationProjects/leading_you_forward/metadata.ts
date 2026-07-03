@@ -1,9 +1,8 @@
-import type { UIImplementationProject } from "../uiImplementationProjects";
+import type { UIImplementationProjectMetadata } from "../uiImplementationProjects";
 
-const leadingYouForward: UIImplementationProject = {
+const leadingYouForward: UIImplementationProjectMetadata = {
     slug: "leading-you-forward",
     stack: ["HTML", "CSS"],
-    featured: false,
     content: {
         en: {
             title: "Leading You Forward",

@@ -1,8 +1,7 @@
-import type { MarkupProject } from "../markupProjects";
+import type { MarkupProjectMetadata } from "../markupProjects";
 
-const websiteBuilder: MarkupProject = {
+const websiteBuilder: MarkupProjectMetadata = {
     slug: "website-builder",
-    featured: false,
     stack: ["HTML", "CSS", "JavaScript"],
     content: {
         en: {

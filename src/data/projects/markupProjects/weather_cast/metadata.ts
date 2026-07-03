@@ -1,8 +1,7 @@
-import type { MarkupProject } from "../markupProjects";
+import type { MarkupProjectMetadata } from "../markupProjects";
 
-const weatherCast: MarkupProject = {
+const weatherCast: MarkupProjectMetadata = {
     slug: "weather-cast",
-    featured: false,
     stack: ["HTML", "CSS", "JavaScript", "REST API"],
     content: {
         en: {

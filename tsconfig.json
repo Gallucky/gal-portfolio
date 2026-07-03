@@ -36,6 +36,7 @@
             "@errors*": ["./src/errors/*"],
             "@features*": ["./src/features/*"],
             "@hooks*": ["./src/utils/hooks/*"],
+            "@lang*": ["./src/lang/*"],
             "@pages*": ["./src/pages/*"],
             "@plugins*": ["./src/plugins/*"],
             "@router*": ["./src/utils/router/*"],

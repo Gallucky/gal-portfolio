@@ -1,9 +1,8 @@
-import type { UIImplementationProject } from "../uiImplementationProjects";
+import type { UIImplementationProjectMetadata } from "../uiImplementationProjects";
 
-const discoverTheWorld: UIImplementationProject = {
+const discoverTheWorld: UIImplementationProjectMetadata = {
     slug: "discover-the-world",
     stack: ["HTML", "CSS"],
-    featured: false,
     content: {
         en: {
             title: "Discover the World",

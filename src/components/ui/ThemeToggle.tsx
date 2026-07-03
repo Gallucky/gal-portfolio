@@ -1,6 +1,8 @@
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "@app/providers/Theme/useTheme";
+import { useLanguage } from "@app/providers/Language/useLanguage";
 import MotionSwitch from "@components/utils/MotionSwitch";
+import { themeToggleLang } from "@lang/ui/themeToggle";
 
 type ThemeToggleProps = {
     className?: string;
@@ -18,13 +20,15 @@ type ThemeToggleProps = {
  */
 const ThemeToggle = (props: ThemeToggleProps) => {
     const { themeValue, setThemeValue } = useTheme();
+    const { language } = useLanguage();
     const { className } = props;
+    const text = themeToggleLang[language];
 
     return (
         <button
             type="button"
             onClick={() => setThemeValue((prev: string) => (prev === "light" ? "dark" : "light"))}
-            aria-label={themeValue === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+            aria-label={themeValue === "dark" ? text.switchToLight : text.switchToDark}
             className={`ease text-xl transition-all! duration-300 ${className}`}>
             <MotionSwitch
                 value={themeValue}

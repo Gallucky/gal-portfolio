@@ -1,9 +1,8 @@
-import type { UIImplementationProject } from "../uiImplementationProjects";
+import type { UIImplementationProjectMetadata } from "../uiImplementationProjects";
 
-const hereAndNow: UIImplementationProject = {
+const hereAndNow: UIImplementationProjectMetadata = {
     slug: "here-and-now",
     stack: ["HTML", "CSS"],
-    featured: false,
     content: {
         en: {
             title: "Here & Now",

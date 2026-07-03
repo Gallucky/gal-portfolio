@@ -1,8 +1,7 @@
-import type { MarkupProject } from "../markupProjects";
+import type { MarkupProjectMetadata } from "../markupProjects";
 
-const usersManagement: MarkupProject = {
+const usersManagement: MarkupProjectMetadata = {
     slug: "users-management",
-    featured: false,
     stack: ["HTML", "CSS", "JavaScript"],
     content: {
         en: {

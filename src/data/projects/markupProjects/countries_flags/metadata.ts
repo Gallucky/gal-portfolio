@@ -1,8 +1,7 @@
-import type { MarkupProject } from "../markupProjects";
+import type { MarkupProjectMetadata } from "../markupProjects";
 
-const countriesFlags: MarkupProject = {
+const countriesFlags: MarkupProjectMetadata = {
     slug: "countries-flags",
-    featured: false,
     stack: ["HTML", "CSS", "JavaScript", "Bootstrap", "REST API"],
     content: {
         en: {

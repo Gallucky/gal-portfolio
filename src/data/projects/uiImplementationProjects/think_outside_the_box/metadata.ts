@@ -1,9 +1,8 @@
-import type { UIImplementationProject } from "../uiImplementationProjects";
+import type { UIImplementationProjectMetadata } from "../uiImplementationProjects";
 
-const thinkOutsideTheBox: UIImplementationProject = {
+const thinkOutsideTheBox: UIImplementationProjectMetadata = {
     slug: "think-outside-the-box",
     stack: ["HTML", "CSS", "SASS"],
-    featured: false,
     content: {
         en: {
             title: "Think Outside the Box",

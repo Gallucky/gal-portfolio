@@ -1,6 +1,13 @@
-import type { Lang } from "@/types/Languages";
+import type { LanguageData, Translations } from "@/types/Languages";
 
-export const languagesSectionLang: Lang = {
+/**
+ * Defines the content of the "Programming Languages" section, including the
+ * title and a list of programming languages with the developer's difficulty and experience ratings.
+ * The content is provided in multiple languages (English and Hebrew).
+ *
+ * @see {@link useLanguage} for more information on translations in the applications.
+ */
+export const languagesSectionLang: Translations<LanguageData> = {
     en: {
         title: "Programming Languages: Difficulty & Experience",
         languages: [

@@ -1,9 +1,8 @@
-import type { UIImplementationProject } from "../uiImplementationProjects";
+import type { UIImplementationProjectMetadata } from "../uiImplementationProjects";
 
-const freeAdvisement: UIImplementationProject = {
+const freeAdvisement: UIImplementationProjectMetadata = {
     slug: "free-advisement",
     stack: ["HTML", "CSS", "SASS"],
-    featured: false,
     content: {
         en: {
             title: "Free Advisement",

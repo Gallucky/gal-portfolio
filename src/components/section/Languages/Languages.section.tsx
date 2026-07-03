@@ -1,6 +1,6 @@
 import { useLanguage } from "@app/providers/Language/useLanguage";
 import Section from "../Section";
-import { languagesSectionLang as lang } from "@data/languages";
+import { languagesSectionLang as lang } from "@lang/section/Languages/languages";
 import ProgrammingLanguage from "./ProgrammingLanguage";
 
 /**

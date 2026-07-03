@@ -1,8 +1,7 @@
-import type { MarkupProject } from "../markupProjects";
+import type { MarkupProjectMetadata } from "../markupProjects";
 
-const ticTacToe: MarkupProject = {
+const ticTacToe: MarkupProjectMetadata = {
     slug: "tic-tac-toe",
-    featured: false,
     stack: ["HTML", "CSS", "JavaScript"],
     content: {
         en: {

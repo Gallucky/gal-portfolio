@@ -1,8 +1,7 @@
-import type { MarkupProject } from "../markupProjects";
+import type { MarkupProjectMetadata } from "../markupProjects";
 
-const orensMathGame: MarkupProject = {
+const orensMathGame: MarkupProjectMetadata = {
     slug: "orens-math-game",
-    featured: false,
     stack: ["HTML", "CSS", "JavaScript"],
     content: {
         en: {

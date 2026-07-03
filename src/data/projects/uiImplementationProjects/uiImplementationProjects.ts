@@ -10,6 +10,7 @@ import freeAdvisement from "./free_advisement/metadata";
 
 export type UIImplementationProject = Omit<Project, "featured"> & {
     featured: false; // All UI implementations are not featured
+    type: "uiImplementation"; // All UI implementations are of type "uiImplementation"
     content: {
         [key in SupportedLanguages]: Omit<ProjectContent, "lessons"> & {
             lessons: string[]; // UI implementations do not have lessons learned
@@ -17,7 +18,14 @@ export type UIImplementationProject = Omit<Project, "featured"> & {
     };
 };
 
-const uiImplementationProjects: UIImplementationProject[] = [
+/**
+ * The shape individual UI implementation project metadata files should conform to.
+ * Omits `type` and `featured` since those are constant for every UI implementation project -
+ * they're attached automatically below instead of being repeated in each metadata file.
+ */
+export type UIImplementationProjectMetadata = Omit<UIImplementationProject, "type" | "featured">;
+
+const rawUiImplementationProjects: UIImplementationProjectMetadata[] = [
     // Import individual project metadata objects here
     leadingYouForward,
     hereAndNow,
@@ -27,5 +35,12 @@ const uiImplementationProjects: UIImplementationProject[] = [
     thinkOutsideTheBox,
     freeAdvisement,
 ];
+
+/** An array of UI implementation projects as project-metadata objects that are in the website. */
+const uiImplementationProjects: UIImplementationProject[] = rawUiImplementationProjects.map((project) => ({
+    ...project,
+    type: "uiImplementation",
+    featured: false,
+}));
 
 export default uiImplementationProjects;
