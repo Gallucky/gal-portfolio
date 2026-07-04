@@ -1,4 +1,39 @@
-import type { LanguageData, Translations } from "@/types/Languages";
+import type { Translations } from "@/types/Languages";
+
+/**
+ * The developer's rating of a programming language in terms of difficulty and experience.
+ * Difficulty and experience are rated on a scale from 0 to 5, with increments of 0.5.
+ */
+export type ProgrammingLanguageRating = 0 | 0.5 | 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 4.5 | 5;
+
+/**
+ * Defines the structure of a programming language entry,
+ * including its ID, name, description, difficulty rating,
+ * and experience rating.
+ *
+ * @see {@link ProgrammingLanguageRating} for the rating scale used for difficulty and experience.
+ */
+export type ProgrammingLanguage = {
+    id: string;
+    name: string;
+    description: string;
+    difficulty: ProgrammingLanguageRating;
+    experience: ProgrammingLanguageRating;
+};
+
+/**
+ * Defines the structure of the content for the "Programming Languages" section,
+ * including the title and a list of programming languages with their respective ratings.
+ *
+ * Each area of the content is translated into multiple languages
+ * (e.g., English and Hebrew) using the {@link Translations} type.
+ *
+ * @see {@link ProgrammingLanguage} for the structure of each programming language entry.
+ */
+export type ProgrammingLanguageData = {
+    title: string;
+    programmingLanguages: ProgrammingLanguage[];
+};
 
 /**
  * Defines the content of the "Programming Languages" section, including the
@@ -7,10 +42,10 @@ import type { LanguageData, Translations } from "@/types/Languages";
  *
  * @see {@link useLanguage} for more information on translations in the applications.
  */
-export const languagesSectionLang: Translations<LanguageData> = {
+export const languagesSectionLang: Translations<ProgrammingLanguageData> = {
     en: {
         title: "Programming Languages: Difficulty & Experience",
-        languages: [
+        programmingLanguages: [
             {
                 id: "html",
                 name: "HTML - Hypertext Markup Language",
@@ -102,7 +137,7 @@ export const languagesSectionLang: Translations<LanguageData> = {
     },
     he: {
         title: "שפות תכנות עם דירוג קושי וניסיון אישי",
-        languages: [
+        programmingLanguages: [
             {
                 id: "html",
                 name: "HTML - שפת סימון היפר-טקסט",

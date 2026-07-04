@@ -1,20 +1,8 @@
-export type LanguageRating = 0 | 0.5 | 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 4.5 | 5;
-
-export type Language = {
-    id: string;
-    name: string;
-    description: string;
-    difficulty: LanguageRating;
-    experience: LanguageRating;
-};
-
-export type LanguageData = {
-    title: string;
-    languages: Language[];
-};
-
 /**
- * Supported languages.
+ * The supported languages.
+ * Those languages should be used for all static/singleton
+ * UI text (nav labels, section copy, aria-labels, etc.)
+ * and for all translations of the content in the project.
  */
 export type SupportedLanguages = "en" | "he";
 

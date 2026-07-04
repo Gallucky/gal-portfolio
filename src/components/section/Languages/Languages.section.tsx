@@ -25,7 +25,7 @@ const LanguagesSection = () => {
                     {data.title}
                 </h2>
                 <ul className="flex items-center justify-center gap-8 max-w-[90%] flex-wrap mt-8">
-                    {data.languages.map((language) => (
+                    {data.programmingLanguages.map((language) => (
                         <ProgrammingLanguage
                             key={language.name}
                             id={language.id}
