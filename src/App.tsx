@@ -1,7 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Footer from "./components/ui/Footer/Footer";
 import Navbar from "./components/ui/Navbar/Navbar";
-import ThemeToggle from "./components/ui/ThemeToggle"; // FIXME: unused — ThemeToggle already renders inside Navbar; remove this import.
 
 /**
  * This is the first route, the root route of the application.

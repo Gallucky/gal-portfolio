@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { XIcon } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
+import Logo from "../Logo";
 import ThemeToggle from "../ThemeToggle";
 import { navbarLang } from "@lang/ui/Navbar/navbar";
 
@@ -51,12 +52,14 @@ const Navbar = () => {
             {/* Logo / Name */}
             <div className="w-[90%] sm:w-[75%] justify-self-center flex justify-between items-center py-4 sm:px-10">
                 <div className="flex items-center gap-10">
-                    <a href="/" className="text-lg font-bold text-primary">
-                        <img
-                            src="/android-chrome-512x512.png"
-                            alt="Logo"
-                            className="size-8 object-center object-contain"
-                        />
+                    <a href="/" className="flex items-center gap-3">
+                        <Logo />
+                        <span className="flex flex-col leading-none">
+                            <span className="text-[10px] font-bold tracking-[0.2em] text-color-muted">
+                                GBA
+                            </span>
+                            <span className="text-lg font-bold text-color">Gal Ben-Abu</span>
+                        </span>
                     </a>
                     <ul
                         aria-label="Additional controls"

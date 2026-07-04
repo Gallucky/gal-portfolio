@@ -1,4 +1,3 @@
-import ThemeToggle from "@/components/ui/ThemeToggle"; // FIXME: unused — ThemeToggle already renders inside Navbar; remove this import.
 import AboutSection from "@components/section/About/About.section";
 import ContactSection from "@components/section/Contact/Contact.section";
 import HeroSection from "@components/section/Hero/Hero.section";

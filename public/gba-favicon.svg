@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" fill="none">
+  <defs>
+    <linearGradient id="gbaFavGrad" x1="0.1" y1="0.02" x2="0.92" y2="0.98">
+      <stop offset="0" stop-color="#2E74E0"></stop>
+      <stop offset="0.55" stop-color="#1FB6E6"></stop>
+      <stop offset="1" stop-color="#22E0F0"></stop>
+    </linearGradient>
+  </defs>
+  <polygon points="64,11 117,64 64,117 11,64" fill="none" stroke="url(#gbaFavGrad)" stroke-width="9" stroke-linejoin="round"></polygon>
+  <polygon points="64,42 86,64 64,86 42,64" fill="url(#gbaFavGrad)"></polygon>
+</svg>

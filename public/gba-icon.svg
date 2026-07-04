@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 128 128" width="128" height="128" fill="none">
+  <defs>
+    <linearGradient id="gbaGrad" x1="0.1" y1="0.02" x2="0.92" y2="0.98">
+      <stop offset="0" stop-color="#2E74E0"></stop>
+      <stop offset="0.55" stop-color="#1FB6E6"></stop>
+      <stop offset="1" stop-color="#22E0F0"></stop>
+    </linearGradient>
+    <g id="blade" fill="url(#gbaGrad)">
+      <rect x="46" y="20.5" width="35" height="3.6" rx="1.8"></rect>
+      <rect x="51.5" y="28.5" width="26" height="3.6" rx="1.8"></rect>
+      <rect x="57" y="36.5" width="16" height="3.6" rx="1.8"></rect>
+    </g>
+  </defs>
+  <polygon points="64,16 112,64 64,112 16,64" fill="none" stroke="url(#gbaGrad)" stroke-width="2" opacity="0.45" stroke-linejoin="round"></polygon>
+  <polygon points="64,8 120,64 64,120 8,64" fill="none" stroke="url(#gbaGrad)" stroke-width="5.6" stroke-linejoin="round"></polygon>
+  <use xlink:href="#blade" href="#blade" transform="rotate(45 64 64)"></use>
+  <use xlink:href="#blade" href="#blade" transform="rotate(135 64 64)"></use>
+  <use xlink:href="#blade" href="#blade" transform="rotate(225 64 64)"></use>
+  <use xlink:href="#blade" href="#blade" transform="rotate(315 64 64)"></use>
+  <polygon points="64,50 78,64 64,78 50,64" fill="url(#gbaGrad)"></polygon>
+</svg>
