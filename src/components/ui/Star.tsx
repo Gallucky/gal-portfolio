@@ -16,13 +16,20 @@ type StarProps = {
 const Star = (props: StarProps) => {
     const { id, color, fillState, className } = props;
 
+    // The warning/gold rating gets an outline tinted to match its own fill color, since a
+    // neutral gray line looked out of place against gold. The info/blue rating keeps the
+    // neutral, theme-adaptive outline as before — a dim line on light backgrounds and a
+    // dim-but-visible line on dark ones.
+    const isWarm = color.includes("warning");
+    const outlineFillClass = isWarm ? "text-warning/30" : "text-color-muted/40";
+    const outlineStrokeClass = isWarm ? "stroke-warning/60" : "stroke-color-muted/50";
+
     // Show a full star when the fill state is set to "full".
     if (fillState === "full") {
         return (
             <svg
-                className={`absolute inset-0 w-full h-full ${color}`}
+                className={`absolute inset-0 w-full h-full ${color} ${outlineStrokeClass}`}
                 fill="currentColor"
-                stroke="currentColor"
                 strokeWidth="2.5"
                 strokeLinejoin="round"
                 viewBox="0 0 24 24">
@@ -35,9 +42,8 @@ const Star = (props: StarProps) => {
     if (fillState === "half") {
         return (
             <svg
-                className={`absolute inset-0 w-full h-full ${color}`}
+                className={`absolute inset-0 w-full h-full ${color} ${outlineStrokeClass}`}
                 fill="currentColor"
-                stroke="currentColor"
                 strokeWidth="2.5"
                 strokeLinejoin="round"
                 viewBox="0 0 24 24">
@@ -55,10 +61,10 @@ const Star = (props: StarProps) => {
         );
     }
 
-    // Empty star (outline only)
+    // Empty star (outline only).
     return (
         <svg
-            className={`absolute inset-0 w-full h-full ${color}/25`}
+            className={`absolute inset-0 w-full h-full ${outlineFillClass}`}
             fill="currentColor"
             stroke="currentColor"
             strokeWidth="2.5"

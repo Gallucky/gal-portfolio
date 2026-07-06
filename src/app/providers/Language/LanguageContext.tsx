@@ -8,7 +8,7 @@ type LanguageContextType = {
     /**
      * @field The current language value.
      */
-    language: SupportedLanguages;
+    programmingLanguage: SupportedLanguages;
 
     /**
      * Setter function for updating the language.

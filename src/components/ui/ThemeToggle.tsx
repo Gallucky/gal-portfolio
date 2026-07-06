@@ -20,7 +20,7 @@ type ThemeToggleProps = {
  */
 const ThemeToggle = (props: ThemeToggleProps) => {
     const { themeValue, setThemeValue } = useTheme();
-    const { language } = useLanguage();
+    const { programmingLanguage: language } = useLanguage();
     const { className } = props;
     const text = themeToggleLang[language];
 

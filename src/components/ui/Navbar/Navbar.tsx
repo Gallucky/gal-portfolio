@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
 import Logo from "../Logo";
 import ThemeToggle from "../ThemeToggle";
+import LanguageToggle from "../LanguageToggle/LanguageToggle";
 import { navbarLang } from "@lang/ui/Navbar/navbar";
 
 /**
@@ -18,12 +19,7 @@ const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const location = useLocation();
 
-    // `setLanguage` is destructured but never called here — the destructuring itself is what
-    // subscribes this component to language-context updates, so it re-renders when the
-    // language changes (same value-drives-render dependency ThemeToggle has on themeValue).
-    // FIXME: no language toggle UI exists yet (Build Plan v2, Phase 3). Once built, either wire
-    // setLanguage into it here, or drop the destructuring if another component ends up owning it.
-    const { language, setLanguage } = useLanguage();
+    const { programmingLanguage: language } = useLanguage();
     const isRTL = language === "he";
     const text = navbarLang[language];
 
@@ -54,10 +50,7 @@ const Navbar = () => {
                 <div className="flex items-center gap-10">
                     <a href="/" className="flex items-center gap-3">
                         <Logo />
-                        <span className="flex flex-col leading-none">
-                            <span className="text-[10px] font-bold tracking-[0.2em] text-color-muted">
-                                GBA
-                            </span>
+                        <span className="transition-all hover:duration-300 hover:ease-in-out hover:scale-95">
                             <span className="text-lg font-bold text-color">Gal Ben-Abu</span>
                         </span>
                     </a>
@@ -65,6 +58,7 @@ const Navbar = () => {
                         aria-label="Additional controls"
                         className="h-full flex items-center justify-center gap-4">
                         <ThemeToggle className="hover:bg-color-muted/20 rounded-lg p-1 hover:cursor-pointer" />
+                        <LanguageToggle className="hover:bg-color-muted/20 rounded-lg p-1 hover:cursor-pointer" />
                     </ul>
                 </div>
                 {/* Desktop nav links */}

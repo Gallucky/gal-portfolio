@@ -16,18 +16,21 @@ import { heroSectionLang } from "@lang/section/Hero/hero";
  * @returns The HeroSection component.
  */
 const HeroSection = () => {
-    const { language } = useLanguage();
+    const { programmingLanguage: language } = useLanguage();
 
     // The current language data.
     const data = heroSectionLang[language];
 
     return (
         <Section className="flex-col mt-[10dvh] w-svw!">
-            <div className="w-full max-w-[100ch] mx-auto text-center px-4">
-                <h1 className="text-3xl text-primary text-outline font-bold font-title">
+            <div className="w-full max-w-[100ch] mx-auto text-center px-4 mt-12">
+                <h2 className="text-xs text-color-muted font-bold font-assistant mb-5 tracking-widest">
+                    {data.subtitle.toUpperCase()}
+                </h2>
+                <h1 className="text-3xl text-primary font-bold text-outline font-fredoka tracking-tight mb-4">
                     {data.title}
                 </h1>
-                <p className="text-lg text-color font-body whitespace-pre-line">
+                <p className="text-base text-color tracking-wide font-body whitespace-pre-line">
                     {data.description}
                 </p>
             </div>

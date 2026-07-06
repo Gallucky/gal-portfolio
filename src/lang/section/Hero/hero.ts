@@ -5,6 +5,7 @@ import type { Translations } from "@/types/Languages";
  */
 export type HeroContent = {
     title: string;
+    subtitle: string;
     description: string;
 };
 
@@ -15,19 +16,19 @@ export type HeroContent = {
  */
 export const heroSectionLang: Translations<HeroContent> = {
     en: {
-        title: "Portfolio",
+        title: "Gal Ben Abu",
+        subtitle: "Full-Stack Web Developer",
         description:
-            "Welcome to my portfolio website. Here, you can explore a variety of works and " +
-            "services I offer in web development and programming. The site showcases selected " +
-            "projects that demonstrate my skills, alongside professional content and updates " +
-            "on the technologies I specialize in.",
+            "Welcome to my portfolio.\n" +
+            "Explore selected projects showcasing my skills in " +
+            "web development,\nalongside updates on the technologies I specialize in.",
     },
     he: {
-        title: "תיק עבודות",
+        title: "גל בן אבו",
+        subtitle: "מפתח אתרים (Full-Stack)",
         description:
-            "ברוכים הבאים לאתר הפורטפוליו שלי. " +
-            "כאן תוכלו להתרשם ממגוון העבודות והשירותים שאני מציע בתחום פיתוח אתרים ותכנות. " +
-            "האתר מציג פרויקטים נבחרים שממחישים את היכולות שלי, " +
-            "לצד תכנים מקצועיים ועדכונים על הטכנולוגיות בהן אני מתמחה.",
+            "ברוכים הבאים לתיק העבודות שלי.\n" +
+            "גלו פרויקטים נבחרים המציגים את הכישורים שלי בפיתוח " +
+            "אתרים,\nלצד עדכונים על הטכנולוגיות בהן אני מתמחה.",
     },
 };

@@ -32,6 +32,7 @@ export type ProgrammingLanguage = {
  */
 export type ProgrammingLanguageData = {
     title: string;
+    description: string;
     programmingLanguages: ProgrammingLanguage[];
 };
 
@@ -44,7 +45,9 @@ export type ProgrammingLanguageData = {
  */
 export const languagesSectionLang: Translations<ProgrammingLanguageData> = {
     en: {
-        title: "Programming Languages: Difficulty & Experience",
+        title: "Programming Languages with Difficulty & Experience Ratings",
+        description:
+            "A list of programming languages with their respective difficulty and experience ratings by the developer.",
         programmingLanguages: [
             {
                 id: "html",
@@ -136,7 +139,8 @@ export const languagesSectionLang: Translations<ProgrammingLanguageData> = {
         ],
     },
     he: {
-        title: "שפות תכנות עם דירוג קושי וניסיון אישי",
+        title: "שפות תכנות\nעם דירוג קושי וניסיון אישי",
+        description: "רשימת שפות תכנות עם דירוגי קושי וניסיון אישי של המפתח.",
         programmingLanguages: [
             {
                 id: "html",
