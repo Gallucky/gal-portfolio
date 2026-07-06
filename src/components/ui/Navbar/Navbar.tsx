@@ -84,7 +84,7 @@ const Navbar = () => {
                 {/* Mobile toggle menu button */}
                 <button
                     onClick={() => toggleHamburgerMenu()}
-                    className="md:hidden p-2 rounded focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="md:hidden p-2 rounded text-color focus:outline-none focus:ring-2 focus:ring-primary"
                     aria-label={text.toggleMenu}
                     aria-expanded={isOpen}>
                     <svg className="size-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -97,15 +97,26 @@ const Navbar = () => {
                     </svg>
                 </button>
 
-                {/* Mobile nav links slider */}
+                {/* Mobile nav links slider.
+                    Anchored at the logical inline-end (`end-0`) — physically the right edge in
+                    LTR and the left edge in RTL — which is also where this button lands, since
+                    it's the last flex item and flex "row" mirrors its main axis with `dir`. Using
+                    the logical class (rather than branching between `start-0`/`end-0` on
+                    `isRTL`) means the drawer and its trigger always line up in both languages.
+                    `x` is a raw transform percentage, though, and transforms don't mirror with
+                    `dir` the way logical layout properties do, so the hidden offset still needs
+                    an explicit sign per direction: pushed further right (+100%) to clear the
+                    right-anchored LTR drawer, further left (-100%) to clear the left-anchored
+                    RTL one. Getting this sign backwards is what previously made the Hebrew drawer
+                    animate across the visible screen instead of in from off-screen. */}
                 <motion.div
-                    initial={{ x: isRTL ? "100%" : "-100%" }}
-                    animate={{ x: isOpen ? "0%" : isRTL ? "100%" : "-100%" }}
+                    initial={{ x: isRTL ? "-100%" : "100%" }}
+                    animate={{ x: isOpen ? "0%" : isRTL ? "-100%" : "100%" }}
                     transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className={`md:hidden absolute top-0 ${isRTL ? "end-0" : "start-0"} w-1/2 h-screen bg-bg-dark`}>
+                    className="md:hidden absolute top-0 end-0 w-1/2 h-screen bg-bg-dark">
                     <XIcon
                         onClick={() => toggleHamburgerMenu()}
-                        className={`absolute top-4 ${isRTL ? "start-2" : "end-2"} size-6 text-gray-400 hover:text-white transition-colors`}
+                        className="absolute top-4 start-2 size-6 text-color-muted hover:text-color transition-colors"
                         aria-label={text.closeMenu}
                     />
 

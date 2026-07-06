@@ -150,11 +150,15 @@ const ProgrammingLanguage = (props: ProgrammingLanguageProps) => {
                 whether the popup needs different anchoring on landscape mobile. Re-enable or
                 remove after testing on a real device:
                 landscape:max-sm:bottom-auto landscape:max-sm:top-1/2 landscape:max-sm:-translate-y-1/2 */}
+            {/* NOTE: `left-1/2` here is deliberately physical, not the logical `start-1/2`.
+                Centering should stay the same regardless of language: `start-1/2` flips to
+                `right: 50%` in RTL, which combined with the (always-physical) `-translate-x-1/2`
+                pushed the whole popup off-center in Hebrew instead of centering it. */}
             <div
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
                 className={`
-                    fixed start-1/2 -translate-x-1/2 bottom-0 sm:bottom-[5%]
+                    fixed left-1/2 -translate-x-1/2 bottom-0 sm:bottom-[5%]
 
                     w-[90vw] max-w-md
                     bg-linear-to-br from-bg-dark to-bg
