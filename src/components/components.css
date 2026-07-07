@@ -1,4 +1,5 @@
 @import "./ui/Navbar/navbar.css";
+@import "./section/CTA/CTA.section.css";
 
 @layer utilities {
 }

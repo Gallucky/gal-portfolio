@@ -1,0 +1,80 @@
+/* Mirrors MoveRight (and anything else wrapped in `arrow-rtl-mirror`) for RTL: `--arrow-flip`
+   is 1 in LTR, -1 in RTL (`root.dir` is set by LanguageProvider).
+
+   This intentionally does NOT share a transform/origin with `arrow-ping` below — a mirror
+   has to pivot around its own center to avoid shifting position (reflecting about an edge
+   moves the whole box out of its bounding area: `scale: -1 1` with `transform-origin: left
+   center` throws the icon out of bounds instead of flipping it in place), while `arrow-ping`
+   specifically wants an edge-anchored origin so the stretch grows toward the tip rather than
+   symmetrically. Those two wants conflict on one element, so `arrow-rtl-mirror` is applied to
+   an *outer wrapper* (default center origin — omitted below since center is the CSS default)
+   around the icon, and `arrow-ping` stays on the icon itself, untouched by direction. The
+   wrapper's mirror then flips the icon's already-rendered stretch along with everything else,
+   so it still visually grows toward the tip once mirrored — see `CTAButton.tsx` for the
+   nesting. */
+:root {
+    --arrow-flip: 1;
+}
+
+[dir="rtl"] {
+    --arrow-flip: -1;
+}
+
+@utility arrow-rtl-mirror {
+    scale: var(--arrow-flip) 1;
+}
+
+/* Stretches the arrow toward its tip (scale from the tail) and snaps back. No RTL-awareness
+   needed here — the wrapping `arrow-rtl-mirror` span (see above) handles mirroring; this
+   keyframe set is the same for both directions. */
+@keyframes arrow-ping {
+    from {
+        scale: 1 1;
+    }
+
+    to {
+        scale: 1.35 1;
+    }
+}
+
+/* `@utility` (not `@layer components`) is required here — it's what registers
+   `animation-arrow-ping` with Tailwind's variant engine, which is what makes
+   `group-hover:animation-arrow-ping` in the JSX actually generate CSS. A plain
+   `@layer components` class is invisible to Tailwind's variant stacking. */
+@utility animation-arrow-ping {
+    transform-origin: left center;
+    /* Single 1 -> 1.35 pass. `forwards` holds that end state instead of snapping back to
+       scale(1) once the animation finishes. */
+    animation: arrow-ping 350ms ease-in-out 1 forwards;
+}
+
+/* Used by AnimatedDownloadIcon's arrow via `group-hover:animate-download-drop` — loops for
+   as long as the button is hovered, not unconditionally. Uses the standalone `translate`
+   property (not `transform: translateY()`) so it composes with the icon's separate
+   `scale-y-125` Tailwind class instead of overriding it whenever the animation is active —
+   that property clash (both writing to `transform`) was what made the arrow visibly jump in
+   size/position the instant hover started or ended. The 50% -> 51% jump back to the top
+   happens while opacity is still 0, so it reads as "fades back in at the top" rather than a
+   visible teleport. The tray bar underneath is a plain sibling element with no animation,
+   so it stays put throughout. */
+@keyframes download-drop {
+    0%,
+    100% {
+        translate: 0 -2px;
+        opacity: 1;
+    }
+
+    50% {
+        translate: 0 3px;
+        opacity: 0;
+    }
+
+    51% {
+        translate: 0 -2px;
+        opacity: 0;
+    }
+}
+
+@utility animate-download-drop {
+    animation: download-drop 1.2s ease-in-out infinite;
+}

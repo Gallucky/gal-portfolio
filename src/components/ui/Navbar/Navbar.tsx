@@ -44,7 +44,10 @@ const Navbar = () => {
         <nav
             role="navigation"
             aria-label="Main navigation"
-            className="fixed top-0 z-50 bg-bg-dark border-b border-border w-full transition-all duration-300 ease-in-out">
+            // `inset-x-0` (not `w-full`) pins both physical edges to the viewport directly —
+            // slightly more robust than `width: 100%` for a `fixed` element in general, since
+            // it doesn't depend on how its containing block's width is computed.
+            className="fixed top-0 inset-x-0 z-50 bg-bg-dark border-b border-border transition-all duration-300 ease-in-out">
             {/* Logo / Name */}
             <div className="w-[90%] sm:w-[75%] justify-self-center flex justify-between items-center py-4 sm:px-10">
                 <div className="flex items-center gap-10">
@@ -73,7 +76,7 @@ const Navbar = () => {
                                     className={`${
                                         isActive ? "text-primary font-bold active" : "text-color"
                                     }
-                                hover:text-primary underline-grow transition-colors`}>
+                                hover:text-primary underline-grow transition-colors select-none focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-4 focus-visible:rounded-xs`}>
                                     {link.name}
                                 </Link>
                             </li>
@@ -134,7 +137,7 @@ const Navbar = () => {
                                         }
                                         className={`
                                         ${isActive ? "text-primary font-bold active" : "text-color"}
-                                        hover:text-primary underline-grow transition-colors text-lg`}>
+                                        hover:text-primary underline-grow transition-colors text-lg select-none focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-4 focus-visible:rounded-xs`}>
                                         {link.name}
                                     </Link>
                                 </li>

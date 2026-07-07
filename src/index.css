@@ -35,6 +35,45 @@ body,
     min-height: 100dvh;
 }
 
+html {
+    /* Forces the real vertical scrollbar to always render, even on pages short enough not to
+       need one — so navigating between a long page (e.g. once Projects is built out) and a
+       short one never changes the available content width. This replaces an earlier attempt
+       using `scrollbar-gutter: stable`, which reserves a *blank, unpainted* strip that isn't
+       part of any element's box — nothing in the page (html's own background, nav, main)
+       reliably paints over it the same way in every browser once a `position: fixed` full-
+       width element (the navbar) is in the mix, so it kept showing a seam no matter which
+       color we tried to match it to. A real native scrollbar has no such gap: the browser
+       draws it itself, so there's nothing left to color-match. */
+    overflow-y: scroll;
+    /* No page should need horizontal scrolling; if one ever overflows (e.g. a stray
+       fixed-width element), clip rather than surface a second, unwanted scrollbar that
+       would itself cause the same kind of width jump this fix is for. */
+    overflow-x: hidden;
+    background-color: var(--bg);
+    /* Theme the now-always-visible scrollbar to match the site instead of leaving it as the
+       OS/browser's default grey — Firefox. `--scrollbar-thumb` (not `--border`) is its own
+       token specifically so it can be tuned lighter-than-everything in dark mode and
+       darker-than-everything in light mode, rather than inheriting a value chosen for a
+       different purpose. */
+    scrollbar-color: var(--scrollbar-thumb) var(--bg-dark);
+}
+
+/* Chromium/WebKit scrollbar theming — same intent as `scrollbar-color` above, for browsers
+   that don't support that property (pre-Chrome 121). */
+html::-webkit-scrollbar {
+    width: 10px;
+}
+
+html::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+
+html::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb);
+    border-radius: 999px;
+}
+
 * {
     @apply font-body;
 }

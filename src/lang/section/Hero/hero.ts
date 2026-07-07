@@ -7,6 +7,8 @@ export type HeroContent = {
     title: string;
     subtitle: string;
     description: string;
+    ctaProjects: string;
+    ctaContact: string;
 };
 
 /**
@@ -22,6 +24,8 @@ export const heroSectionLang: Translations<HeroContent> = {
             "Welcome to my portfolio.\n" +
             "Explore selected projects showcasing my skills in " +
             "web development,\nalongside updates on the technologies I specialize in.",
+        ctaProjects: "View Projects",
+        ctaContact: "Contact Me",
     },
     he: {
         title: "גל בן אבו",
@@ -30,5 +34,7 @@ export const heroSectionLang: Translations<HeroContent> = {
             "ברוכים הבאים לתיק העבודות שלי.\n" +
             "גלו פרויקטים נבחרים המציגים את הכישורים שלי בפיתוח " +
             "אתרים,\nלצד עדכונים על הטכנולוגיות בהן אני מתמחה.",
+        ctaProjects: "צפה בפרויקטים",
+        ctaContact: "צור קשר",
     },
 };
