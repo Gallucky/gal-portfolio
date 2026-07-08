@@ -14,6 +14,13 @@ type CTAButtonProps = {
     /** Forwarded to the <a> when `href` is set — e.g. `true` for a same-name save, or a
      * string to suggest a filename (used by the CV link). Ignored in button mode. */
     download?: boolean | string;
+    /** Forwarded to the <a> when `href` is set — e.g. `"_blank"` to open an external link
+     * (glossary popups, project links) in a new tab. Ignored in button mode. */
+    target?: React.HTMLAttributeAnchorTarget;
+    /** Forwarded to the <a> when `href` is set. Defaults to `"noopener noreferrer"` whenever
+     * `target="_blank"` is used, so callers don't have to remember the security boilerplate
+     * every time — pass an explicit value to override it. Ignored in button mode. */
+    rel?: string;
     /** Icon shown after the label; defaults to `MoveRight` (the Hero/"Get in Touch" arrow). */
     icon?: IconComponent;
     /** Whether the icon gets the default hover-triggered `arrow-ping` stretch. Set to `false`
@@ -56,6 +63,8 @@ const CTAButton = (props: CTAButtonProps) => {
         href,
         onClick,
         download,
+        target,
+        rel,
         icon: Icon = MoveRight,
         animateIconOnHover = true,
         className = "",
@@ -80,7 +89,12 @@ const CTAButton = (props: CTAButtonProps) => {
 
     if (href) {
         return (
-            <a href={href} download={download} className={sharedClassName}>
+            <a
+                href={href}
+                download={download}
+                target={target}
+                rel={rel ?? (target === "_blank" ? "noopener noreferrer" : undefined)}
+                className={sharedClassName}>
                 {content}
             </a>
         );

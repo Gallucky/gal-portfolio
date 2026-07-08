@@ -1,5 +1,6 @@
 import App from "@/App";
 import AnimatedLayout from "@components/layout/AnimatedLayout";
+import AboutPage from "@pages/About/About.page";
 import ErrorPage from "@pages/Error/Error.page";
 import HomePage from "@pages/Home/Home.page";
 import SettingsPage from "@pages/Settings/Settings.page";
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
                 element: <AnimatedLayout />,
                 children: [
                     { path: "/", element: <HomePage /> },
+                    { path: "/about", element: <AboutPage /> },
                     { path: "/settings", element: <SettingsPage /> },
                     { path: "*", element: <ErrorPage /> },
                 ],

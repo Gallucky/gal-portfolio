@@ -1,6 +1,8 @@
 type SectionProps = {
     className?: string;
     children: React.ReactNode;
+    /** Optional id, e.g. so nav links / in-page anchors can target this section directly. */
+    id?: string;
 };
 
 /**
@@ -11,9 +13,11 @@ type SectionProps = {
  * @returns The Section component.
  */
 const Section = (props: SectionProps) => {
-    const { className, children } = props;
+    const { className, children, id } = props;
     return (
-        <section className={`w-full py-8 flex justify-center items-center ${className}`}>
+        <section
+            id={id}
+            className={`w-full py-8 flex justify-center items-center ${className}`}>
             {children}
         </section>
     );

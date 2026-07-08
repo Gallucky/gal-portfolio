@@ -26,9 +26,10 @@ const Navbar = () => {
     // Close drawer on route change
     useEffect(() => setIsOpen(false), [location.pathname]);
 
-    // FIXME: "/projects", "/about", "/contact" don't exist in router.tsx yet — clicking these
+    // FIXME: "/projects" and "/contact" don't exist in router.tsx yet — clicking these
     // currently hits the catch-all route to ErrorPage, which renders nothing (blank screen).
-    // See Build Plan v2, Phase 3 for the routing decision that resolves this.
+    // "/about" is now wired up (see AboutPage). See Build Plan v2, Phase 3 for the routing
+    // decision that resolves the rest.
     const links = [
         { name: text.links.home, path: "/" },
         { name: text.links.projects, path: "/projects" },
@@ -48,24 +49,36 @@ const Navbar = () => {
             // slightly more robust than `width: 100%` for a `fixed` element in general, since
             // it doesn't depend on how its containing block's width is computed.
             className="fixed top-0 inset-x-0 z-50 bg-bg-dark border-b border-border transition-all duration-300 ease-in-out">
-            {/* Logo / Name */}
-            <div className="w-[90%] sm:w-[75%] justify-self-center flex justify-between items-center py-4 sm:px-10">
-                <div className="flex items-center gap-10">
-                    <a href="/" className="flex items-center gap-3">
+            {/* Logo / Name.
+                Width/padding scale gradually (92% -> 85% -> 75%, padding only from lg) instead
+                of jumping straight from `w-[90%]` to `w-[75%] + px-10` at a single `sm`
+                breakpoint — that jump used to shrink the available content width right as the
+                viewport grew past 640px, which is exactly the tablet range (~425-830px) where
+                things started overflowing/wrapping. */}
+            <div className="w-[92%] md:w-[85%] lg:w-[75%] justify-self-center flex justify-between items-center py-4 lg:px-10">
+                <div className="flex items-center gap-3 sm:gap-10">
+                    <a href="/" className="flex items-center gap-2 sm:gap-3">
                         <Logo />
                         <span className="transition-all hover:duration-300 hover:ease-in-out hover:scale-95">
-                            <span className="text-lg font-bold text-color">Gal Ben-Abu</span>
+                            <span className="text-base sm:text-lg font-bold text-color whitespace-nowrap">
+                                Gal Ben Abu
+                            </span>
                         </span>
                     </a>
                     <ul
                         aria-label="Additional controls"
-                        className="h-full flex items-center justify-center gap-4">
+                        className="h-full flex items-center justify-center gap-2 sm:gap-4">
                         <ThemeToggle className="hover:bg-color-muted/20 rounded-lg p-1 hover:cursor-pointer" />
                         <LanguageToggle className="hover:bg-color-muted/20 rounded-lg p-1 hover:cursor-pointer" />
                     </ul>
                 </div>
-                {/* Desktop nav links */}
-                <ul className="hidden md:flex gap-8" role="list">
+                {/* Desktop nav links.
+                    Deferred to `lg` (1024px) instead of `md` (768px) - between those two the
+                    left group (logo + name + theme/language toggles) already takes up most of
+                    the row, so turning on 4 more nav links at `md` left no room for either and
+                    caused overlap/wrapping through the whole tablet range. `lg` is where there's
+                    actually enough width for both groups to sit side by side. */}
+                <ul className="hidden lg:flex gap-8" role="list">
                     {links.map((link) => {
                         const isActive = location.pathname === link.path;
                         return (
@@ -84,10 +97,11 @@ const Navbar = () => {
                     })}
                 </ul>
 
-                {/* Mobile toggle menu button */}
+                {/* Mobile toggle menu button - stays visible through the tablet range too,
+                    matching the `lg` cutover above. */}
                 <button
                     onClick={() => toggleHamburgerMenu()}
-                    className="md:hidden p-2 rounded text-color focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="lg:hidden p-2 rounded text-color focus:outline-none focus:ring-2 focus:ring-primary"
                     aria-label={text.toggleMenu}
                     aria-expanded={isOpen}>
                     <svg className="size-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -111,12 +125,19 @@ const Navbar = () => {
                     an explicit sign per direction: pushed further right (+100%) to clear the
                     right-anchored LTR drawer, further left (-100%) to clear the left-anchored
                     RTL one. Getting this sign backwards is what previously made the Hebrew drawer
-                    animate across the visible screen instead of in from off-screen. */}
+                    animate across the visible screen instead of in from off-screen.
+
+                    Width is a `clamp()` (240px floor, 60vw preferred, 320px ceiling) instead of
+                    a flat `w-1/2`: a straight 50% meant ~160px on the smallest phones (too
+                    cramped for `ps-10` padding + text-lg links) but ballooned toward ~510px
+                    right before the `lg` cutover (way oversized for a 4-item vertical list).
+                    The floor/ceiling keep it usable and proportionate across the whole
+                    sub-`lg` range instead of just scaling linearly with the viewport. */}
                 <motion.div
                     initial={{ x: isRTL ? "-100%" : "100%" }}
                     animate={{ x: isOpen ? "0%" : isRTL ? "-100%" : "100%" }}
                     transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className="md:hidden absolute top-0 end-0 w-1/2 h-screen bg-bg-dark">
+                    className="lg:hidden absolute top-0 end-0 w-[clamp(240px,60vw,320px)] h-screen bg-bg-dark">
                     <XIcon
                         onClick={() => toggleHamburgerMenu()}
                         className="absolute top-4 start-2 size-6 text-color-muted hover:text-color transition-colors"
