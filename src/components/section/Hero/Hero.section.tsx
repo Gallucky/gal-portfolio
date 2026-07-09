@@ -28,7 +28,7 @@ const HeroSection = () => {
     const data = heroSectionLang[language];
 
     return (
-        <Section className="flex-col mt-[10dvh] w-svw!">
+        <Section className="flex-col mt-[var(--navbar-height)] w-svw!">
             <div className="w-full max-w-[100ch] mx-auto text-center px-4 mt-12">
                 <h2 className="text-xs text-color-muted font-bold font-assistant mb-5 tracking-widest">
                     {data.subtitle.toUpperCase()}

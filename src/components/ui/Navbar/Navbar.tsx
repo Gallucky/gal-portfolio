@@ -48,7 +48,11 @@ const Navbar = () => {
             // `inset-x-0` (not `w-full`) pins both physical edges to the viewport directly —
             // slightly more robust than `width: 100%` for a `fixed` element in general, since
             // it doesn't depend on how its containing block's width is computed.
-            className="fixed top-0 inset-x-0 z-50 bg-bg-dark border-b border-border transition-all duration-300 ease-in-out">
+            // `min-h-[var(--navbar-height)]` locks this to the same value pages use to offset
+            // their own content below it (see globals.css) — without this, a future content
+            // change here (bigger logo, wrapping text, etc.) could silently grow the navbar
+            // past what pages account for, reintroducing the "content hidden under navbar" bug.
+            className="fixed top-0 inset-x-0 z-50 min-h-[var(--navbar-height)] bg-bg-dark border-b border-border transition-all duration-300 ease-in-out">
             {/* Logo / Name.
                 Width/padding scale gradually (92% -> 85% -> 75%, padding only from lg) instead
                 of jumping straight from `w-[90%]` to `w-[75%] + px-10` at a single `sm`
@@ -132,12 +136,20 @@ const Navbar = () => {
                     cramped for `ps-10` padding + text-lg links) but ballooned toward ~510px
                     right before the `lg` cutover (way oversized for a 4-item vertical list).
                     The floor/ceiling keep it usable and proportionate across the whole
-                    sub-`lg` range instead of just scaling linearly with the viewport. */}
+                    sub-`lg` range instead of just scaling linearly with the viewport.
+
+                    `h-dvh` (not `h-screen`/`100vh`) — `100vh` measures the viewport as if
+                    the browser's own address/nav bar chrome were never there, so on mobile
+                    browsers where that chrome is visible, the actual visible area is shorter
+                    than `100vh`. The `justify-center`'d links below were centering against
+                    the full (chrome-included) height and getting squeezed into whatever was
+                    left above the fold. `dvh` tracks the real, current visible viewport as
+                    that chrome shows/hides, so the drawer always matches what's on screen. */}
                 <motion.div
                     initial={{ x: isRTL ? "-100%" : "100%" }}
                     animate={{ x: isOpen ? "0%" : isRTL ? "-100%" : "100%" }}
                     transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className="lg:hidden absolute top-0 end-0 w-[clamp(240px,60vw,320px)] h-screen bg-bg-dark">
+                    className="lg:hidden absolute top-0 end-0 w-[clamp(240px,60vw,320px)] h-dvh bg-bg-dark">
                     <XIcon
                         onClick={() => toggleHamburgerMenu()}
                         className="absolute top-4 start-2 size-6 text-color-muted hover:text-color transition-colors"

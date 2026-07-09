@@ -1,3 +1,15 @@
+:root {
+    /* The fixed Navbar's real rendered height: py-4 (32px) + the size-11 (44px) Logo + a
+       1px border ≈ 77px. It does NOT scale with viewport height — it's sized by its content,
+       which is fixed-size (the Logo doesn't get responsively resized). Pages used to clear the
+       navbar with `10dvh` (10% of viewport height), which happened to be close enough on tall
+       viewports but fell under 77px on short ones (landscape phones, short windows), letting
+       content render underneath the navbar instead of below it. Single source of truth here so
+       Navbar and every page that offsets against it can't drift out of sync.
+       @see Navbar.tsx, About.page.tsx, Hero.section.tsx */
+    --navbar-height: 77px;
+}
+
 @theme inline {
     --font-rubik: "Rubik", system-ui, sans-serif;
     --font-assistant: "Assistant", system-ui, sans-serif;
