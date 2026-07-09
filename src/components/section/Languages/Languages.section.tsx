@@ -22,7 +22,7 @@ import ProgrammingLanguage from "./ProgrammingLanguage";
  * @returns The LanguagesSection component.
  */
 const LanguagesSection = () => {
-    const { programmingLanguage } = useLanguage();
+    const { language: programmingLanguage } = useLanguage();
     const [activeId, setActiveId] = useState<string | null>(null);
 
     const data = lang[programmingLanguage];
@@ -48,9 +48,7 @@ const LanguagesSection = () => {
                             isActive={activeId === language.id}
                             onActivate={() => setActiveId(language.id)}
                             onDeactivate={() =>
-                                setActiveId((current) =>
-                                    current === language.id ? null : current
-                                )
+                                setActiveId((current) => (current === language.id ? null : current))
                             }
                         />
                     ))}

@@ -20,7 +20,7 @@ import AnimatedDownloadIcon from "./AnimatedDownloadIcon";
  * @returns The CTASection component.
  */
 const CTASection = () => {
-    const { programmingLanguage } = useLanguage();
+    const { language: programmingLanguage } = useLanguage();
     const data = lang[programmingLanguage];
 
     return (

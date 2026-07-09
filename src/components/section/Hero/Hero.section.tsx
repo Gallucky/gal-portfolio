@@ -22,7 +22,7 @@ const ctaOutline = `${ctaBase} border border-primary text-primary hover:bg-prima
  * @returns The HeroSection component.
  */
 const HeroSection = () => {
-    const { programmingLanguage: language } = useLanguage();
+    const { language } = useLanguage();
 
     // The current language data.
     const data = heroSectionLang[language];

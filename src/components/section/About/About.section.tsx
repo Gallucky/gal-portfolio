@@ -43,7 +43,7 @@ import { renderWithGlossary } from "@utils/text/renderWithGlossary";
  * @returns The AboutSection component.
  */
 const AboutSection = () => {
-    const { programmingLanguage: language } = useLanguage();
+    const { language } = useLanguage();
     const { themeValue } = useTheme();
     const data = lang[language];
     const glossaryEntries = Object.values(glossarySectionLang[language].entries);
@@ -131,7 +131,7 @@ const AboutSection = () => {
                                     onActivate: setActiveGlossaryId,
                                     onDeactivate: (id) =>
                                         setActiveGlossaryId((current) =>
-                                            current === id ? null : current
+                                            current === id ? null : current,
                                         ),
                                 })}
                             </p>

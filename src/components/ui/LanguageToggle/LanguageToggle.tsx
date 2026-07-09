@@ -18,7 +18,7 @@ type LanguageToggleProps = {
  */
 const LanguageToggle = (props: LanguageToggleProps) => {
     const { className } = props;
-    const { programmingLanguage: language, setLanguage } = useLanguage();
+    const { language, setLanguage } = useLanguage();
     const isRTL = language === "he";
     const text = languageToggleLang[language];
 

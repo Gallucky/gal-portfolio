@@ -19,7 +19,7 @@ const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const location = useLocation();
 
-    const { programmingLanguage: language } = useLanguage();
+    const { language } = useLanguage();
     const isRTL = language === "he";
     const text = navbarLang[language];
 

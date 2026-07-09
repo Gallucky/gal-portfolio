@@ -32,7 +32,7 @@ type GlossaryTermProps = {
  */
 const GlossaryTerm = (props: GlossaryTermProps) => {
     const { entry, isActive, onActivate, onDeactivate } = props;
-    const { programmingLanguage: language } = useLanguage();
+    const { language } = useLanguage();
     const ui = glossarySectionLang[language];
 
     const [hovered, setHovered] = useState(false);
