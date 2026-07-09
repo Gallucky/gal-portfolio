@@ -146,10 +146,10 @@ const ProgrammingLanguage = (props: ProgrammingLanguageProps) => {
             )}
 
             {/* Content - positioned below the icon, centered */}
-            {/* FIXME: landscape-orientation positioning below is disabled pending a decision on
-                whether the popup needs different anchoring on landscape mobile. Re-enable or
-                remove after testing on a real device:
-                landscape:max-sm:bottom-auto landscape:max-sm:top-1/2 landscape:max-sm:-translate-y-1/2 */}
+            {/* Rather than re-anchoring per orientation (fragile, device-specific — a landscape:
+                variant was tried and dropped, see git history), the popup is capped at 85vh with
+                internal scrolling. That guarantees it always fits the viewport, including short
+                landscape phones, without needing to special-case any device. */}
             {/* NOTE: `left-1/2` here is deliberately physical, not the logical `start-1/2`.
                 Centering should stay the same regardless of language: `start-1/2` flips to
                 `right: 50%` in RTL, which combined with the (always-physical) `-translate-x-1/2`
@@ -160,7 +160,7 @@ const ProgrammingLanguage = (props: ProgrammingLanguageProps) => {
                 className={`
                     fixed left-1/2 -translate-x-1/2 bottom-0 sm:bottom-[5%]
 
-                    w-[90vw] max-w-md
+                    w-[90vw] max-w-md max-h-[85vh] overflow-y-auto overscroll-contain
                     bg-linear-to-br from-bg-dark to-bg
                     border border-border
                     p-4 sm:p-6 rounded-lg shadow-2xl
