@@ -1,9 +1,16 @@
-import type { Color } from "@/types/Color";
+/**
+ * The spinner only ever needs to match the app's semantic palette (it's a loading
+ * indicator, not an arbitrary-colored element), so its color prop is intentionally
+ * narrower than the general-purpose {@link Color} type. Every member here MUST have
+ * a matching entry in `colorClasses` below — see the FIXME that used to live here
+ * for why a permissive type + string-templated fallback silently breaks Tailwind's JIT.
+ */
+type SpinnerColor = "accent" | "primary" | "secondary" | "success" | "warning" | "error" | "info";
 
 /**
  * @param text - Optional text to display alongside the spinner.
  * @param direction - Direction of the spinner and text, either "vertical" or "horizontal". Default is "horizontal".
- * @param color - Color of the spinner. Accepts Tailwind color classes. Default is "accent".
+ * @param color - Color of the spinner. One of the app's semantic colors. Default is "accent".
  * @param size - Size of the spinner. Accepts "sm", "md", "lg", or "xl". Default is "md".
  * @param textSize - Size of the text. Accepts "xs", "sm", "md", "lg", "xl", or "2xl". Default is "md".
  * @param className - Additional classes to apply to the outer container of the spinner.
@@ -13,7 +20,7 @@ import type { Color } from "@/types/Color";
 type SpinnerProps = {
     text?: string;
     direction?: "vertical" | "horizontal";
-    color?: Color;
+    color?: SpinnerColor;
     size?: "sm" | "md" | "lg" | "xl";
     textSize?: "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
     className?: string;
@@ -59,8 +66,10 @@ const Spinner = (props: SpinnerProps) => {
         "2xl": "text-2xl",
     };
 
-    // Color mapping for border
-    const colorClasses: Record<string, string> = {
+    // Color mapping for border. Every member of `SpinnerColor` must be listed here —
+    // TypeScript enforces exhaustiveness via `satisfies`, so a color missing its class
+    // is now a compile-time error instead of a silently-broken border at runtime.
+    const colorClasses = {
         accent: "border-accent",
         primary: "border-primary",
         secondary: "border-second",
@@ -68,16 +77,9 @@ const Spinner = (props: SpinnerProps) => {
         warning: "border-warning",
         error: "border-destructive",
         info: "border-cyan-600",
-    };
+    } satisfies Record<SpinnerColor, string>;
 
-    // Parses the color prop to get the corresponding Tailwind class for the spinner's border color.
-    // FIXME (footgun): the `|| \`border-${color}\`` fallback only works if `color` happens to be
-    // a Tailwind class name Tailwind has already generated elsewhere in the project (JIT only
-    // includes classes it can find as literal strings in source). Passing an arbitrary Color not
-    // in `colorClasses` and not used verbatim elsewhere will silently render with no border color
-    // — no error, just a spinner with the wrong look. Safest fix: keep every valid Color mapped
-    // in `colorClasses` and drop the fallback, or explicitly safelist the pattern in Tailwind config.
-    const borderColor = colorClasses[color] || `border-${color}`;
+    const borderColor = colorClasses[color];
     const spinnerSize = sizeClasses[size];
     const spinnerTextSize = textSizeClasses[textSize];
 
