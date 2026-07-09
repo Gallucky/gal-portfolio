@@ -11,7 +11,10 @@
         "preview": "vite preview",
         "diff": "git diff",
         "status": "git status",
-        "commit": "node ./scripts/commitMessage.js"
+        "commit": "node ./scripts/commitMessage.js",
+        "vPatch": "npm version patch --no-git-tag-version",
+        "vMinor": "npm version minor --no-git-tag-version",
+        "vMajor": "npm version major --no-git-tag-version"
     },
     "dependencies": {
         "clsx": "^2.1.1",
