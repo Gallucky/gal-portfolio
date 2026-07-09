@@ -1,7 +1,7 @@
 {
     "name": "gal-portfolio",
     "private": true,
-    "version": "0.3.1",
+    "version": "0.3.2",
     "type": "module",
     "scripts": {
         "dev": "vite --host",
@@ -12,9 +12,9 @@
         "diff": "git diff",
         "status": "git status",
         "commit": "node ./scripts/commitMessage.js",
-        "vPatch": "npm version patch --no-git-tag-version",
-        "vMinor": "npm version minor --no-git-tag-version",
-        "vMajor": "npm version major --no-git-tag-version",
+        "vPatch": "npm version patch --no-git-tag-version && git add package-lock.json package.json && git commit -m \"config: package.json version sync\"",
+        "vMinor": "npm version minor --no-git-tag-version && git add package-lock.json package.json && git commit -m \"config: package.json version sync\"",
+        "vMajor": "npm version major --no-git-tag-version && git add package-lock.json package.json && git commit -m \"config: package.json version sync\"",
         "tags:refresh": "node scripts/refreshTags.js"
     },
     "dependencies": {
