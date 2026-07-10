@@ -133,6 +133,10 @@ const GlossaryTerm = (props: GlossaryTermProps) => {
 
             {/* Popup - positioned the same fixed, centered bottom-sheet way as the
                 Languages section's popup, for a consistent pattern across the app. */}
+            {/* NOTE: `left-1/2` here is deliberately physical, not the logical `start-1/2`.
+                Centering should stay the same regardless of language: `start-1/2` flips to
+                `right: 50%` in RTL, which combined with the (always-physical) `-translate-x-1/2`
+                pushed the whole popup off-center in Hebrew instead of centering it. */}
             <span
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}

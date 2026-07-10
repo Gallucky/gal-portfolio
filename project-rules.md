@@ -45,3 +45,10 @@
 
 1. Each project's rich content (`title`, `shortDescription`, `overview`, `architecture`, `challenges`, `lessons`) is defined per-language, separately from its non-translatable metadata (`slug`, `stack`, `featured`, links, screenshots).
 2. Project `slug` values and project names/titles must remain unique across the whole `allProjects` list.
+
+## Working with AI on this codebase
+
+1. Before accepting an AI-written chunk, be able to explain what it does and why it was written that way — if not, ask for a line-by-line explanation before moving on.
+2. For non-trivial features, write the skeleton first (function signatures, file structure, a comment per piece) and let AI fill it in, rather than asking for the whole feature at once.
+3. Review AI diffs like a PR from a coworker: check for missed edge cases, unnecessary new dependencies, and consistency with existing patterns in this repo. Ask for smaller diffs if one is too large to review carefully.
+4. For unfamiliar concepts, ask AI to explain first and write a minimal example, then implement the real thing yourself — reserve "just write it" for boilerplate already well understood (CRUD, config, routing scaffolding).

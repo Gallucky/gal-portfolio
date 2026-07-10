@@ -8,6 +8,8 @@ import discoverTheWorld from "./discover_the_world/metadata";
 import thinkOutsideTheBox from "./think_outside_the_box/metadata";
 import freeAdvisement from "./free_advisement/metadata";
 
+// FIXME: missing JSDoc block per project-rules.md Code Writing/Style rule 6 (sibling type
+// `UIImplementationProjectMetadata` below has one — this type should too).
 export type UIImplementationProject = Omit<Project, "featured"> & {
     featured: false; // All UI implementations are not featured
     type: "uiImplementation"; // All UI implementations are of type "uiImplementation"

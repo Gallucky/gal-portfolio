@@ -40,7 +40,9 @@ type MotionSwitchProps = {
  * @param MotionSwitchProps.config - An optional configuration object for the animation.
  * @returns
  */
-const MotionSwitch = ({ value, children, config = {} }: MotionSwitchProps) => {
+const MotionSwitch = (props: MotionSwitchProps) => {
+    const { value, children, config = {} } = props;
+
     const {
         initial = { opacity: 0, scale: 0 },
         animate = { opacity: 1, scale: 1 },

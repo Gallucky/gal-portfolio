@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import ProgrammingLanguageIcon from "./ProgrammingLanguageIcon";
 import StarRating from "@/components/ui/StarRating";
 
+// FIXME: missing top-level JSDoc block per project-rules.md Code Writing/Style rule 6
+// (only the individual fields are commented, the type itself isn't explained).
 export type ProgrammingLanguageProps = {
     id: string;
     name: string;
