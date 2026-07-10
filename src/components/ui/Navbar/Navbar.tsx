@@ -26,10 +26,10 @@ const Navbar = () => {
     // Close drawer on route change
     useEffect(() => setIsOpen(false), [location.pathname]);
 
-    // FIXME: "/projects" and "/contact" don't exist in router.tsx yet — clicking these
-    // currently hits the catch-all route to ErrorPage, which renders nothing (blank screen).
-    // "/about" is now wired up (see AboutPage). See Build Plan v2, Phase 3 for the routing
-    // decision that resolves the rest.
+    // FIXME: "/projects" doesn't exist in router.tsx yet — clicking it currently hits the
+    // catch-all route to ErrorPage, which renders nothing (blank screen). "/about" and
+    // "/contact" are now wired up (see AboutPage, ContactPage). See Build Plan v2, Phase 3
+    // for the routing decision that resolves the rest.
     const links = [
         { name: text.links.home, path: "/" },
         { name: text.links.projects, path: "/projects" },

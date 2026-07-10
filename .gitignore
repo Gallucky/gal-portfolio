@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Real secrets (RESEND_API_KEY, CONTACT_TO_EMAIL) - see .env.example for the documented shape.
+.env
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

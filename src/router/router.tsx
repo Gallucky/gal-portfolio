@@ -1,6 +1,7 @@
 import App from "@/App";
 import AnimatedLayout from "@components/layout/AnimatedLayout";
 import AboutPage from "@pages/About/About.page";
+import ContactPage from "@pages/Contact/Contact.page";
 import ErrorPage from "@pages/Error/Error.page";
 import HomePage from "@pages/Home/Home.page";
 import WelcomeRecruitersPage from "@pages/WelcomeRecruiters/WelcomeRecruiters.page";
@@ -22,6 +23,7 @@ const router = createBrowserRouter([
                 children: [
                     { path: "/", element: <HomePage /> },
                     { path: "/about", element: <AboutPage /> },
+                    { path: "/contact", element: <ContactPage /> },
                     { path: "/welcome-recruiters", element: <WelcomeRecruitersPage /> },
                     { path: "*", element: <ErrorPage /> },
                 ],

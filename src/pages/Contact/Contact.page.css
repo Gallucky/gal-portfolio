@@ -1,0 +1,37 @@
+/* The submit button's loading state: three dots bobbing up and down in a wave, per this
+   page's documented "loading" behavior. Each dot gets a staggered `animation-delay` (inline,
+   in the component) so they move out of phase with each other instead of as one rigid block -
+   same staggering technique Error.section.css uses for its bouncing "404" digits. */
+@keyframes contact-submit-dot-wave {
+    0%,
+    60%,
+    100% {
+        translate: 0 0;
+        opacity: 0.6;
+    }
+
+    30% {
+        translate: 0 -4px;
+        opacity: 1;
+    }
+}
+
+@utility animate-submit-dot-wave {
+    animation: contact-submit-dot-wave 900ms ease-in-out infinite;
+}
+
+/* Hides the honeypot field from sighted users while keeping it present and fillable in the
+   DOM, which is what makes it work: a bot that fills every input it finds in markup still
+   finds and fills this one, but a real visitor never sees it to fill it by mistake.
+   `display: none` / `visibility: hidden` are deliberately avoided - some scraper bots check
+   computed style and skip fields hidden that way, defeating the trap. Off-screen positioning
+   (inset-inline-start, not `left`, so this also works correctly in the Hebrew/RTL layout)
+   plus zero size is invisible without tripping that check.
+   @see ContactPage's `honeypot` state for the companion behavior. */
+.contact-honeypot {
+    position: absolute;
+    inset-inline-start: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
