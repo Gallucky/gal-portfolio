@@ -187,6 +187,13 @@ const ContactPage = () => {
                                 required
                                 disabled={isSubmitting}
                                 autoComplete="email"
+                                // Native `type="email"` alone accepts things like "a@a" with
+                                // no real domain - this `pattern` requires an actual dot after
+                                // the @ (matches the api/contact.ts server-side check), and
+                                // `title` is what the browser shows in its validation bubble
+                                // instead of the raw regex.
+                                pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
+                                title={data.form.email.invalidHint}
                             />
                             <FormTextboxInput
                                 id="contact-message"

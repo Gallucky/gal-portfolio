@@ -13,6 +13,15 @@ type FormInputProps = {
     /** Disabled while the form is submitting, so the user can't edit fields mid-send. */
     disabled?: boolean;
     autoComplete?: string;
+    /** Native HTML `pattern` - the whole value must match, no need for `^`/`$`. Primarily for
+     * the email field: native `type="email"` alone is looser than it looks (it accepts
+     * something like "a@a" with no real domain), so a `pattern` tightens what actually counts
+     * as valid without abandoning the browser's built-in validation UI. */
+    pattern?: string;
+    /** Shown by the browser's native validation bubble when `pattern` fails to match -
+     * without this, the browser falls back to displaying the raw regex, which means nothing
+     * to a non-technical visitor. */
+    title?: string;
 };
 
 /**
@@ -37,6 +46,8 @@ const FormInput = (props: FormInputProps) => {
         required,
         disabled,
         autoComplete,
+        pattern,
+        title,
     } = props;
 
     return (
@@ -55,6 +66,8 @@ const FormInput = (props: FormInputProps) => {
                 required={required}
                 disabled={disabled}
                 autoComplete={autoComplete}
+                pattern={pattern}
+                title={title}
                 className="w-full rounded-lg border border-border bg-bg px-4 py-2 text-color placeholder:text-color-muted transition-colors focus:outline-none focus:border-primary disabled:opacity-60 disabled:cursor-not-allowed"
             />
         </div>

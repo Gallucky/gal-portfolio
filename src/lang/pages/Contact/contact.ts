@@ -11,7 +11,11 @@ export type ContactContent = {
     description: string;
     form: {
         name: { label: string; placeholder: string };
-        email: { label: string; placeholder: string };
+        /** `invalidHint` is surfaced by the browser's native validation bubble (via the
+         * `title` attribute on the underlying `<input>`) when the email fails the `pattern`
+         * check - native `type="email"` alone accepts "a@a" with no real domain, so `pattern`
+         * tightens that and `title` supplies the message shown instead of a raw regex dump. */
+        email: { label: string; placeholder: string; invalidHint: string };
         message: { label: string; placeholder: string };
     };
     submitLabel: string;
@@ -34,7 +38,11 @@ export const contactPageLang: Translations<ContactContent> = {
             "Have a question, an opportunity, or just want to say hi? Fill out the form below and I'll get back to you as soon as I can.",
         form: {
             name: { label: "Name", placeholder: "Your name" },
-            email: { label: "Email", placeholder: "you@example.com" },
+            email: {
+                label: "Email",
+                placeholder: "you@example.com",
+                invalidHint: "Please enter a valid email address, e.g. name@example.com",
+            },
             message: { label: "Message", placeholder: "What's on your mind?" },
         },
         submitLabel: "Send Message",
@@ -55,7 +63,11 @@ export const contactPageLang: Translations<ContactContent> = {
         description: "יש לך שאלה, הזדמנות, או סתם רוצה להגיד היי? מלאו את הטופס ואחזור אליכם בהקדם.",
         form: {
             name: { label: "שם", placeholder: "השם שלך" },
-            email: { label: "אימייל", placeholder: "you@example.com" },
+            email: {
+                label: "אימייל",
+                placeholder: "you@example.com",
+                invalidHint: "אנא הזינו כתובת אימייל תקינה, למשל name@example.com",
+            },
             message: { label: "הודעה", placeholder: "מה תרצו לומר?" },
         },
         submitLabel: "שליחת הודעה",

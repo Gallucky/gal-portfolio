@@ -146,6 +146,19 @@ const Navbar = () => {
                     left above the fold. `dvh` tracks the real, current visible viewport as
                     that chrome shows/hides, so the drawer always matches what's on screen. */}
                 <motion.div
+                    // `key={language}` forces a remount whenever the language (and therefore
+                    // `isRTL`) changes, instead of animating the existing instance's `x` prop
+                    // to its new value. That distinction matters here: without the remount,
+                    // switching language while the drawer is closed changed `animate.x` from
+                    // e.g. "100%" to "-100%" on the *same* mounted element, and framer-motion
+                    // dutifully animated between those two values - sweeping the "hidden"
+                    // drawer all the way across the visible screen in the process, since the
+                    // path from +100% to -100% passes straight through 0%. Remounting instead
+                    // makes it render fresh at `initial` (the new direction's off-screen
+                    // position) with no transition, which is a no-op when closed (`initial`
+                    // and `animate` resolve to the same value) and just a normal open-in slide
+                    // if the language happens to change while it's open.
+                    key={language}
                     initial={{ x: isRTL ? "-100%" : "100%" }}
                     animate={{ x: isOpen ? "0%" : isRTL ? "-100%" : "100%" }}
                     transition={{ duration: 0.3, ease: "easeInOut" }}
