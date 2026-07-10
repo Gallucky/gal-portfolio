@@ -1,0 +1,37 @@
+/* Static ambient glow centered behind the 404 heading. This used to track the cursor via
+   `--mouse-x`/`--mouse-y` custom properties, but a moving anchor meant the gradient's circular
+   edge was visibly sliding in and out of view as the mouse moved - a fixed, centered glow reads
+   as an intentional backdrop instead of a distracting moving shape. Anchored at dead center
+   (50% / 50%), well clear of this container's top edge, so it never bleeds into the fixed
+   Navbar's space (see the `isolate` note in Error.section.tsx for the related stacking fix). */
+.error-glow {
+    background: radial-gradient(
+        420px circle at 50% 50%,
+        color-mix(in oklch, var(--color-primary) 22%, transparent),
+        transparent 70%
+    );
+}
+
+/* Bigger, snappier bob-and-tilt for each "404" digit so the motion actually reads at a glance
+   instead of needing a second look - each digit gets a staggered `animation-delay` (inline, in
+   the component) so they bounce out of phase with each other instead of moving as one rigid
+   block. A slight `scale` at the peak of the bounce (instead of just vertical translate) sells
+   the "bounce" more than height alone would. */
+@keyframes error-digit-float {
+    0%,
+    100% {
+        translate: 0 0;
+        rotate: 0deg;
+        scale: 1;
+    }
+
+    50% {
+        translate: 0 -22px;
+        rotate: -6deg;
+        scale: 1.08;
+    }
+}
+
+@utility animate-error-digit-float {
+    animation: error-digit-float 1.6s ease-in-out infinite;
+}

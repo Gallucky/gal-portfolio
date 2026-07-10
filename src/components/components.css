@@ -1,5 +1,6 @@
 @import "./ui/Navbar/navbar.css";
 @import "./section/CTA/CTA.section.css";
+@import "./section/Error/Error.section.css";
 
 @layer utilities {
 }
