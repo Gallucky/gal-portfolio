@@ -34,7 +34,7 @@ export const aboutSectionLang: Translations<AboutContent> = {
         subtitle: "Get to Know Me",
         title: "About Me",
         paragraphs: [
-            "Hi, I'm Gal - a 21-year-old from Israel. I'm a released IDF soldier, with a " +
+            "Hi, I'm Gal - a 21-year-old from Eilat, Israel. I'm a released IDF soldier, with a " +
                 "technical foundation that goes back to high school, long before my service " +
                 "began.",
             "In high school, I completed a Bagrut (Israel's high-school diploma track) with 10 " +
@@ -65,9 +65,9 @@ export const aboutSectionLang: Translations<AboutContent> = {
         subtitle: "קצת עליי",
         title: "אודותיי",
         paragraphs: [
-            "היי, אני גל - בן 21 מישראל. אני חייל משוחרר מצה\"ל, עם רקע טכנולוגי שמתחיל " +
+            "היי, אני גל - בן 21 מאילת. אני חייל משוחרר, עם רקע טכנולוגי שמתחיל " +
                 "עוד בתיכון, הרבה לפני תחילת השירות שלי.",
-            "בתיכון סיימתי בגרות עם 10 יחידות לימוד במחשבים (5 יח\"ל בהנדסת תוכנה ו-5 יח\"ל " +
+            'בתיכון סיימתי בגרות עם 10 יחידות לימוד במחשבים (5 יח"ל בהנדסת תוכנה ו-5 יח"ל ' +
                 "במדעי המחשב), לצד 5 יחידות לימוד בפיזיקה, במתמטיקה ובאנגלית. במקביל ללימודים " +
                 "השתתפתי בתוכנית סטארטק בכיתה ט', ולאחר מכן בתוכנית מגשימים - התוכנית הלאומית " +
                 "לחינוך סייבר - מכיתה י' ועד יב'.",
