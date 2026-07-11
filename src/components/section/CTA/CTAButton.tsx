@@ -38,10 +38,11 @@ type CTAButtonProps = {
  * this CTA section's own "Get in Touch" button.
  *
  * Centralizes the arrow-hover treatment so every CTA in the app shares one animation instead
- * of each section rolling its own hover-nudge: the `MoveRight` icon plays the `arrow-ping`
- * keyframes (defined in `CTA.section.css`, registered as a Tailwind `@utility` so `group-hover:`
- * can target it) while the button is hovered — a scale stretch toward the tip, anchored at the
- * tail, that snaps back.
+ * of each section rolling its own hover-nudge: the `MoveRight` icon transitions its `scale`
+ * (via the `animation-arrow-ping`/`animation-arrow-ping-active` utility pair defined in
+ * `CTA.section.css`, registered as Tailwind `@utility`s so `group-hover:` can target them)
+ * while the button is hovered — a stretch toward the tip, anchored at the tail, that eases
+ * back smoothly (not a snap) once the pointer leaves.
  *
  * Under RTL, the icon is mirrored via a *separate wrapping span* (`arrow-rtl-mirror`) rather
  * than folding the flip into the same `scale` as the stretch. A mirror has to pivot around
@@ -79,7 +80,10 @@ const CTAButton = (props: CTAButtonProps) => {
             {label}
             {animateIconOnHover ? (
                 <span className="me-1 inline-flex arrow-rtl-mirror">
-                    <Icon aria-hidden="true" className="group-hover:animation-arrow-ping" />
+                    <Icon
+                        aria-hidden="true"
+                        className="animation-arrow-ping group-hover:animation-arrow-ping-active"
+                    />
                 </span>
             ) : (
                 <Icon aria-hidden="true" className="me-1" />

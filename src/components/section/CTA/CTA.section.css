@@ -24,28 +24,30 @@
     scale: var(--arrow-flip) 1;
 }
 
-/* Stretches the arrow toward its tip (scale from the tail) and snaps back. No RTL-awareness
-   needed here — the wrapping `arrow-rtl-mirror` span (see above) handles mirroring; this
-   keyframe set is the same for both directions. */
-@keyframes arrow-ping {
-    from {
-        scale: 1 1;
-    }
+/* Stretches the arrow toward its tip (scale from the tail) on hover, and eases back on
+   hover-out. No RTL-awareness needed here — the wrapping `arrow-rtl-mirror` span (see above)
+   handles mirroring; this is the same for both directions.
 
-    to {
-        scale: 1.35 1;
-    }
+   This is a `transition` on the standalone `scale` property, not a one-shot `@keyframes`
+   animation - `animation-arrow-ping` (below) sets the resting `scale: 1 1` unconditionally,
+   and `animation-arrow-ping-active` (applied only via `group-hover:`) overrides it to
+   `1.35 1`. A `@keyframes ... forwards` animation only plays *into* its end state; once the
+   triggering class is removed on hover-out, the element snaps straight back to its
+   pre-animation style with no reverse playback. A `transition`, by contrast, animates
+   whichever direction the property just changed - toward 1.35 on hover-in, back toward 1 on
+   hover-out - for free. */
+@utility animation-arrow-ping {
+    transform-origin: left center;
+    scale: 1 1;
+    transition: scale 250ms ease-in-out;
 }
 
 /* `@utility` (not `@layer components`) is required here — it's what registers
-   `animation-arrow-ping` with Tailwind's variant engine, which is what makes
-   `group-hover:animation-arrow-ping` in the JSX actually generate CSS. A plain
+   `animation-arrow-ping-active` with Tailwind's variant engine, which is what makes
+   `group-hover:animation-arrow-ping-active` in the JSX actually generate CSS. A plain
    `@layer components` class is invisible to Tailwind's variant stacking. */
-@utility animation-arrow-ping {
-    transform-origin: left center;
-    /* Single 1 -> 1.35 pass. `forwards` holds that end state instead of snapping back to
-       scale(1) once the animation finishes. */
-    animation: arrow-ping 350ms ease-in-out 1 forwards;
+@utility animation-arrow-ping-active {
+    scale: 1.35 1;
 }
 
 /* Used by AnimatedDownloadIcon's arrow via `group-hover:animate-download-drop` — loops for

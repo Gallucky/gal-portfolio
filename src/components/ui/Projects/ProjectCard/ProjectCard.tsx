@@ -90,7 +90,6 @@ const ProjectCard = (props: ProjectCardProps) => {
                 <ul aria-label="Technology stack" className="mb-3 flex flex-wrap gap-2">
                     {visibleStack.map((item) => {
                         const hex = getTechColor(item, themeValue);
-                        console.log(`hex: ${hex}\nitem: ${item} | themeValue: ${themeValue}`);
 
                         return (
                             <li
