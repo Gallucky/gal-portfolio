@@ -1,4 +1,5 @@
 import CTASection from "@/components/section/CTA/CTA.section";
+import ProjectCard from "@/components/ui/Projects/ProjectCard/ProjectCard";
 import HeroSection from "@components/section/Hero/Hero.section";
 import LanguagesSection from "@components/section/Languages/Languages.section";
 import ProjectsSection from "@components/section/Projects/Projects.section";
@@ -23,6 +24,23 @@ const HomePage = () => {
             <div className="w-[90%] sm:w-[75%] flex flex-col items-center justify-center justify-self-center">
                 <HeroSection />
                 <LanguagesSection />
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+                    <ProjectCard
+                        name="Test Project"
+                        slug="test-project"
+                        stack={["React", "JavaScript", "Tailwind CSS"]}
+                    />
+                    <ProjectCard
+                        name="Test Project"
+                        slug="test-project"
+                        stack={["React", "Angular", "Tailwind CSS"]}
+                    />
+                    <ProjectCard
+                        name="Test Project"
+                        slug="test-project"
+                        stack={["React", "Powershell", "Tailwind CSS"]}
+                    />
+                </div>
                 <ProjectsSection />
                 <CTASection />
             </div>

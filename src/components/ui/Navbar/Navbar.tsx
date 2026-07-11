@@ -52,7 +52,7 @@ const Navbar = () => {
             // their own content below it (see globals.css) — without this, a future content
             // change here (bigger logo, wrapping text, etc.) could silently grow the navbar
             // past what pages account for, reintroducing the "content hidden under navbar" bug.
-            className="fixed top-0 inset-x-0 z-50 min-h-[var(--navbar-height)] bg-bg-dark border-b border-border transition-all duration-300 ease-in-out">
+            className="fixed top-0 inset-x-0 z-50 min-h-(--navbar-height) bg-bg-dark border-b border-border transition-all duration-300 ease-in-out">
             {/* Logo / Name.
                 Width/padding scale gradually (92% -> 85% -> 75%, padding only from lg) instead
                 of jumping straight from `w-[90%]` to `w-[75%] + px-10` at a single `sm`

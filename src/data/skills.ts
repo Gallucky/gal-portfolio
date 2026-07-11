@@ -31,13 +31,21 @@ export const skills: Skill[] = [
     { name: "TypeScript", color: "#3178C6", href: "https://www.typescriptlang.org" },
     { name: "Node.js", color: "#5FA04E", href: "https://nodejs.org" },
     { name: "Express", color: "#A0AEC0", lightColor: "#374151", href: "https://expressjs.com" },
-    { name: "MongoDB", color: "#47A248", href: "https://www.mongodb.com" },
+    // Shifted off `#47A248` to MongoDB's brighter current brand green `#00ED64` - see the
+    // matching comment in `techColors.ts` (it read almost identical to Node.js's green).
+    { name: "MongoDB", color: "#00ED64", href: "https://www.mongodb.com" },
     {
+        // Shifted off the cyan-leaning `#38BDF8` to `blue-500` - see the matching comment in
+        // `techColors.ts` (React and Tailwind CSS were reading as nearly the same color badge
+        // next to each other). Kept in sync between both files intentionally.
         name: "Tailwind CSS",
-        color: "#38BDF8",
-        lightColor: "#0369A1",
+        color: "#3B82F6",
+        lightColor: "#1D4ED8",
         href: "https://tailwindcss.com",
     },
     { name: "Git", color: "#F05032", href: "https://git-scm.com" },
-    { name: "REST APIs", color: "#8B5CF6", href: "https://restfulapi.net" },
+    // Shifted off `#8B5CF6` (an arbitrary pick - REST has no real brand color) to a neutral
+    // warm gray, freeing that violet up for actually-branded purples (Bootstrap, Redux) -
+    // see the matching comment in `techColors.ts`.
+    { name: "REST APIs", color: "#78716C", href: "https://restfulapi.net" },
 ];

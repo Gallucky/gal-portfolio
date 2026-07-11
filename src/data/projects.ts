@@ -7,9 +7,13 @@ import applicationProjects from "./projects/applicationProjects/applicationProje
  * Defines the images/screenshots associated with a project,
  * including the URL and alt text for accessibility.
  *
+ * Exported (not just used internally) so components that render a single project image -
+ * e.g. `ProjectCard`'s preview thumbnail - can type their prop against this shape instead of
+ * redeclaring an equivalent one-off type.
+ *
  * @see {@link Project} for more information on how screenshots are used in the context of a project.
  */
-type Screenshot = {
+export type Screenshot = {
     url: string;
     alt: string;
 };

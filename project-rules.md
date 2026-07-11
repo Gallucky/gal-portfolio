@@ -45,6 +45,7 @@
 
 1. Each project's rich content (`title`, `shortDescription`, `overview`, `architecture`, `challenges`, `lessons`) is defined per-language, separately from its non-translatable metadata (`slug`, `stack`, `featured`, links, screenshots).
 2. Project `slug` values and project names/titles must remain unique across the whole `allProjects` list.
+3. A project's `stack` array must be ordered with its most important/flagship technologies first. Nothing infers or re-sorts this order at render time - e.g. `ProjectCard` shows the first 3 entries as a project's featured badges (collapsing the rest into a "+N" overflow badge), trusting the array's order as-authored. When adding or editing a project's `stack`, put the technologies you want surfaced first.
 
 ## Working with AI on this codebase
 

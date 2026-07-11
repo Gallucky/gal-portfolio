@@ -88,6 +88,12 @@ const buildContactEmailHtml = (payload: { name: string; email: string; message: 
  * `sendContactMessage` POSTs here. Validates the payload, then relays it through Resend to
  * the inbox set by `CONTACT_TO_EMAIL`.
  *
+ * Lives in a top-level `api/` folder (sibling to `src/`), not under `src/`, because Vercel
+ * only auto-detects serverless functions in a project-root `api/` directory - each file there
+ * becomes an endpoint at the matching `/api/*` path (this one -> `/api/contact`). It also has
+ * its own `api/tsconfig.json` and `typecheck:api` script since it builds as a separate Vercel
+ * Function project, independent of the Vite/React app's build.
+ *
  * Both `RESEND_API_KEY` and `CONTACT_TO_EMAIL` come from environment variables (set in the
  * Vercel project's dashboard for deploys, or a local `.env`/`.env.local` for `vercel dev`)
  * rather than being hardcoded, so the real API key never sits in source control or the
@@ -102,9 +108,9 @@ const buildContactEmailHtml = (payload: { name: string; email: string; message: 
  * this in the real Vercel project's environment variables, or production submissions will
  * silently stop being delivered.
  *
- * TODO: no rate limiting yet. Fine for a personal portfolio's current traffic, but if this
+ * Note: no rate limiting yet. Fine for a personal portfolio's current traffic, but if this
  * endpoint ever gets targeted directly (bypassing the frontend's honeypot, which only guards
- * the UI path - see ContactPage), consider per-IP rate limiting (e.g. Vercel KV/Upstash).
+ * the UI path - @see {@link ContactPage}), consider per-IP rate limiting (e.g. Vercel KV/Upstash).
  *
  * @param req The incoming request; expects a JSON body of `{ name, email, message }`.
  * @param res Standard-shaped JSON responses: `{ success: true }` or `{ error: string }`.
