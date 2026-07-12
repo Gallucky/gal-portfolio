@@ -1,4 +1,6 @@
 import type { Project } from "@data/projects";
+import planItTaskManager from "./planit_task_manager/metadata";
+import quickCartStorefront from "./quickcart_storefront/metadata";
 
 /**
  * An helper type that represents an application project, which is a kind of project that can be featured.
@@ -22,7 +24,11 @@ export type ApplicationProject = Project & {
  */
 export type ApplicationProjectMetadata = Omit<ApplicationProject, "type">;
 
-const rawApplicationProjects: ApplicationProjectMetadata[] = [];
+const rawApplicationProjects: ApplicationProjectMetadata[] = [
+    // Import individual project metadata objects here
+    planItTaskManager,
+    quickCartStorefront,
+];
 
 /** An array of application projects as project-metadata objects that are in the website. */
 const applicationProjects: ApplicationProject[] = rawApplicationProjects.map((project) => ({

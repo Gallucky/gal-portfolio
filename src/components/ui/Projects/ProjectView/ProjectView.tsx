@@ -19,6 +19,11 @@ type ProjectViewProps = {
     type: ProjectViewType;
     /** The projects to render as cards, already filtered/selected by the caller. */
     projects: Project[];
+    /** Whether to render the trailing "View All Projects" CTA next to the heading. Defaults to
+     * `true` (the home page's use case). Set to `false` when this view is rendered inside the
+     * dedicated `/projects` listing itself - see {@link ProjectsGroupedByView} - where a link
+     * back to "all projects" doesn't make sense given the user is already looking at all of them. */
+    showViewAllLink?: boolean;
 };
 
 /**
@@ -35,18 +40,22 @@ type ProjectViewProps = {
  * two cards for a category that ideally shows three per row - centers itself instead of
  * hugging the start/end edge the way an empty grid cell would.
  *
+ * Each card gets `featured={project.featured}` (the star badge) but not `type` (the category
+ * ribbon) - every use of `ProjectView` today renders a single, already-labeled category (see
+ * {@link ProjectsGroupedByView}), so the ribbon would just repeat the section heading above it.
+ *
  * @param props - {@link ProjectViewProps}.
  * @returns The ProjectView component.
  */
 const ProjectView = (props: ProjectViewProps) => {
-    const { projects, type } = props;
+    const { projects, type, showViewAllLink = true } = props;
 
     const { language } = useLanguage();
     const text = projectViewLang[language];
 
     return (
         <div className="flex flex-col gap-1">
-            <div className="flex items-center justify-between">
+            <div className={`flex items-center ${showViewAllLink ? "justify-between" : ""}`}>
                 {/* The title of the project view */}
                 <h2 className="text-xl sm:text-2xl font-bold text-color">
                     {text.sectionTitles[type]}
@@ -54,13 +63,16 @@ const ProjectView = (props: ProjectViewProps) => {
                 {/* "View All Projects" - shares CTAButton so it gets the same hover-triggered
                     arrow animation (and RTL mirroring) as every other CTA in the app, plus its
                     own hover underline since this one reads as an inline text link rather than
-                    a pill button.
-                    TODO: href is a placeholder - there's no `/projects` route yet. */}
-                <CTAButton
-                    href="/projects"
-                    label={text.viewAllProjects}
-                    className="text-color hover:underline"
-                />
+                    a pill button. Omitted entirely (rather than disabled/hidden) when
+                    `showViewAllLink` is false, since on the `/projects` page itself "view all
+                    projects" is a no-op - the user is already there. */}
+                {showViewAllLink && (
+                    <CTAButton
+                        href="/projects"
+                        label={text.viewAllProjects}
+                        className="text-color hover:underline"
+                    />
+                )}
             </div>
             {/* Separates the title/"View All Projects" row from the card grid below. Explicitly
                 colored with the `border-border` token - Tailwind's preflight reset zeroes every
@@ -89,6 +101,7 @@ const ProjectView = (props: ProjectViewProps) => {
                             stack={project.stack}
                             description={project.content[language].shortDescription}
                             previewImg={project.screenshots?.[0]}
+                            featured={project.featured}
                             className="w-full sm:w-[calc(50%-0.5rem)] md:w-[calc(33.333%-0.667rem)]"
                         />
                     );

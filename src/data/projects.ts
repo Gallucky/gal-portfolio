@@ -79,8 +79,24 @@ export type Project = {
     };
 };
 
-/** All projects, both UI implementations and markup projects. */
-export const allProjects = [...uiImplementationProjects, ...markupProjects, ...applicationProjects];
+/**
+ * A {@link Project} as it actually appears in {@link allProjects}: every project gets a `type`
+ * discriminant (`"uiImplementation" | "markup" | "application"`) attached by its category's
+ * aggregator file (e.g. `uiImplementationProjects.ts`), even though the category-agnostic
+ * {@link Project} type itself doesn't declare that field. Components that need to group or
+ * filter `allProjects` by category - e.g. {@link ProjectsGroupedByView} - should type their
+ * `projects` prop against this instead of the bare `Project` type.
+ */
+export type CategorizedProject = Project & {
+    type: "uiImplementation" | "markup" | "application";
+};
+
+/** All projects across every category: UI implementations, markup projects, and applications. */
+export const allProjects: CategorizedProject[] = [
+    ...uiImplementationProjects,
+    ...markupProjects,
+    ...applicationProjects,
+];
 
 /** Projects that are highlighted on the home page. */
 export const featuredProjects = allProjects.filter((project) => project.featured);

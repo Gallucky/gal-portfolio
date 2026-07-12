@@ -33,7 +33,7 @@ export const projectViewLang: Translations<ProjectViewContent> = {
     he: {
         sectionTitles: {
             uiImplementation: "מימוש ממשקים",
-            markup: "פרויקטי מארקאפ",
+            markup: "פרויקטי Markup",
             application: "אפליקציות",
             featured: "פרויקטים נבחרים",
         },
