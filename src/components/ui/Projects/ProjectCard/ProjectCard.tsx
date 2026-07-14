@@ -240,10 +240,10 @@ const ProjectCard = (props: ProjectCardProps) => {
                         not nested inside the padded wrapper above), reset back to nothing from
                         `sm:` up where that wrapper's own padding takes over again. */}
                     <h3
-                        className={`font-bold text-color ${
+                        className={`line-clamp-2 font-bold text-color ${
                             isHorizontal
-                                ? "pt-2 pb-1 text-base sm:mb-1 sm:p-0 sm:text-[1.2rem]"
-                                : "mb-1 text-[1.2rem]"
+                                ? "pt-2 pb-1 text-base sm:mb-1 sm:min-h-[2.9rem] sm:p-0 sm:text-[1.2rem]"
+                                : "mb-1 min-h-[2.9rem] text-[1.2rem]"
                         }`}>
                         {name}
                     </h3>
@@ -265,11 +265,19 @@ const ProjectCard = (props: ProjectCardProps) => {
                         {/* A short description of the project, clamped to 2 lines so cards of
                             varying description length still line up - in vertical layout it also
                             grows (`flex-1`) to push the stack/CTA below down to a consistent
-                            spot; horizontal layout centers its content vertically instead, so
-                            that growth isn't needed there. */}
+                            spot when the surrounding row *is* stretched to a common height (e.g.
+                            {@link ProjectsGridView}'s CSS grid). But `flex-1` alone only
+                            equalizes cards whose card-level cross-stretch actually kicks in - in
+                            {@link ProjectView}'s `flex-wrap` layout that stretch doesn't reliably
+                            apply, so a 1-line description card would otherwise end up visibly
+                            shorter than a 2-line sibling in the same row. `min-h-[2.5rem]`
+                            (2 lines at this text size) makes that minimum explicit instead of
+                            depending on the parent stretching correctly, so card height stays
+                            consistent either way. Horizontal layout centers its content vertically
+                            instead, so neither the growth nor the floor is needed there. */}
                         <p
                             className={`mb-3 text-sm text-color-muted line-clamp-2 ${
-                                isHorizontal ? "" : "flex-1"
+                                isHorizontal ? "" : "min-h-[2.5rem] flex-1"
                             }`}>
                             {description || text.noDescription}
                         </p>
@@ -283,7 +291,7 @@ const ProjectCard = (props: ProjectCardProps) => {
                             row wants, so both drop out until the row grows at `sm:` and up. */}
                         <ul
                             aria-label="Technology stack"
-                            className={`mb-3 flex flex-wrap gap-2 ${isHorizontal ? "hidden sm:flex" : ""}`}>
+                            className={`mb-3 flex min-h-[3.75rem] flex-wrap content-start gap-2 ${isHorizontal ? "hidden sm:flex" : ""}`}>
                             {visibleStack.map((item) => {
                                 const hex = getTechColor(item, themeValue);
 
