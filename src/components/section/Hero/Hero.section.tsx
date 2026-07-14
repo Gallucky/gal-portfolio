@@ -28,7 +28,7 @@ const HeroSection = () => {
     const data = heroSectionLang[language];
 
     return (
-        <Section className="flex-col mt-[var(--navbar-height)] w-svw!">
+        <Section className="flex-col mt-[calc(var(--navbar-height)+2rem)] w-svw!">
             <div className="w-full max-w-[100ch] mx-auto text-center px-4 mt-12">
                 <h2 className="text-xs text-color-muted font-bold font-assistant mb-5 tracking-widest">
                     {data.subtitle.toUpperCase()}
@@ -42,8 +42,8 @@ const HeroSection = () => {
                 {/* TODO: hrefs are placeholders pointing at future in-page section ids — real
                     targets depend on Phase 3's unresolved scroll-anchor-vs-routes decision. */}
                 <div className="flex flex-wrap items-center justify-center gap-4">
-                    <CTAButton href="#projects" label={data.ctaProjects} className={ctaSolid} />
-                    <CTAButton href="#contact" label={data.ctaContact} className={ctaOutline} />
+                    <CTAButton href="/projects" label={data.ctaProjects} className={ctaSolid} />
+                    <CTAButton href="/contact" label={data.ctaContact} className={ctaOutline} />
                 </div>
             </div>
         </Section>

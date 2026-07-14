@@ -36,9 +36,12 @@ type ProjectViewProps = {
  * (`"uiImplementation"`), so formatting them wouldn't produce correct Hebrew text and would
  * violate this project's i18n rule against hardcoding language-specific strings in components.
  *
- * Cards are laid out with `flex-wrap` (not `grid`) so that an incomplete last row - e.g. one or
- * two cards for a category that ideally shows three per row - centers itself instead of
- * hugging the start/end edge the way an empty grid cell would.
+ * Cards are laid out with CSS `grid` (same `grid-cols-1 sm:grid-cols-2 lg:grid-cols-3` track
+ * setup {@link ProjectsGridView} uses) rather than a manually `w-[calc(...)]`-sized `flex-wrap`
+ * row - grid's own column tracks size every card equally and reflow at the same breakpoints
+ * without needing per-breakpoint width math kept in sync with the row's `gap`, which is what
+ * previously let cards drift out of sync (uneven widths, cards visually "squished" narrower
+ * than their row siblings) whenever that math and the actual gap disagreed.
  *
  * Each card gets `featured={project.featured}` (the star badge) but not `type` (the category
  * ribbon) - every use of `ProjectView` today renders a single, already-labeled category (see
@@ -55,9 +58,19 @@ const ProjectView = (props: ProjectViewProps) => {
 
     return (
         <div className="flex flex-col gap-1">
-            <div className={`flex items-center ${showViewAllLink ? "justify-between" : ""}`}>
-                {/* The title of the project view */}
-                <h2 className="text-xl sm:text-2xl font-bold text-color">
+            {/* `flex-wrap` + `gap-x-3 gap-y-1` (not just `justify-between`) so that on very
+                narrow screens, where the title and "View All Projects" together don't fit one
+                row at a readable size, the CTA drops to its own line with breathing room instead
+                of the two being forced to overlap/crowd each other on a single row. */}
+            <div
+                className={`flex flex-wrap items-center gap-x-3 gap-y-1 ${showViewAllLink ? "justify-between" : ""}`}>
+                {/* The title of the project view. Sized with `clamp()` (min 1.125rem, scaling
+                    with viewport width, capped at 1.5rem) rather than a `text-xl sm:text-2xl`
+                    breakpoint jump - a fluid size shrinks gradually as the screen narrows, so it
+                    stays legible and proportionate down to small phones instead of holding a
+                    fixed 20px that (combined with the CTA beside it) reads as too large and
+                    cramped once the row gets tight. */}
+                <h2 className="text-[clamp(1.125rem,4vw,1.5rem)] font-bold text-color">
                     {text.sectionTitles[type]}
                 </h2>
                 {/* "View All Projects" - shares CTAButton so it gets the same hover-triggered
@@ -65,12 +78,14 @@ const ProjectView = (props: ProjectViewProps) => {
                     own hover underline since this one reads as an inline text link rather than
                     a pill button. Omitted entirely (rather than disabled/hidden) when
                     `showViewAllLink` is false, since on the `/projects` page itself "view all
-                    projects" is a no-op - the user is already there. */}
+                    projects" is a no-op - the user is already there. Its own text is a smaller,
+                    fluid `clamp()` too (never as large as the heading) so it keeps reading as a
+                    secondary link rather than competing with the title for space/attention. */}
                 {showViewAllLink && (
                     <CTAButton
                         href="/projects"
                         label={text.viewAllProjects}
-                        className="text-color hover:underline"
+                        className="whitespace-nowrap text-[clamp(0.8rem,2.5vw,1rem)] text-color hover:underline"
                     />
                 )}
             </div>
@@ -81,17 +96,18 @@ const ProjectView = (props: ProjectViewProps) => {
                 near-invisible against this app's dark background unless given a real color. */}
             <hr className="border-border" />
             {/*
-              Should ideally show 3 cards per row, can show 2 or 1 on smaller viewports.
-              flex-wrap (instead of grid) so that if there aren't enough project cards to fill
-              the last row, the leftover cards center themselves rather than sitting flush
-              against the start edge with empty grid cells trailing after them.
+              1 column by default, 2 from `sm:`, 3 from `lg:` - grid's tracks size every card in
+              a row equally (and every row the same, since they share the same track sizes)
+              without any manual per-card width math, so cards can't drift out of sync into
+              uneven/"squished" widths the way the old `flex-wrap` + `w-[calc(...)]` combo could
+              if that math and the gap below ever disagreed.
 
               `mt-6` (bigger than the header row's own `gap-1`) intentionally leaves more room
               between the divider and the cards than between the title and the divider - cards
               lift on hover (`ProjectCard`'s `hover:-translate-y-1`), and a gap sized to the
               resting layout alone left hovered cards butting right up against the `hr`.
              */}
-            <div className="mt-6 flex flex-wrap justify-center gap-4">
+            <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {projects.map((project) => {
                     return (
                         <ProjectCard
@@ -102,7 +118,6 @@ const ProjectView = (props: ProjectViewProps) => {
                             description={project.content[language].shortDescription}
                             previewImg={project.screenshots?.[0]}
                             featured={project.featured}
-                            className="w-full sm:w-[calc(50%-0.5rem)] md:w-[calc(33.333%-0.667rem)]"
                         />
                     );
                 })}
