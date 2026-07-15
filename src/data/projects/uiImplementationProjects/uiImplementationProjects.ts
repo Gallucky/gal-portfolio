@@ -1,15 +1,20 @@
 import type { Project, ProjectContent } from "@data/projects";
 import type { SupportedLanguages } from "@/types/Languages";
+// All 6 UI implementation projects have been rebuilt with real data.
 import leadingYouForward from "./leading_you_forward/metadata";
 import hereAndNow from "./here_and_now/metadata";
-import goodCoffeeForGoodDay from "./good_coffee_for_good_day/metadata";
+import goodCoffeeForAGoodDay from "./good_coffee_for_a_good_day/metadata";
 import letUsLeadYouForward from "./let_us_lead_you_forward/metadata";
 import discoverTheWorld from "./discover_the_world/metadata";
 import thinkOutsideTheBox from "./think_outside_the_box/metadata";
 import freeAdvisement from "./free_advisement/metadata";
 
-// FIXME: missing JSDoc block per project-rules.md Code Writing/Style rule 6 (sibling type
-// `UIImplementationProjectMetadata` below has one — this type should too).
+/**
+ * A UI implementation project - a course/portfolio exercise where the goal was implementing a
+ * given design (rather than building a full application), always unfeatured.
+ *
+ * @see {@link Project} for the shared shape every project (of any type) conforms to.
+ */
 export type UIImplementationProject = Omit<Project, "featured"> & {
     featured: false; // All UI implementations are not featured
     type: "uiImplementation"; // All UI implementations are of type "uiImplementation"
@@ -28,10 +33,9 @@ export type UIImplementationProject = Omit<Project, "featured"> & {
 export type UIImplementationProjectMetadata = Omit<UIImplementationProject, "type" | "featured">;
 
 const rawUiImplementationProjects: UIImplementationProjectMetadata[] = [
-    // Import individual project metadata objects here
     leadingYouForward,
     hereAndNow,
-    goodCoffeeForGoodDay,
+    goodCoffeeForAGoodDay,
     letUsLeadYouForward,
     discoverTheWorld,
     thinkOutsideTheBox,

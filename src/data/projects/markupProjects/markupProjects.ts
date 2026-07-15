@@ -1,10 +1,12 @@
 import type { Project } from "@data/projects";
-import countriesFlags from "./countries_flags/metadata";
-import orensMathGame from "./oren's_math_game/metadata";
-import ticTacToe from "./tic_tac_toe/metadata";
-import usersManagement from "./users_management/metadata";
-import weatherCast from "./weather_cast/metadata";
-import websiteBuilder from "./website_builder/metadata";
+// Cleared for a rewrite with real project data - uncomment each import as its metadata.ts
+// (see the matching folder) is filled back in with real content.
+// import countriesFlags from "./countries_flags/metadata";
+// import orensMathGame from "./oren's_math_game/metadata";
+// import ticTacToe from "./tic_tac_toe/metadata";
+// import usersManagement from "./users_management/metadata";
+// import weatherCast from "./weather_cast/metadata";
+// import websiteBuilder from "./website_builder/metadata";
 
 /**
  * An helper type that represents a markup project, which is a kind of project that is not featured.
@@ -29,13 +31,15 @@ export type MarkupProject = Omit<Project, "featured"> & {
  */
 export type MarkupProjectMetadata = Omit<MarkupProject, "type" | "featured">;
 
+// Cleared for a rewrite with real project data (see each folder's metadata.ts) - re-add entries
+// (and their import above) here as they're filled back in with real content, one at a time.
 const rawMarkupProjects: MarkupProjectMetadata[] = [
-    countriesFlags,
-    orensMathGame,
-    ticTacToe,
-    usersManagement,
-    weatherCast,
-    websiteBuilder,
+    // countriesFlags,
+    // orensMathGame,
+    // ticTacToe,
+    // usersManagement,
+    // weatherCast,
+    // websiteBuilder,
 ];
 
 /** An array of markup projects as project-metadata objects that are in the website. */
