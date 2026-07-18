@@ -263,24 +263,35 @@ const ProjectCard = (props: ProjectCardProps) => {
                                 : "flex flex-1 flex-col"
                         }>
                         {/* A short description of the project, clamped to 2 lines so cards of
-                            varying description length still line up - in vertical layout it also
-                            grows (`flex-1`) to push the stack/CTA below down to a consistent
-                            spot when the surrounding row *is* stretched to a common height (e.g.
-                            {@link ProjectsGridView}'s CSS grid). But `flex-1` alone only
-                            equalizes cards whose card-level cross-stretch actually kicks in - in
-                            {@link ProjectView}'s `flex-wrap` layout that stretch doesn't reliably
-                            apply, so a 1-line description card would otherwise end up visibly
-                            shorter than a 2-line sibling in the same row. `min-h-[2.5rem]`
+                            varying description length still line up - in vertical layout the
+                            *wrapper* also grows (`flex-1`) to push the stack/CTA below down to a
+                            consistent spot when the surrounding row *is* stretched to a common
+                            height (e.g. {@link ProjectsGridView}'s CSS grid). But `flex-1` alone
+                            only equalizes cards whose card-level cross-stretch actually kicks in -
+                            in {@link ProjectView}'s `flex-wrap` layout that stretch doesn't
+                            reliably apply, so a 1-line description card would otherwise end up
+                            visibly shorter than a 2-line sibling in the same row. `min-h-[2.5rem]`
                             (2 lines at this text size) makes that minimum explicit instead of
                             depending on the parent stretching correctly, so card height stays
                             consistent either way. Horizontal layout centers its content vertically
-                            instead, so neither the growth nor the floor is needed there. */}
-                        <p
-                            className={`mb-3 text-sm text-color-muted line-clamp-2 ${
-                                isHorizontal ? "" : "min-h-[2.5rem] flex-1"
-                            }`}>
-                            {description || text.noDescription}
-                        </p>
+                            instead, so neither the growth nor the floor is needed there.
+
+                            `flex-1`/`min-h` deliberately live on this wrapper `div`, not on the
+                            clamped `<p>` itself: `line-clamp-2` switches the element it's on to
+                            `display: -webkit-box`, and a flex item that's simultaneously stretched
+                            by `flex-1` (a flex-grow/shrink/basis triplet) can end up taller than
+                            two lines' worth of text - at which point clamping stops truncating at
+                            2 lines and instead lets the box (and any text past the ellipsis) grow
+                            into that extra space, so the card's own `overflow-hidden` ends up
+                            hard-cutting the description mid-line at the card's edge instead of a
+                            clean "…" ending the second line. Keeping the `<p>` a plain block sized
+                            only by its own content-driven `-webkit-box` sidesteps that entirely,
+                            while the surrounding `div` still grows/floors exactly as before. */}
+                        <div className={`mb-3 ${isHorizontal ? "" : "min-h-[2.5rem] flex-1"}`}>
+                            <p className="line-clamp-2 text-sm text-color-muted">
+                                {description || text.noDescription}
+                            </p>
+                        </div>
 
                         {/* A horizontal list of the stack used in the project, each badge tinted
                             with that technology's real brand color - capped at 3 visible items;
