@@ -17,6 +17,7 @@ const thinkOutsideTheBox: UIImplementationProjectMetadata = {
             url: "https://github.com/Gallucky/think-outside-the-box",
         },
     ],
+    liveUrl: "https://gallucky.github.io/think-outside-the-box/",
     screenshots: [
         {
             url: previewImage,

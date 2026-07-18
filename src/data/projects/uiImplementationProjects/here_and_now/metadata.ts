@@ -12,6 +12,7 @@ const hereAndNow: UIImplementationProjectMetadata = {
     slug: "here-and-now",
     stack: ["HTML", "CSS"],
     githubLinks: [{ label: "View Repository", url: "https://github.com/Gallucky/here-and-now" }],
+    liveUrl: "https://gallucky.github.io/here-and-now/",
     screenshots: [
         {
             url: previewImage,

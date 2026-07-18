@@ -13,6 +13,7 @@ const leadingYouForward: UIImplementationProjectMetadata = {
     githubLinks: [
         { label: "View Repository", url: "https://github.com/Gallucky/leading-you-forward" },
     ],
+    liveUrl: "https://gallucky.github.io/leading-you-forward/",
     screenshots: [
         {
             url: previewImage,

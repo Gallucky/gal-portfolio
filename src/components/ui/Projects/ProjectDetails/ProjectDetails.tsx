@@ -12,6 +12,7 @@ import { getTechColor } from "@/data/techColors";
 import { projectTypeBadgeColors } from "@/data/projectTypeColors";
 import { projectCardLang } from "@lang/ui/Projects/ProjectCard/projectCard";
 import { projectDetailsLang as lang } from "@lang/ui/Projects/ProjectDetails/projectDetails";
+import { renderWithInlineCode } from "@utils/text/renderWithInlineCode";
 
 /**
  * Renders the full details page for a single project, reachable at `/projects/:slug` - the
@@ -210,7 +211,7 @@ const ProjectDetails = () => {
                         </h2>
                         <hr className="mb-4 border-border" />
                         <p className="text-base leading-relaxed font-body tracking-wide text-color">
-                            {content.overview}
+                            {renderWithInlineCode(content.overview)}
                         </p>
                     </div>
 
@@ -220,7 +221,7 @@ const ProjectDetails = () => {
                         </h2>
                         <hr className="mb-4 border-border" />
                         <p className="text-base leading-relaxed font-body tracking-wide text-color">
-                            {content.architecture}
+                            {renderWithInlineCode(content.architecture)}
                         </p>
                     </div>
 
@@ -235,7 +236,7 @@ const ProjectDetails = () => {
                                     <li
                                         key={challenge}
                                         className="text-base leading-relaxed font-body text-color">
-                                        {challenge}
+                                        {renderWithInlineCode(challenge)}
                                     </li>
                                 ))}
                             </ul>
@@ -253,7 +254,7 @@ const ProjectDetails = () => {
                                     <li
                                         key={lesson}
                                         className="text-base leading-relaxed font-body text-color">
-                                        {lesson}
+                                        {renderWithInlineCode(lesson)}
                                     </li>
                                 ))}
                             </ul>

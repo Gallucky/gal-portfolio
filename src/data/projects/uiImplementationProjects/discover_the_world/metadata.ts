@@ -13,6 +13,7 @@ const discoverTheWorld: UIImplementationProjectMetadata = {
     githubLinks: [
         { label: "View Repository", url: "https://github.com/Gallucky/discover-the-world" },
     ],
+    liveUrl: "https://gallucky.github.io/discover-the-world/",
     screenshots: [
         {
             url: previewImage,

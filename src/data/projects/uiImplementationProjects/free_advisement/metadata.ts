@@ -11,6 +11,7 @@ const freeAdvisement: UIImplementationProjectMetadata = {
     slug: "free-advisement",
     stack: ["HTML", "CSS", "Sass"],
     githubLinks: [{ label: "View Repository", url: "https://github.com/Gallucky/free-advisement" }],
+    liveUrl: "https://gallucky.github.io/free-advisement/",
     screenshots: [
         {
             url: previewImage,

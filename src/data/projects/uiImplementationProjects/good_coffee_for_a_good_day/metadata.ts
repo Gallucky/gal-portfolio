@@ -16,6 +16,7 @@ const goodCoffeeForAGoodDay: UIImplementationProjectMetadata = {
             url: "https://github.com/Gallucky/good-coffee-for-a-good-day",
         },
     ],
+    liveUrl: "https://gallucky.github.io/good-coffee-for-a-good-day/",
     screenshots: [
         {
             url: previewImage,
