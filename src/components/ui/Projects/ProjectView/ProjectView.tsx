@@ -108,19 +108,30 @@ const ProjectView = (props: ProjectViewProps) => {
               uneven/"squished" widths the way the old `flex-wrap` + `w-[calc(...)]` combo could
               if that math and the gap below ever disagreed.
 
-              The `"featured"` view (the home page's curated cross-category list) uses a
-              different track definition instead: `repeat(auto-fit, minmax(16rem, 22rem))` with
-              `justify-center`. Unlike fixed `1fr` tracks - which always stretch to fill every
-              column of the row regardless of how many cards there are, leaving dead space (or a
-              stretched, oversized lone card) whenever `featuredProjects` doesn't happen to be a
-              multiple of the column count - `auto-fit` only ever generates as many tracks as
-              there are cards to fill them, each capped at a natural card width rather than
-              stretching, so `justify-center` can center that row as a unit instead of pinning it
-              to the start. The other (real-category) views intentionally keep the fixed-column
-              grid instead: there, an under-filled last row is normal/expected (e.g. 4 projects
-              in a 3-column grid), and centering it would misleadingly suggest those "leftover"
-              cards are a distinct, deliberately-curated group rather than just where the list
-              happened to end.
+              The `"featured"` view (the home page's curated cross-category list) uses `flex
+              flex-wrap justify-center` instead, with each card given an explicit `flex-none`
+              basis (1 column by default, 2 from `sm:`, 3 from `lg:` - matching the other views'
+              breakpoints) rather than a grid `1fr` track. Fixed grid tracks always stretch to
+              fill every column of the row regardless of how many cards there are, leaving dead
+              space (or a stretched, oversized lone card) whenever `featuredProjects` doesn't
+              happen to be a multiple of the column count; a `flex-wrap` row instead only takes
+              up exactly as much width as its cards' bases need, so `justify-center` can center
+              that row (or the shorter last row) as a unit instead of pinning it to the start.
+              The other (real-category) views intentionally keep the fixed-column grid instead:
+              there, an under-filled last row is normal/expected (e.g. 4 projects in a 3-column
+              grid), and centering it would misleadingly suggest those "leftover" cards are a
+              distinct, deliberately-curated group rather than just where the list happened to
+              end.
+
+              Each basis is `calc()`'d against this row's own `gap-4` (1rem) so cards line up
+              exactly with the *grid* views' column widths at the same breakpoints instead of
+              drifting out of sync with the gap: 2 columns split one 1rem gap between them
+              (`(100% - 1rem) / 2`), 3 columns split two 1rem gaps (`(100% - 2rem) / 3`).
+              `flex-none` (rather than `flex-1`) keeps each card pinned to that computed basis -
+              without it, flex's default `flex-grow`-less-but-shrinkable behavior would still let
+              an under-filled row's cards stay their basis width (which is what we want here),
+              but `flex-1` would instead stretch them to fill the row, defeating the centering
+              above.
 
               `mt-6` (bigger than the header row's own `gap-1`) intentionally leaves more room
               between the divider and the cards than between the title and the divider - cards
@@ -128,10 +139,10 @@ const ProjectView = (props: ProjectViewProps) => {
               resting layout alone left hovered cards butting right up against the `hr`.
              */}
             <div
-                className={`mt-6 grid gap-4 ${
+                className={`mt-6 gap-4 ${
                     type === "featured"
-                        ? "grid-cols-[repeat(auto-fit,minmax(16rem,22rem))] justify-center"
-                        : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+                        ? "flex flex-wrap justify-center"
+                        : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
                 }`}>
                 {projects.map((project) => {
                     return (
@@ -143,6 +154,11 @@ const ProjectView = (props: ProjectViewProps) => {
                             description={project.content[language].shortDescription}
                             previewImg={project.screenshots?.[0]}
                             featured={project.featured}
+                            className={
+                                type === "featured"
+                                    ? "flex-none basis-full sm:basis-[calc((100%-1rem)/2)] lg:basis-[calc((100%-2rem)/3)]"
+                                    : undefined
+                            }
                         />
                     );
                 })}

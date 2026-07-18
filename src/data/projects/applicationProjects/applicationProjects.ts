@@ -1,8 +1,10 @@
 import type { Project } from "@data/projects";
+import galPortfolio from "./gal_portfolio/metadata";
 import clarityBox from "./clarity_box/metadata";
 import jarvisMcpServer from "./jarvis_mcp_server/metadata";
 import hackerUNodeMongoDBServer from "./hackeru_node_mongodb_server/metadata";
 import hackerUReactModuleProject from "./hackeru_react_module_project/metadata";
+import hackerUPortfolioProject from "./hackeru_portfolio_project/metadata";
 
 /**
  * An helper type that represents an application project, which is a kind of project that can be featured.
@@ -27,10 +29,12 @@ export type ApplicationProject = Project & {
 export type ApplicationProjectMetadata = Omit<ApplicationProject, "type">;
 
 const rawApplicationProjects: ApplicationProjectMetadata[] = [
+    galPortfolio,
     clarityBox,
     jarvisMcpServer,
     hackerUReactModuleProject,
     hackerUNodeMongoDBServer,
+    hackerUPortfolioProject,
 ];
 
 /** An array of application projects as project-metadata objects that are in the website. */
