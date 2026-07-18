@@ -11,7 +11,7 @@ import previewImage from "./project_preview.png";
 const hereAndNow: UIImplementationProjectMetadata = {
     slug: "here-and-now",
     stack: ["HTML", "CSS"],
-    githubFrontend: "https://github.com/Gallucky/here-and-now",
+    githubLinks: [{ label: "View Repository", url: "https://github.com/Gallucky/here-and-now" }],
     screenshots: [
         {
             url: previewImage,

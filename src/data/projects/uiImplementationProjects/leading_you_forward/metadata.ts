@@ -10,7 +10,9 @@ import previewImage from "./project_preview.png";
 const leadingYouForward: UIImplementationProjectMetadata = {
     slug: "leading-you-forward",
     stack: ["HTML", "CSS"],
-    githubFrontend: "https://github.com/Gallucky/leading-you-forward",
+    githubLinks: [
+        { label: "View Repository", url: "https://github.com/Gallucky/leading-you-forward" },
+    ],
     screenshots: [
         {
             url: previewImage,

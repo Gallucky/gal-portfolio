@@ -19,8 +19,6 @@ export type ProjectDetailsContent = {
         lessons: string;
     };
     links: {
-        githubFrontend: string;
-        githubBackend: string;
         liveUrl: string;
     };
     /** Accessible label for the gradient placeholder tile shown in place of a screenshot
@@ -44,8 +42,6 @@ export const projectDetailsLang: Translations<ProjectDetailsContent> = {
             lessons: "Lessons Learned",
         },
         links: {
-            githubFrontend: "Frontend Repo",
-            githubBackend: "Backend Repo",
             liveUrl: "Live Site",
         },
         noScreenshots: "No screenshots available yet for this project",
@@ -59,8 +55,6 @@ export const projectDetailsLang: Translations<ProjectDetailsContent> = {
             lessons: "לקחים שנלמדו",
         },
         links: {
-            githubFrontend: "מאגר Frontend",
-            githubBackend: "מאגר Backend",
             liveUrl: "אתר חי",
         },
         noScreenshots: "עדיין אין צילומי מסך זמינים לפרויקט זה",

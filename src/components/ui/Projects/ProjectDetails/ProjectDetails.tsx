@@ -140,28 +140,19 @@ const ProjectDetails = () => {
                 {/* Outbound links - omitted entirely (not disabled/greyed) when a project
                     doesn't have a given link, since e.g. markup exercises often have no
                     live URL and UI implementations often have no backend repo. */}
-                {(project.githubFrontend || project.githubBackend || project.liveUrl) && (
+                {((project.githubLinks && project.githubLinks.length > 0) || project.liveUrl) && (
                     <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
-                        {project.githubFrontend && (
+                        {project.githubLinks?.map((githubLink) => (
                             <CTAButton
-                                label={text.links.githubFrontend}
-                                href={project.githubFrontend}
+                                key={githubLink.url}
+                                label={githubLink.label}
+                                href={githubLink.url}
                                 target="_blank"
                                 icon={SiGithub}
                                 animateIconOnHover={false}
                                 className="rounded-3xl border border-primary px-4 py-2 font-bold text-primary hover:bg-primary/10"
                             />
-                        )}
-                        {project.githubBackend && (
-                            <CTAButton
-                                label={text.links.githubBackend}
-                                href={project.githubBackend}
-                                target="_blank"
-                                icon={SiGithub}
-                                animateIconOnHover={false}
-                                className="rounded-3xl border border-primary px-4 py-2 font-bold text-primary hover:bg-primary/10"
-                            />
-                        )}
+                        ))}
                         {project.liveUrl && (
                             <CTAButton
                                 label={text.links.liveUrl}

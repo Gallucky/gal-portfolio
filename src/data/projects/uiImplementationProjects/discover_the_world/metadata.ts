@@ -10,7 +10,9 @@ import previewImage from "./project_preview.png";
 const discoverTheWorld: UIImplementationProjectMetadata = {
     slug: "discover-the-world",
     stack: ["HTML", "CSS"],
-    githubFrontend: "https://github.com/Gallucky/discover-the-world",
+    githubLinks: [
+        { label: "View Repository", url: "https://github.com/Gallucky/discover-the-world" },
+    ],
     screenshots: [
         {
             url: previewImage,

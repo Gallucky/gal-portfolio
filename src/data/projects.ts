@@ -19,6 +19,19 @@ export type Screenshot = {
 };
 
 /**
+ * A single labeled link to a GitHub repository related to a project (e.g. its frontend,
+ * backend, or any other repo worth linking). Replaces the old fixed `githubFrontend`/
+ * `githubBackend` fields on {@link Project} with an arbitrary-length list, so a project isn't
+ * limited to exactly those two repos and each link can carry its own custom label.
+ */
+export type GitHubLink = {
+    /** Human-readable label for the link (e.g. "Frontend", "Backend", "CLI"). */
+    label: string;
+    /** URL to the GitHub repository. */
+    url: string;
+};
+
+/**
  * Defines the structure of a project's content.
  * Contains the title and description of the project - in multiple languages,
  * as well as technical details such as the stack used, GitHub links,
@@ -61,11 +74,10 @@ export type Project = {
     /** List of technologies used - distinct from `architecture`, which describes how they were used. */
     stack: string[];
 
-    /** Link to the GitHub repository related to the frontend of the project */
-    githubFrontend?: string;
-
-    /** Link to the GitHub repository related to the backend of the project */
-    githubBackend?: string;
+    /** GitHub repository links related to the project (e.g. frontend, backend, or any other
+     * repo worth linking) - each with its own custom label.
+     * @see {@link GitHubLink} */
+    githubLinks?: GitHubLink[];
 
     /** Link to the live website of the project */
     liveUrl?: string;

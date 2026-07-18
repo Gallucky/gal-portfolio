@@ -10,7 +10,7 @@ import previewImage from "./project_preview.png";
 const freeAdvisement: UIImplementationProjectMetadata = {
     slug: "free-advisement",
     stack: ["HTML", "CSS", "Sass"],
-    githubFrontend: "https://github.com/Gallucky/free-advisement",
+    githubLinks: [{ label: "View Repository", url: "https://github.com/Gallucky/free-advisement" }],
     screenshots: [
         {
             url: previewImage,

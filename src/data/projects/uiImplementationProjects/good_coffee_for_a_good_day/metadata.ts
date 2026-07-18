@@ -10,7 +10,12 @@ import previewImage from "./project_preview.png";
 const goodCoffeeForAGoodDay: UIImplementationProjectMetadata = {
     slug: "good-coffee-for-a-good-day",
     stack: ["HTML", "CSS"],
-    githubFrontend: "https://github.com/Gallucky/good-coffee-for-a-good-day",
+    githubLinks: [
+        {
+            label: "View Repository",
+            url: "https://github.com/Gallucky/good-coffee-for-a-good-day",
+        },
+    ],
     screenshots: [
         {
             url: previewImage,

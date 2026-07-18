@@ -11,7 +11,12 @@ import previewImage from "./project_preview.png";
 const thinkOutsideTheBox: UIImplementationProjectMetadata = {
     slug: "think-outside-the-box",
     stack: ["HTML", "CSS", "Sass"],
-    githubFrontend: "https://github.com/Gallucky/think-outside-the-box",
+    githubLinks: [
+        {
+            label: "View Repository",
+            url: "https://github.com/Gallucky/think-outside-the-box",
+        },
+    ],
     screenshots: [
         {
             url: previewImage,
