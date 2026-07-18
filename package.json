@@ -19,6 +19,7 @@
         "tags:refresh": "node scripts/refreshTags.js"
     },
     "dependencies": {
+        "@vercel/analytics": "^2.0.1",
         "clsx": "^2.1.1",
         "country-flag-icons": "^1.6.20",
         "framer-motion": "^12.23.26",

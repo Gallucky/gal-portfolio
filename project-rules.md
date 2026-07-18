@@ -43,9 +43,10 @@
 
 ## Data & Content
 
-1. Each project's rich content (`title`, `shortDescription`, `overview`, `architecture`, `challenges`, `lessons`) is defined per-language, separately from its non-translatable metadata (`slug`, `stack`, `featured`, links, screenshots).
-2. Project `slug` values and project names/titles must remain unique across the whole `allProjects` list.
-3. A project's `stack` array must be ordered with its most important/flagship technologies first. Nothing infers or re-sorts this order at render time - e.g. `ProjectCard` shows the first 3 entries as a project's featured badges (collapsing the rest into a "+N" overflow badge), trusting the array's order as-authored. When adding or editing a project's `stack`, put the technologies you want surfaced first.
+1. Project categories: `uiImplementation` and `markup` are always unfeatured (design-implementation exercises / vanilla HTML-CSS-JS practice); `application` is the catch-all for full applications, backend services, and MCP servers, and can be featured per-project; `scripts` is for standalone utility scripts (e.g. PowerShell automation) and is always unfeatured. A new top-level category is only worth adding once there are multiple real projects for it - a single project fits comfortably under `application` with its distinguishing tech (e.g. "MCP") called out in `stack`.
+2. Each project's rich content (`title`, `shortDescription`, `overview`, `architecture`, `challenges`, `lessons`) is defined per-language, separately from its non-translatable metadata (`slug`, `stack`, `featured`, links, screenshots).
+3. Project `slug` values and project names/titles must remain unique across the whole `allProjects` list.
+4. A project's `stack` array must be ordered with its most important/flagship technologies first. Nothing infers or re-sorts this order at render time - e.g. `ProjectCard` shows the first 3 entries as a project's featured badges (collapsing the rest into a "+N" overflow badge), trusting the array's order as-authored. When adding or editing a project's `stack`, put the technologies you want surfaced first.
 
 ## Working with AI on this codebase
 

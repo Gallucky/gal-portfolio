@@ -5,14 +5,20 @@ import { useLanguage } from "@/app/providers/Language/useLanguage";
 import { projectViewLang } from "@lang/ui/Projects/ProjectView/projectView";
 
 /**
- * The project categories a {@link ProjectView} can render: the three project "kinds" defined
- * in `src/data/projects.ts` (`uiImplementation`, `markup`, `application`) plus `featured`, used
- * for the curated cross-category list shown on the home page (`featuredProjects`).
+ * The project categories a {@link ProjectView} can render: the four project "kinds" defined
+ * in `src/data/projects.ts` (`uiImplementation`, `markup`, `application`, `scripts`) plus
+ * `featured`, used for the curated cross-category list shown on the home page
+ * (`featuredProjects`).
  *
  * Exported (not just used internally) so {@link ProjectViewContent} in the lang file can key its
  * `sectionTitles` translations against the same union instead of redeclaring it.
  */
-export type ProjectViewType = "uiImplementation" | "markup" | "application" | "featured";
+export type ProjectViewType =
+    | "uiImplementation"
+    | "markup"
+    | "application"
+    | "scripts"
+    | "featured";
 
 type ProjectViewProps = {
     /** Which project category this view renders - drives the translated section heading. */
@@ -102,12 +108,31 @@ const ProjectView = (props: ProjectViewProps) => {
               uneven/"squished" widths the way the old `flex-wrap` + `w-[calc(...)]` combo could
               if that math and the gap below ever disagreed.
 
+              The `"featured"` view (the home page's curated cross-category list) uses a
+              different track definition instead: `repeat(auto-fit, minmax(16rem, 22rem))` with
+              `justify-center`. Unlike fixed `1fr` tracks - which always stretch to fill every
+              column of the row regardless of how many cards there are, leaving dead space (or a
+              stretched, oversized lone card) whenever `featuredProjects` doesn't happen to be a
+              multiple of the column count - `auto-fit` only ever generates as many tracks as
+              there are cards to fill them, each capped at a natural card width rather than
+              stretching, so `justify-center` can center that row as a unit instead of pinning it
+              to the start. The other (real-category) views intentionally keep the fixed-column
+              grid instead: there, an under-filled last row is normal/expected (e.g. 4 projects
+              in a 3-column grid), and centering it would misleadingly suggest those "leftover"
+              cards are a distinct, deliberately-curated group rather than just where the list
+              happened to end.
+
               `mt-6` (bigger than the header row's own `gap-1`) intentionally leaves more room
               between the divider and the cards than between the title and the divider - cards
               lift on hover (`ProjectCard`'s `hover:-translate-y-1`), and a gap sized to the
               resting layout alone left hovered cards butting right up against the `hr`.
              */}
-            <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div
+                className={`mt-6 grid gap-4 ${
+                    type === "featured"
+                        ? "grid-cols-[repeat(auto-fit,minmax(16rem,22rem))] justify-center"
+                        : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+                }`}>
                 {projects.map((project) => {
                     return (
                         <ProjectCard

@@ -1,8 +1,8 @@
 import type { Project } from "@data/projects";
-// Cleared for a rewrite with real project data - uncomment each import as its metadata.ts
-// (see the matching folder) is filled back in with real content.
-// import planItTaskManager from "./planit_task_manager/metadata";
-// import quickCartStorefront from "./quickcart_storefront/metadata";
+import clarityBox from "./clarity_box/metadata";
+import jarvisMcpServer from "./jarvis_mcp_server/metadata";
+import hackerUNodeMongoDBServer from "./hackeru_node_mongodb_server/metadata";
+import hackerUReactModuleProject from "./hackeru_react_module_project/metadata";
 
 /**
  * An helper type that represents an application project, which is a kind of project that can be featured.
@@ -26,11 +26,11 @@ export type ApplicationProject = Project & {
  */
 export type ApplicationProjectMetadata = Omit<ApplicationProject, "type">;
 
-// Cleared for a rewrite with real project data (see each folder's metadata.ts) - re-add entries
-// (and their import above) here as they're filled back in with real content, one at a time.
 const rawApplicationProjects: ApplicationProjectMetadata[] = [
-    // planItTaskManager,
-    // quickCartStorefront,
+    clarityBox,
+    jarvisMcpServer,
+    hackerUReactModuleProject,
+    hackerUNodeMongoDBServer,
 ];
 
 /** An array of application projects as project-metadata objects that are in the website. */

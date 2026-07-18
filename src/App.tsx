@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import ScrollToTop from "./components/layout/ScrollToTop";
 import Footer from "./components/ui/Footer/Footer";
 import Navbar from "./components/ui/Navbar/Navbar";
+import { Analytics } from "@vercel/analytics/react";
 
 /**
  * This is the first route, the root route of the application.
@@ -15,6 +16,7 @@ const App = () => {
     return (
         <>
             <ScrollToTop />
+            <Analytics />
             <header>
                 <Navbar />
             </header>

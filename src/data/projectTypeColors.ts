@@ -21,4 +21,5 @@ export const projectTypeBadgeColors: Record<
     uiImplementation: { background: "bg-info", text: "text-bg-dark" },
     markup: { background: "bg-success", text: "text-bg-dark" },
     application: { background: "bg-secondary", text: "text-bg-dark" },
+    scripts: { background: "bg-warning", text: "text-bg-dark" },
 };

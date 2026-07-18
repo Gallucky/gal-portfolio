@@ -15,6 +15,7 @@ const CATEGORY_ORDER: Exclude<ProjectViewType, "featured">[] = [
     "application",
     "uiImplementation",
     "markup",
+    "scripts",
 ];
 
 /**

@@ -2,6 +2,7 @@ import type { SupportedLanguages } from "@/types/Languages";
 import uiImplementationProjects from "./projects/uiImplementationProjects/uiImplementationProjects";
 import markupProjects from "./projects/markupProjects/markupProjects";
 import applicationProjects from "./projects/applicationProjects/applicationProjects";
+import scriptsProjects from "./projects/scriptsProjects/scriptsProjects";
 
 /**
  * Defines the images/screenshots associated with a project,
@@ -93,21 +94,23 @@ export type Project = {
 
 /**
  * A {@link Project} as it actually appears in {@link allProjects}: every project gets a `type`
- * discriminant (`"uiImplementation" | "markup" | "application"`) attached by its category's
- * aggregator file (e.g. `uiImplementationProjects.ts`), even though the category-agnostic
- * {@link Project} type itself doesn't declare that field. Components that need to group or
- * filter `allProjects` by category - e.g. {@link ProjectsGroupedByView} - should type their
- * `projects` prop against this instead of the bare `Project` type.
+ * discriminant (`"uiImplementation" | "markup" | "application" | "scripts"`) attached by its
+ * category's aggregator file (e.g. `uiImplementationProjects.ts`), even though the
+ * category-agnostic {@link Project} type itself doesn't declare that field. Components that need
+ * to group or filter `allProjects` by category - e.g. {@link ProjectsGroupedByView} - should type
+ * their `projects` prop against this instead of the bare `Project` type.
  */
 export type CategorizedProject = Project & {
-    type: "uiImplementation" | "markup" | "application";
+    type: "uiImplementation" | "markup" | "application" | "scripts";
 };
 
-/** All projects across every category: UI implementations, markup projects, and applications. */
+/** All projects across every category: UI implementations, markup projects, applications, and
+ * scripts. */
 export const allProjects: CategorizedProject[] = [
     ...uiImplementationProjects,
     ...markupProjects,
     ...applicationProjects,
+    ...scriptsProjects,
 ];
 
 /** Projects that are highlighted on the home page. */
