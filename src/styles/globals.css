@@ -13,11 +13,6 @@
 @theme inline {
     --font-rubik: "Rubik", system-ui, sans-serif;
     --font-assistant: "Assistant", system-ui, sans-serif;
-    --font-fredoka: "Fredoka", system-ui, sans-serif;
-    --font-heebo: "Heebo", system-ui, sans-serif;
-    --font-inter: "Inter", system-ui, sans-serif;
-    --font-poppins: "Poppins", system-ui, sans-serif;
-    --font-rubik-mono: "Rubik Mono One", system-ui, sans-serif;
 
     --font-titles: var(--font-rubik);
     --font-body: var(--font-assistant);

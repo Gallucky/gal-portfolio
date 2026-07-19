@@ -82,7 +82,7 @@ const ProjectsPage = () => {
                         <h2 className="text-xs text-color-muted font-bold font-assistant mb-2 tracking-widest">
                             {text.subtitle.toUpperCase()}
                         </h2>
-                        <h1 className="text-3xl text-primary font-bold text-outline font-Heebo tracking-tight mb-4">
+                        <h1 className="text-3xl text-primary font-bold text-outline tracking-tight mb-4">
                             {text.title}
                         </h1>
                         <p className="max-w-[70ch] text-base text-color tracking-wide font-body leading-relaxed">

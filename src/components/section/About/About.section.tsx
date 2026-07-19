@@ -60,7 +60,7 @@ const AboutSection = () => {
                     <h2 className="text-xs text-color-muted font-bold font-assistant mb-2 tracking-widest">
                         {data.subtitle.toUpperCase()}
                     </h2>
-                    <h1 className="text-3xl text-primary font-bold text-outline font-Heebo tracking-tight mb-4">
+                    <h1 className="text-3xl text-primary font-bold text-outline tracking-tight mb-4">
                         {data.title}
                     </h1>
                 </div>

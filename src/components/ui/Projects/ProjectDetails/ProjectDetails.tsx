@@ -116,7 +116,7 @@ const ProjectDetails = () => {
                             </span>
                         )}
                     </div>
-                    <h1 className="text-outline mb-4 font-Heebo text-2xl font-bold tracking-tight text-primary">
+                    <h1 className="text-outline mb-4 text-2xl font-bold tracking-tight text-primary">
                         {content.title}
                     </h1>
                     <p className="max-w-[70ch] mx-auto text-base leading-relaxed font-body tracking-wide text-color">

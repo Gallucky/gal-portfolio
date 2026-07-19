@@ -26,7 +26,7 @@ const CTASection = () => {
     return (
         <Section className="flex-col">
             <div className="text-center flex flex-col items-center justify-center gap-1">
-                <h2 className="text-xl text-secondary font-bold font-Heebo">{data.title}</h2>
+                <h2 className="text-xl text-secondary font-bold">{data.title}</h2>
                 <p className="text-base text-color font-body">{data.description}</p>
                 <div className="flex flex-wrap items-center justify-center gap-4 mt-4">
                     <CTAButton

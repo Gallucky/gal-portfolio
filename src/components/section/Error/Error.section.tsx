@@ -42,7 +42,7 @@ const ErrorSection = () => {
             <div className="relative isolate w-full max-w-[100ch] mx-auto text-center px-4 py-16 min-h-[60svh] flex flex-col items-center justify-center overflow-hidden">
                 <div className="error-glow pointer-events-none absolute inset-0 -z-10" />
 
-                <h1 className="flex items-center justify-center gap-2 mb-4 text-7xl sm:text-8xl font-bold text-outline text-primary font-Heebo">
+                <h1 className="flex items-center justify-center gap-2 mb-4 text-7xl sm:text-8xl font-bold text-outline text-primary">
                     {"404".split("").map((digit, index) => (
                         <span
                             key={index}
@@ -53,7 +53,7 @@ const ErrorSection = () => {
                     ))}
                 </h1>
 
-                <h2 className="text-xl sm:text-2xl text-secondary font-bold font-Heebo mb-3">
+                <h2 className="text-xl sm:text-2xl text-secondary font-bold mb-3">
                     {data.title}
                 </h2>
                 <p className="text-base text-color-muted font-body max-w-[60ch] mb-8">
