@@ -1,7 +1,7 @@
-import { useLanguage } from "@/app/providers/Language/useLanguage";
-import Section from "../Section";
 import { errorSectionLang as lang } from "@lang/section/Error/error";
+import { useLanguage } from "@/app/providers/Language/useLanguage";
 import CTAButton from "@components/section/CTA/CTAButton";
+import Section from "@components/section/Section";
 
 const ctaSolid =
     "rounded-lg px-6 py-3 text-sm font-bold transition-colors duration-200 ease-in-out focus-visible:outline-2 focus-visible:outline-primary bg-primary text-bg-dark hover:bg-secondary";

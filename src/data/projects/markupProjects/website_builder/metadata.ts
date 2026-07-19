@@ -1,5 +1,5 @@
-import type { MarkupProjectMetadata } from "../markupProjects";
 import previewImage from "./project_preview.png";
+import type { MarkupProjectMetadata } from "@data/projects/markupProjects/markupProjects";
 
 /**
  * "Website Builder" - a drag-and-drop browser-based website builder that lets users create,

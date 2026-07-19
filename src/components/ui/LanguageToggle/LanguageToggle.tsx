@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { useLanguage } from "@/app/providers/Language/useLanguage";
 import { languageOptions, languageToggleLang } from "@lang/ui/LanguageToggle/languageToggle";
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { useLanguage } from "@/app/providers/Language/useLanguage";
 import type { SupportedLanguages } from "@/types/Languages";
 
 type LanguageToggleProps = {

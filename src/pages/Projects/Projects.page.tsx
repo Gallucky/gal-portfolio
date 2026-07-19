@@ -1,11 +1,11 @@
-import { useMemo, useState } from "react";
+import { projectsPageLang as lang } from "@lang/pages/Projects/projects";
 import { LayoutGrid, List, Rows3, Search, X } from "lucide-react";
-import Section from "@components/section/Section";
+import { useMemo, useState } from "react";
 import { useLanguage } from "@/app/providers/Language/useLanguage";
 import { allProjects } from "@/data/projects";
-import { projectsPageLang as lang } from "@lang/pages/Projects/projects";
-import ProjectsGroupedByView from "./ProjectsGroupedByView";
+import Section from "@components/section/Section";
 import ProjectsGridView from "./ProjectsGridView";
+import ProjectsGroupedByView from "./ProjectsGroupedByView";
 import ProjectsListView from "./ProjectsListView";
 
 type ProjectsPageViewType = "grouped-by" | "grid" | "list";

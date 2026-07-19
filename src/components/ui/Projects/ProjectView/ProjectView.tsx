@@ -1,8 +1,8 @@
-import type { Project } from "@/data/projects";
-import ProjectCard from "../ProjectCard/ProjectCard";
-import CTAButton from "@components/section/CTA/CTAButton";
-import { useLanguage } from "@/app/providers/Language/useLanguage";
 import { projectViewLang } from "@lang/ui/Projects/ProjectView/projectView";
+import { useLanguage } from "@/app/providers/Language/useLanguage";
+import type { Project } from "@/data/projects";
+import CTAButton from "@components/section/CTA/CTAButton";
+import ProjectCard from "@components/ui/Projects/ProjectCard/ProjectCard";
 
 /**
  * The project categories a {@link ProjectView} can render: the four project "kinds" defined

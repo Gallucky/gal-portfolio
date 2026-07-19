@@ -1,6 +1,6 @@
-import { useEffect, type ReactNode } from "react";
-import { ThemeProvider } from "./Theme/ThemeProvider";
+import { type ReactNode } from "react";
 import { LanguageProvider } from "./Language/LanguageProvider";
+import { ThemeProvider } from "./Theme/ThemeProvider";
 
 // Todo: Move this template for documentation and/or to the readme file.
 // How to create a new provider?

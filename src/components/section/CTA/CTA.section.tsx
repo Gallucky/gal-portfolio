@@ -1,8 +1,8 @@
-import { useLanguage } from "@/app/providers/Language/useLanguage";
-import Section from "../Section";
 import { ctaSectionLang as lang } from "@lang/section/CTA/cta";
-import CTAButton from "./CTAButton";
+import { useLanguage } from "@/app/providers/Language/useLanguage";
+import Section from "@components/section/Section";
 import AnimatedDownloadIcon from "./AnimatedDownloadIcon";
+import CTAButton from "./CTAButton";
 
 /**
  * Renders the closing call-to-action section of the home page: a short prompt plus two
@@ -28,12 +28,10 @@ const CTASection = () => {
             <div className="text-center flex flex-col items-center justify-center gap-1">
                 <h2 className="text-xl text-secondary font-bold font-Heebo">{data.title}</h2>
                 <p className="text-base text-color font-body">{data.description}</p>
-                {/* TODO: "Get in Touch" href is a placeholder — real target depends on Phase 3's
-                    unresolved scroll-anchor-vs-routes decision (same as Hero's CTAs). */}
                 <div className="flex flex-wrap items-center justify-center gap-4 mt-4">
                     <CTAButton
                         label={data.contactLabel}
-                        href="#contact"
+                        href="/contact"
                         className="rounded-3xl bg-primary text-bg-dark px-4 py-2 font-bold hover:bg-secondary"
                     />
                     {/* CV file: drop it in /public as Gal-Ben-Abu-CV.pdf for this href to resolve. */}

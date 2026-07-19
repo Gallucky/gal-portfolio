@@ -1,7 +1,4 @@
 import CTASection from "@/components/section/CTA/CTA.section";
-import ProjectCard from "@/components/ui/Projects/ProjectCard/ProjectCard";
-import ProjectView from "@/components/ui/Projects/ProjectView/ProjectView";
-import type { Project } from "@/data/projects";
 import HeroSection from "@components/section/Hero/Hero.section";
 import LanguagesSection from "@components/section/Languages/Languages.section";
 import ProjectsSection from "@components/section/Projects/Projects.section";

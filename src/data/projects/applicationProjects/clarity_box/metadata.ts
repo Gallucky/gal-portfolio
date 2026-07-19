@@ -1,8 +1,5 @@
-import type { ApplicationProjectMetadata } from "../applicationProjects";
-// Screenshot not added yet - drop the actual file in this folder as `project_preview.png`
-// (see e.g. `weather_cast/metadata.ts` for the pattern); the import/reference below already
-// expects it at that path, so no other code needs to change once the file exists.
 import previewImage from "./project_preview.png";
+import type { ApplicationProjectMetadata } from "@data/projects/applicationProjects/applicationProjects";
 
 /**
  * "ClarityBox" - a full-stack productivity platform combining gratitude journaling with

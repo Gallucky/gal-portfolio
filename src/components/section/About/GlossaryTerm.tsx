@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from "react";
-import { ExternalLink } from "lucide-react";
-import { useLanguage } from "@/app/providers/Language/useLanguage";
 import { glossarySectionLang, type GlossaryEntry } from "@lang/section/About/glossary";
+import { ExternalLink } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { useLanguage } from "@/app/providers/Language/useLanguage";
 import CTAButton from "@components/section/CTA/CTAButton";
 
 type GlossaryTermProps = {

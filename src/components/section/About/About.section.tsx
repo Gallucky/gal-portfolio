@@ -1,11 +1,11 @@
+import { skills } from "@data/skills";
+import { aboutSectionLang as lang } from "@lang/section/About/about";
+import { glossarySectionLang } from "@lang/section/About/glossary";
 import { useState } from "react";
 import { useLanguage } from "@/app/providers/Language/useLanguage";
 import { useTheme } from "@/app/providers/Theme/useTheme";
-import Section from "../Section";
-import { aboutSectionLang as lang } from "@lang/section/About/about";
-import { glossarySectionLang } from "@lang/section/About/glossary";
-import { skills } from "@data/skills";
 import { renderWithGlossary } from "@utils/text/renderWithGlossary";
+import Section from "@components/section/Section";
 
 /**
  * Renders the About section of the portfolio: a centered eyebrow/title, a short intro

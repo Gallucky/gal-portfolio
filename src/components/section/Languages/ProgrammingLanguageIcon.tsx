@@ -1,16 +1,15 @@
-import { useState } from "react";
 
-import htmlIcon from "@/assets/icons/html.png";
-import cssIcon from "@/assets/icons/css.png";
-import jsIcon from "@/assets/icons/javascript.png";
-import javaIcon from "@/assets/icons/java.png";
-import pythonIcon from "@/assets/icons/python.png";
-import psIcon from "@/assets/icons/powershell.png";
-import csharpIcon from "@/assets/icons/csharp.png";
+import asmIcon from "@/assets/icons/assembly.png";
+import batchIcon from "@/assets/icons/batch.png";
 import cppIcon from "@/assets/icons/c++.png";
 import cIcon from "@/assets/icons/c.png";
-import batchIcon from "@/assets/icons/batch.png";
-import asmIcon from "@/assets/icons/assembly.png";
+import csharpIcon from "@/assets/icons/csharp.png";
+import cssIcon from "@/assets/icons/css.png";
+import htmlIcon from "@/assets/icons/html.png";
+import javaIcon from "@/assets/icons/java.png";
+import jsIcon from "@/assets/icons/javascript.png";
+import psIcon from "@/assets/icons/powershell.png";
+import pythonIcon from "@/assets/icons/python.png";
 
 type ProgrammingLanguageIconProps = {
     id: string;

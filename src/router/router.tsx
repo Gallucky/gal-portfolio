@@ -1,3 +1,4 @@
+import { createBrowserRouter } from "react-router-dom";
 import App from "@/App";
 import AnimatedLayout from "@components/layout/AnimatedLayout";
 import AboutPage from "@pages/About/About.page";
@@ -7,7 +8,6 @@ import HomePage from "@pages/Home/Home.page";
 import ProjectDetailsPage from "@pages/ProjectDetails/ProjectDetails.page";
 import ProjectsPage from "@pages/Projects/Projects.page";
 import WelcomeRecruitersPage from "@pages/WelcomeRecruiters/WelcomeRecruiters.page";
-import { createBrowserRouter } from "react-router-dom";
 
 /**
  * This is the router configuration for the application.

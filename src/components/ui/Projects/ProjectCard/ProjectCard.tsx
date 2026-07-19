@@ -1,11 +1,11 @@
+import { projectCardLang } from "@lang/ui/Projects/ProjectCard/projectCard";
 import { MoveRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/app/providers/Language/useLanguage";
 import { useTheme } from "@/app/providers/Theme/useTheme";
-import { projectCardLang } from "@lang/ui/Projects/ProjectCard/projectCard";
-import { getTechColor } from "@/data/techColors";
-import { projectTypeBadgeColors } from "@/data/projectTypeColors";
 import type { CategorizedProject, Screenshot } from "@/data/projects";
+import { projectTypeBadgeColors } from "@/data/projectTypeColors";
+import { getTechColor } from "@/data/techColors";
 import Star from "@components/ui/Star";
 
 /**

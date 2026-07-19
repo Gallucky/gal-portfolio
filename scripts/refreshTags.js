@@ -1,9 +1,8 @@
 // scripts/refreshTags.js
 
 import { execSync } from "node:child_process";
-import { existsSync, rmSync } from "node:fs";
-import readline from "node:readline/promises";
 import { stdin, stdout } from "node:process";
+import readline from "node:readline/promises";
 
 const rl = readline.createInterface({
     input: stdin,

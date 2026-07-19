@@ -1,5 +1,5 @@
-import type { IncomingMessage, ServerResponse } from "node:http";
 import { Resend } from "resend";
+import type { IncomingMessage, ServerResponse } from "node:http";
 
 /**
  * Payload shape accepted by this endpoint - mirrors `ContactMessagePayload` on the frontend

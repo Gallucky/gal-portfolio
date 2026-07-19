@@ -1,13 +1,13 @@
-import type { Project, ProjectContent } from "@data/projects";
 import type { SupportedLanguages } from "@/types/Languages";
 // All 6 UI implementation projects have been rebuilt with real data.
-import leadingYouForward from "./leading_you_forward/metadata";
-import hereAndNow from "./here_and_now/metadata";
-import goodCoffeeForAGoodDay from "./good_coffee_for_a_good_day/metadata";
-import letUsLeadYouForward from "./let_us_lead_you_forward/metadata";
 import discoverTheWorld from "./discover_the_world/metadata";
-import thinkOutsideTheBox from "./think_outside_the_box/metadata";
 import freeAdvisement from "./free_advisement/metadata";
+import goodCoffeeForAGoodDay from "./good_coffee_for_a_good_day/metadata";
+import hereAndNow from "./here_and_now/metadata";
+import leadingYouForward from "./leading_you_forward/metadata";
+import letUsLeadYouForward from "./let_us_lead_you_forward/metadata";
+import thinkOutsideTheBox from "./think_outside_the_box/metadata";
+import type { Project, ProjectContent } from "@data/projects";
 
 /**
  * A UI implementation project - a course/portfolio exercise where the goal was implementing a

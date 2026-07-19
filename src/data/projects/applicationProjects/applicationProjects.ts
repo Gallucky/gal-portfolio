@@ -1,10 +1,10 @@
-import type { Project } from "@data/projects";
-import galPortfolio from "./gal_portfolio/metadata";
 import clarityBox from "./clarity_box/metadata";
-import jarvisMcpServer from "./jarvis_mcp_server/metadata";
+import galPortfolio from "./gal_portfolio/metadata";
 import hackerUNodeMongoDBServer from "./hackeru_node_mongodb_server/metadata";
-import hackerUReactModuleProject from "./hackeru_react_module_project/metadata";
 import hackerUPortfolioProject from "./hackeru_portfolio_project/metadata";
+import hackerUReactModuleProject from "./hackeru_react_module_project/metadata";
+import jarvisMcpServer from "./jarvis_mcp_server/metadata";
+import type { Project } from "@data/projects";
 
 /**
  * An helper type that represents an application project, which is a kind of project that can be featured.

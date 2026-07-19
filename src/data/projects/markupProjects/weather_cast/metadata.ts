@@ -1,5 +1,5 @@
-import type { MarkupProjectMetadata } from "../markupProjects";
 import previewImage from "./project_preview.png";
+import type { MarkupProjectMetadata } from "@data/projects/markupProjects/markupProjects";
 
 /**
  * "Weather Cast" - a live weather application that fetches real-time temperature and detailed

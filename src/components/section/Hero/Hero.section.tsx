@@ -1,7 +1,7 @@
-import { useLanguage } from "@/app/providers/Language/useLanguage";
-import Section from "../Section";
 import { heroSectionLang } from "@lang/section/Hero/hero";
+import { useLanguage } from "@/app/providers/Language/useLanguage";
 import CTAButton from "@components/section/CTA/CTAButton";
+import Section from "@components/section/Section";
 
 const ctaBase =
     "rounded-lg px-6 py-3 text-sm font-bold transition-colors duration-200 ease-in-out focus-visible:outline-2 focus-visible:outline-primary";
@@ -39,8 +39,6 @@ const HeroSection = () => {
                 <p className="text-base text-color tracking-wide font-body whitespace-pre-line mb-8">
                     {data.description}
                 </p>
-                {/* TODO: hrefs are placeholders pointing at future in-page section ids — real
-                    targets depend on Phase 3's unresolved scroll-anchor-vs-routes decision. */}
                 <div className="flex flex-wrap items-center justify-center gap-4">
                     <CTAButton href="/projects" label={data.ctaProjects} className={ctaSolid} />
                     <CTAButton href="/contact" label={data.ctaContact} className={ctaOutline} />

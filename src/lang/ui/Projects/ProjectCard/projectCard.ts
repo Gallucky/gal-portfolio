@@ -1,5 +1,5 @@
-import type { Translations } from "@/types/Languages";
 import type { CategorizedProject } from "@/data/projects";
+import type { Translations } from "@/types/Languages";
 
 /**
  * The shape of the ProjectCard's translated content: the fallback shown when a project has

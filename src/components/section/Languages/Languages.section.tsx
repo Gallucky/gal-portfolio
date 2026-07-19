@@ -1,7 +1,7 @@
+import { languagesSectionLang as lang } from "@lang/section/Languages/languages";
 import { useState } from "react";
 import { useLanguage } from "@app/providers/Language/useLanguage";
-import Section from "../Section";
-import { languagesSectionLang as lang } from "@lang/section/Languages/languages";
+import Section from "@components/section/Section";
 import ProgrammingLanguage from "./ProgrammingLanguage";
 
 /**

@@ -1,5 +1,5 @@
-import type { MarkupProjectMetadata } from "../markupProjects";
 import previewImage from "./project_preview.png";
+import type { MarkupProjectMetadata } from "@data/projects/markupProjects/markupProjects";
 
 /**
  * "Oren's Math Game" - a browser-based math quiz game with multiple difficulty levels and

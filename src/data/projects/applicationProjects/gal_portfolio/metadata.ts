@@ -1,5 +1,5 @@
-import type { ApplicationProjectMetadata } from "../applicationProjects";
 import previewImage from "./project_preview.png";
+import type { ApplicationProjectMetadata } from "@data/projects/applicationProjects/applicationProjects";
 // No screenshot yet - drop the actual file in this folder as `project_preview.png`
 // (see e.g. `weather_cast/metadata.ts` for the pattern) and add a `screenshots` entry below
 // once it exists.

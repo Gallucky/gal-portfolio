@@ -1,5 +1,5 @@
-import type { UIImplementationProjectMetadata } from "../uiImplementationProjects";
 import previewImage from "./project_preview.png";
+import type { UIImplementationProjectMetadata } from "@data/projects/uiImplementationProjects/uiImplementationProjects";
 
 /**
  * "Discover the World" - a pixel-perfect HTML & CSS implementation of a Figma design for a

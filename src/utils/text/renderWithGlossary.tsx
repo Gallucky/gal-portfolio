@@ -1,6 +1,6 @@
-import type { ReactNode } from "react";
 import GlossaryTerm from "@components/section/About/GlossaryTerm";
 import type { GlossaryEntry } from "@lang/section/About/glossary";
+import type { ReactNode } from "react";
 
 /** Escapes regex-special characters so a glossary label can be dropped straight into a
  * `RegExp` as a literal string to match (labels can contain characters like `-`). */

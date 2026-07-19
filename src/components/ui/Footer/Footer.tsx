@@ -1,10 +1,10 @@
+import { footerLang } from "@lang/ui/Footer/footer";
 import { BiLogoGmail } from "react-icons/bi";
 import { FaLinkedin } from "react-icons/fa";
 import { SiGithub } from "react-icons/si";
 import { Link, useLocation } from "react-router-dom";
 import { useLanguage } from "@/app/providers/Language/useLanguage";
 import Logo from "@components/ui/Logo";
-import { footerLang } from "@lang/ui/Footer/footer";
 
 /** The year the site went live - the fixed start of the copyright year range below. */
 const LAUNCH_YEAR = 2025;

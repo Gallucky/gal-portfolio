@@ -1,5 +1,5 @@
-import type { ApplicationProjectMetadata } from "../applicationProjects";
 import previewImage from "./project_preview.png";
+import type { ApplicationProjectMetadata } from "@data/projects/applicationProjects/applicationProjects";
 
 /**
  * "jarvis-mcp-server" - a personal MCP (Model Context Protocol) server exposing an Obsidian

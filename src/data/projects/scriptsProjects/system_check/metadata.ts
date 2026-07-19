@@ -1,4 +1,4 @@
-import type { ScriptsProjectMetadata } from "../scriptsProjects";
+import type { ScriptsProjectMetadata } from "@data/projects/scriptsProjects/scriptsProjects";
 
 /**
  * "system-check" - a Windows batch script that runs a sequence of built-in system integrity

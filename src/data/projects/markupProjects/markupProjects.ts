@@ -1,4 +1,3 @@
-import type { Project } from "@data/projects";
 // Cleared for a rewrite with real project data - uncomment each import as its metadata.ts
 // (see the matching folder) is filled back in with real content.
 import countriesFlags from "./countries_flags/metadata";
@@ -7,6 +6,7 @@ import ticTacToe from "./tic_tac_toe/metadata";
 import usersManagement from "./users_management/metadata";
 import weatherCast from "./weather_cast/metadata";
 import websiteBuilder from "./website_builder/metadata";
+import type { Project } from "@data/projects";
 
 /**
  * An helper type that represents a markup project, which is a kind of project that is not featured.

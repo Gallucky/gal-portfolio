@@ -1,5 +1,5 @@
-import type { ApplicationProjectMetadata } from "../applicationProjects";
 import previewImage from "./project_preview.png";
+import type { ApplicationProjectMetadata } from "@data/projects/applicationProjects/applicationProjects";
 
 /**
  * "Business Cards Web Application" (Gal-Ben-Abu-s-HackerU-ReactModuleProject) - a full-featured

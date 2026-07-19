@@ -1,7 +1,7 @@
-import { useLanguage } from "@/app/providers/Language/useLanguage";
-import Section from "../Section";
 import { welcomeRecruitersSectionLang as lang } from "@lang/section/WelcomeRecruiters/welcomeRecruiters";
+import { useLanguage } from "@/app/providers/Language/useLanguage";
 import CTAButton from "@components/section/CTA/CTAButton";
+import Section from "@components/section/Section";
 
 /**
  * Renders the WelcomeRecruiters section: a short, personal video pitch aimed at recruiters

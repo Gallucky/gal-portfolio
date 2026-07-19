@@ -1,12 +1,12 @@
-import { useLanguage } from "@/app/providers/Language/useLanguage";
+import { navbarLang } from "@lang/ui/Navbar/navbar";
 import { motion } from "framer-motion";
 import { XIcon } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
-import Logo from "../Logo";
-import ThemeToggle from "../ThemeToggle";
-import LanguageToggle from "../LanguageToggle/LanguageToggle";
-import { navbarLang } from "@lang/ui/Navbar/navbar";
+import { useLanguage } from "@/app/providers/Language/useLanguage";
+import LanguageToggle from "@components/ui/LanguageToggle/LanguageToggle";
+import Logo from "@components/ui/Logo";
+import ThemeToggle from "@components/ui/ThemeToggle";
 
 /**
  * This is the Navbar component that is used to navigate between pages in the application.
@@ -26,8 +26,7 @@ const Navbar = () => {
     // Close drawer on route change
     useEffect(() => setIsOpen(false), [location.pathname]);
 
-    // "/contact" are now wired up (see AboutPage, ContactPage). See Build Plan v2, Phase 3
-    // for the routing decision that resolves the rest.
+    // Top-level nav — every path here has a real route in src/router/router.tsx.
     const links = [
         { name: text.links.home, path: "/" },
         { name: text.links.projects, path: "/projects" },
@@ -59,14 +58,14 @@ const Navbar = () => {
                 things started overflowing/wrapping. */}
             <div className="w-[92%] md:w-[85%] lg:w-[75%] justify-self-center flex justify-between items-center py-4 lg:px-10">
                 <div className="flex items-center gap-3 sm:gap-10">
-                    <a href="/" className="flex items-center gap-2 sm:gap-3">
+                    <Link to="/" className="flex items-center gap-2 sm:gap-3">
                         <Logo />
                         <span className="transition-all hover:duration-300 hover:ease-in-out hover:scale-95">
                             <span className="text-base sm:text-lg font-bold text-color whitespace-nowrap">
                                 Gal Ben Abu
                             </span>
                         </span>
-                    </a>
+                    </Link>
                     <ul
                         aria-label="Additional controls"
                         className="h-full flex items-center justify-center gap-2 sm:gap-4">
@@ -160,12 +159,19 @@ const Navbar = () => {
                     initial={{ x: isRTL ? "-100%" : "100%" }}
                     animate={{ x: isOpen ? "0%" : isRTL ? "-100%" : "100%" }}
                     transition={{ duration: 0.3, ease: "easeInOut" }}
+                    // `inert` while closed: the drawer is only *visually* off-screen (translated
+                    // out of view), so without this its links would still sit in the Tab order
+                    // and receive focus invisibly. `inert` removes the whole subtree from
+                    // focus/interaction/assistive tech until the drawer is actually open.
+                    inert={!isOpen}
                     className="lg:hidden absolute top-0 end-0 w-[clamp(240px,60vw,320px)] h-dvh bg-bg-dark">
-                    <XIcon
-                        onClick={() => toggleHamburgerMenu()}
-                        className="absolute top-4 start-2 size-6 text-color-muted hover:text-color transition-colors"
+                    <button
+                        type="button"
+                        onClick={toggleHamburgerMenu}
                         aria-label={text.closeMenu}
-                    />
+                        className="absolute top-4 start-2 p-1 rounded text-color-muted hover:text-color transition-colors focus-visible:outline-2 focus-visible:outline-primary">
+                        <XIcon aria-hidden="true" className="size-6" />
+                    </button>
 
                     <ul
                         className="flex flex-col items-start justify-center gap-8 ps-10 h-full"

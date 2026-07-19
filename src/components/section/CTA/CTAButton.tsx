@@ -1,4 +1,5 @@
 import { MoveRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 /** Loosened past `LucideIcon` so compound icons (e.g. {@link AnimatedDownloadIcon}, which
  * renders two stacked elements instead of a single Lucide `<svg>`) can be passed too. */
@@ -7,12 +8,16 @@ type IconComponent = React.ComponentType<{ className?: string }>;
 type CTAButtonProps = {
     /** Visible label text. */
     label: string;
-    /** Renders an <a> when given; falls back to a <button type="button"> when omitted. */
+    /** Internal paths render a router <Link>; external URLs (`https:`, `mailto:`, ...),
+     * hash anchors, and downloads render a plain <a> so the browser handles them natively;
+     * omitted entirely renders a <button type="button">. */
     href?: string;
     /** Only used when `href` is omitted (button mode). */
     onClick?: () => void;
-    /** Forwarded to the <a> when `href` is set — e.g. `true` for a same-name save, or a
-     * string to suggest a filename (used by the CV link). Ignored in button mode. */
+    /** Forces the plain-<a> branch — e.g. `true` for a same-name save, or a string to
+     * suggest a filename (used by the CV link). React Router's <Link> click handler ignores
+     * the `download` attribute and would client-side navigate to the file's path (landing on
+     * the 404 page) instead of downloading it. Ignored in button mode. */
     download?: boolean | string;
     /** Forwarded to the <a> when `href` is set — e.g. `"_blank"` to open an external link
      * (glossary popups, project links) in a new tab. Ignored in button mode. */
@@ -91,23 +96,41 @@ const CTAButton = (props: CTAButtonProps) => {
         </>
     );
 
-    if (href) {
+    if (!href) {
+        return (
+            <button type="button" onClick={onClick} className={sharedClassName}>
+                {content}
+            </button>
+        );
+    }
+
+    const resolvedRel = rel ?? (target === "_blank" ? "noopener noreferrer" : undefined);
+    const isExternal = /^[a-z]+:/i.test(href); // https:, mailto:, etc.
+    // Hash anchors go through <a> too — <Link to="#..."> updates the URL without the
+    // browser's native scroll-to-anchor behavior.
+    const isHashAnchor = href.startsWith("#");
+
+    // Native <a> for everything React Router shouldn't intercept: external URLs, hash
+    // anchors, and downloads (Router's click handler ignores the `download` attribute and
+    // would route to the file's path instead of saving it — see `download`'s doc above).
+    if (download || isExternal || isHashAnchor) {
         return (
             <a
                 href={href}
                 download={download}
                 target={target}
-                rel={rel ?? (target === "_blank" ? "noopener noreferrer" : undefined)}
+                rel={resolvedRel}
                 className={sharedClassName}>
                 {content}
             </a>
         );
     }
 
+    // Internal app route — client-side navigation.
     return (
-        <button type="button" onClick={onClick} className={sharedClassName}>
+        <Link to={href} target={target} rel={resolvedRel} className={sharedClassName}>
             {content}
-        </button>
+        </Link>
     );
 };
 

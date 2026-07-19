@@ -1,4 +1,4 @@
-import type { ApplicationProjectMetadata } from "../applicationProjects";
+import type { ApplicationProjectMetadata } from "@data/projects/applicationProjects/applicationProjects";
 
 /**
  * "Gal's HackerU Node + MongoDB Server Project" - a RESTful Node.js/Express/MongoDB backend for

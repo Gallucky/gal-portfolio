@@ -1,8 +1,8 @@
 import type { SupportedLanguages } from "@/types/Languages";
-import uiImplementationProjects from "./projects/uiImplementationProjects/uiImplementationProjects";
-import markupProjects from "./projects/markupProjects/markupProjects";
 import applicationProjects from "./projects/applicationProjects/applicationProjects";
+import markupProjects from "./projects/markupProjects/markupProjects";
 import scriptsProjects from "./projects/scriptsProjects/scriptsProjects";
+import uiImplementationProjects from "./projects/uiImplementationProjects/uiImplementationProjects";
 
 /**
  * Defines the images/screenshots associated with a project,
@@ -65,7 +65,6 @@ export type Project = {
     // Non-translatable fields - metadata, links, and flags that don't have separate en/he versions
     // (only `content` below varies by language).
 
-    // TODO: not yet consumed anywhere in the UI - `featuredProjects` below is exported but unused, and no route reads `slug` yet either.
     /** Unique URL-friendly identifier for the project (e.g. "think-outside-the-box"), used to link to its page. */
     slug: string;
 

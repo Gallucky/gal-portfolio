@@ -1,6 +1,6 @@
 import ProjectView from "@/components/ui/Projects/ProjectView/ProjectView";
-import Section from "../Section";
 import { featuredProjects } from "@/data/projects";
+import Section from "@components/section/Section";
 
 const ProjectsSection = () => {
     return (

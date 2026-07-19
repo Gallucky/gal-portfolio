@@ -1,17 +1,17 @@
+import { projectCardLang } from "@lang/ui/Projects/ProjectCard/projectCard";
+import { projectDetailsLang as lang } from "@lang/ui/Projects/ProjectDetails/projectDetails";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { SiGithub } from "react-icons/si";
 import { Link, useParams } from "react-router-dom";
 import { useLanguage } from "@/app/providers/Language/useLanguage";
 import { useTheme } from "@/app/providers/Theme/useTheme";
+import { allProjects } from "@/data/projects";
+import { projectTypeBadgeColors } from "@/data/projectTypeColors";
+import { getTechColor } from "@/data/techColors";
 import CTAButton from "@components/section/CTA/CTAButton";
+import ErrorSection from "@components/section/Error/Error.section";
 import Section from "@components/section/Section";
 import Star from "@components/ui/Star";
-import ErrorPage from "@/pages/Error/Error.page";
-import { allProjects } from "@/data/projects";
-import { getTechColor } from "@/data/techColors";
-import { projectTypeBadgeColors } from "@/data/projectTypeColors";
-import { projectCardLang } from "@lang/ui/Projects/ProjectCard/projectCard";
-import { projectDetailsLang as lang } from "@lang/ui/Projects/ProjectDetails/projectDetails";
 import { renderWithInlineCode } from "@utils/text/renderWithInlineCode";
 
 /**
@@ -22,8 +22,11 @@ import { renderWithInlineCode } from "@utils/text/renderWithInlineCode";
  * Looks the project up from {@link allProjects} by the route's `slug` param rather than
  * receiving it as a prop, since this component is rendered directly by the router (via
  * {@link ProjectDetailsPage}) with no parent that already has the project in hand. Renders
- * {@link ErrorPage} in place for any `slug` that doesn't match a known project (typed
- * directly, stale link, project renamed) instead of crashing on a `undefined` lookup.
+ * {@link ErrorSection} in place for any `slug` that doesn't match a known project (typed
+ * directly, stale link, project renamed) instead of crashing on a `undefined` lookup - the
+ * *section*, not {@link ErrorPage}: that full page component brings its own navbar-clearing
+ * top padding and width clamp, and nesting it inside {@link ProjectDetailsPage}'s identical
+ * wrapper doubled both (404 content pushed ~2 navbar-heights down and rendered too narrow).
  *
  * Mirrors {@link ProjectCard}'s visual language (the same category ribbon colors, brand-color
  * stack badges via {@link getTechColor}, the same gradient placeholder tile when a project has
@@ -63,8 +66,10 @@ const ProjectDetails = () => {
 
     // No project matches this slug (stale/typo'd link, renamed/removed project) - fall back
     // to the same 404 shown for any other unknown route rather than crashing on `undefined`.
+    // ErrorSection (not ErrorPage) - the page wrapper around this component already provides
+    // the navbar offset + width clamp (see the doc comment above).
     if (!project) {
-        return <ErrorPage />;
+        return <ErrorSection />;
     }
 
     const content = project.content[language];

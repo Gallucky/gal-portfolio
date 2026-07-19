@@ -1,6 +1,6 @@
-import type { Project } from "@data/projects";
-import tempDelete from "./temp_delete/metadata";
 import systemCheck from "./system_check/metadata";
+import tempDelete from "./temp_delete/metadata";
+import type { Project } from "@data/projects";
 
 /**
  * A scripts project - a standalone utility script (e.g. PowerShell automation) rather than a

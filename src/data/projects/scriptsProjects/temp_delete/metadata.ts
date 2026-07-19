@@ -1,4 +1,4 @@
-import type { ScriptsProjectMetadata } from "../scriptsProjects";
+import type { ScriptsProjectMetadata } from "@data/projects/scriptsProjects/scriptsProjects";
 
 /**
  * "temp-delete" - a Windows PowerShell utility that clears temporary files and folders from

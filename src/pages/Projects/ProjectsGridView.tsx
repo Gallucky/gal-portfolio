@@ -1,6 +1,6 @@
+import { useLanguage } from "@/app/providers/Language/useLanguage";
 import type { CategorizedProject } from "@/data/projects";
 import ProjectCard from "@components/ui/Projects/ProjectCard/ProjectCard";
-import { useLanguage } from "@/app/providers/Language/useLanguage";
 
 type ProjectsGridViewProps = {
     /** The projects to render, already filtered/sorted by {@link ProjectsPage}. */

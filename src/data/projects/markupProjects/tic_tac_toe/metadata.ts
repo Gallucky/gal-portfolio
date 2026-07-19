@@ -1,5 +1,5 @@
-import type { MarkupProjectMetadata } from "../markupProjects";
 import previewImage from "./project_preview.png";
+import type { MarkupProjectMetadata } from "@data/projects/markupProjects/markupProjects";
 
 /**
  * "Tic Tac Toe" - a browser-based Tic Tac Toe game with multiple difficulty levels, built in
