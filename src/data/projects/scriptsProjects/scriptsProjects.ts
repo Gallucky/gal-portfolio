@@ -1,5 +1,6 @@
 import type { Project } from "@data/projects";
-// No script projects added yet - uncomment imports and add entries below as they're written.
+import tempDelete from "./temp_delete/metadata";
+import systemCheck from "./system_check/metadata";
 
 /**
  * A scripts project - a standalone utility script (e.g. PowerShell automation) rather than a
@@ -19,8 +20,7 @@ export type ScriptsProject = Omit<Project, "featured"> & {
  */
 export type ScriptsProjectMetadata = Omit<ScriptsProject, "type" | "featured">;
 
-// Add entries (and their import above) here as scripts get written up.
-const rawScriptsProjects: ScriptsProjectMetadata[] = [];
+const rawScriptsProjects: ScriptsProjectMetadata[] = [tempDelete, systemCheck];
 
 /** An array of scripts projects as project-metadata objects that are in the website. */
 const scriptsProjects: ScriptsProject[] = rawScriptsProjects.map((project) => ({
